@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   let komik_list = [];
 
   console.log(element);
-  let title, type, updated_on, endpoint, thumb, chapter;
+  let title, type, endpoint, thumb, chapter, rating;
 
   element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
     title = $(el).find("a > .splide__slide-info").find(".title").text().trim();
@@ -27,7 +27,14 @@ export default async function handler(req, res) {
       .find(".other")
       .find(".chapter")
       .attr("href");
-    komik_list.push({ title, type, thumb, chapter, endpoint });
+
+    rating = $(el)
+      .find("a > .splide__slide-info")
+      .find(".other > .rate > .rating")
+      .find(".numscore")
+      .text();
+
+    komik_list.push({ title, type, thumb, chapter, endpoint, rating });
   });
 
   return res.status(200).json({

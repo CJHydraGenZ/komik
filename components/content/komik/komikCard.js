@@ -1,7 +1,7 @@
 import React from "react";
 import { Footer } from "flowbite-react";
 import Image from "next/image";
-const komikCard = ({ thumb, score, status, judul, genre }) => {
+const komikCard = ({ thumb, rating, chapter, judul, endpoint }) => {
   // console.log("ini daata", thumb);
   return (
     <>
@@ -20,12 +20,12 @@ const komikCard = ({ thumb, score, status, judul, genre }) => {
         </div>
         <div className="flex flex-col flex-initial">
           <h1 className="text-lg font-semibold">{judul}</h1>
-          <h3 className="text-sm font-medium">Status : {status}</h3>
-          <h3 className="text-sm font-medium">Genre : {genre}</h3>
+          <h3 className="text-sm font-medium">{chapter}</h3>
+          {/* <h3 className="text-sm font-medium">Genre : {genre}</h3> */}
         </div>
         <div className="flex flex-1 justify-end items-center p-4">
           <div className="score  bg-blue-400 rounded-md  text-white py-4 px-3 w-14">
-            score {score}
+            {rating}
           </div>
         </div>
       </div>

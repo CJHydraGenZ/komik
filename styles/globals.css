@@ -17,4 +17,21 @@ a {
 
 * {
   box-sizing: border-box;
+  /* position: ; */
 }
+
+.img span {
+  @apply relative !important;
+}
+.img span img {
+  @apply relative w-full h-full !important;
+}
+
+/* 
+.relative span{
+  @apply relative !important
+} */
+
+/* .img-res {
+  @apply img-relative;
+} */

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
     "flowbite": "^1.4.7",
     "flowbite-react": "^0.1.0",
     "next": "12.2.0",

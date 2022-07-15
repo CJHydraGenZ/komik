@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 axios;
-export default function Home() {
+export default function Home({ posts }) {
+  const { status, komik_list } = posts;
+  console.log("data home", posts);
   // const options = {
   //   method: "GET",
   //   url: "https://webtoon.p.rapidapi.com/canvas/home",

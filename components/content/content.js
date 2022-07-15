@@ -6,38 +6,31 @@ import ContentList from "@/content/komik/contentList";
 import SeriesList from "@/content/komik/seriesList";
 // import { get } from "cheerio/lib/api/traversing";
 // import axios from "axios";
-export const Content = ({ data1 }) => {
-  console.log(data1, "data 1");
-  const data = [
-    {
-      img: "https://flowbite.com/docs/images/blog/image-1.jpg",
-      title: "solo leveling",
-    },
-    {
-      img: "https://flowbite.com/docs/images/blog/image-1.jpg",
-      title: "solo leveling",
-    },
-    {
-      img: "https://flowbite.com/docs/images/blog/image-1.jpg",
-      title: "solo leveling",
-    },
-    {
-      img: "https://flowbite.com/docs/images/blog/image-1.jpg",
-      title: "solo leveling",
-    },
-    {
-      img: "https://flowbite.com/docs/images/blog/image-1.jpg",
-      title: "solo leveling",
-    },
-  ];
+export const Content = () => {
+  // console.log("dsad", posts);
   const [komik, setkomik] = useState([]);
+  const [komikList, setKomikList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const getData = async () => {
+  const getRecommend = async () => {
     try {
       setLoading(true);
       const { data } = await axios.get("http://localhost:3000/api/recommend");
-      // console.log(data);
+
+      // console.log(res);
       setkomik(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const getKomikList = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get("http://localhost:3000/api/komik");
+
+      // console.log(res);
+      setKomikList(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -46,7 +39,8 @@ export const Content = ({ data1 }) => {
   };
 
   useEffect(() => {
-    getData();
+    getRecommend();
+    getKomikList();
   }, []);
 
   return (
@@ -70,7 +64,7 @@ export const Content = ({ data1 }) => {
       )}
 
       <div className="flex w-full gap-2">
-        <ContentList />
+        <ContentList data={komikList} loading={loading} />
 
         <SeriesList />
       </div>

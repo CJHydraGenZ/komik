@@ -8,7 +8,7 @@ const nextConfig = {
     NEXT_PUBLIC_HOST: "webtoon.p.rapidapi.com",
   },
   images: {
-    domains: ["img.statically.io"],
+    domains: ["img.statically.io", "i3.wp.com"],
   },
 };
 

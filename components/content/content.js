@@ -36,7 +36,7 @@ export const Content = ({ data1 }) => {
     try {
       setLoading(true);
       const { data } = await axios.get("http://localhost:3000/api/recommend");
-      console.log(data);
+      // console.log(data);
       setkomik(data);
     } catch (error) {
       console.log(error);
@@ -52,7 +52,7 @@ export const Content = ({ data1 }) => {
   return (
     <>
       {loading ? (
-        "Loading..."
+        "Loading....."
       ) : (
         <div className="grid grid-cols-5 gap-2">
           {komik?.komik_list?.map((d, i) => (
@@ -63,6 +63,7 @@ export const Content = ({ data1 }) => {
               rating={d.rating}
               endpoint={d.endpoint}
               chapter={d.chapter}
+              last_upload_endpoint={d.last_upload_endpoint}
             />
           ))}
         </div>

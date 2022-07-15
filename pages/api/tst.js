@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const element = $(".list-update");
   let komik_list = [];
 
-  console.log(element);
+  // console.log(element);
   let title, type, updated_on, endpoint, thumb, chapter;
 
   element

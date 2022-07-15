@@ -1,7 +1,14 @@
 import React from "react";
 import { Footer } from "flowbite-react";
 import Image from "next/image";
-const komikCard = ({ thumb, rating, chapter, judul, endpoint }) => {
+const komikCard = ({
+  thumb,
+  rating,
+  chapter,
+  judul,
+  endpoint,
+  last_upload_endpoint,
+}) => {
   // console.log("ini daata", thumb);
   return (
     <>

@@ -2,9 +2,9 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 
-const replaceMangaPage = "https://komiku.id/manga/";
-
 export default async function handler(req, res) {
+  const link_endpoint = "https://komikcast.me/komik/";
+
   const { genre = "", statusS = "", typeS = "", orderBy = "" } = req.body;
   // console.log("inii pst", req.body);
   const url =
@@ -23,11 +23,11 @@ export default async function handler(req, res) {
   //   `https://komikcast.me/daftar-komik/?genre%5B%5D=${genre}&status=${statusS}&type=${typeS}&orderby=${orderBy}`
   // );
   let komik_list = [];
-  let title, type, endpoint, thumb, chapter, rating;
+  let title, type, endpoint, thumb, chapter, rating, last_upload_endpoint;
 
   switch (req.method) {
     case "GET":
-      console.log(element);
+      // console.log(element);
 
       element
         .find(".list-update_items-wrapper > .list-update_item")
@@ -49,12 +49,22 @@ export default async function handler(req, res) {
             .find(".chapter")
             .text()
             .trim();
-          endpoint = $(el)
+          last_upload_endpoint = $(el)
             .find("a > .list-update_item-info")
             .find(".other")
             .find(".chapter")
             .attr("href");
-          komik_list.push({ title, type, thumb, chapter, endpoint });
+
+          endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
+
+          komik_list.push({
+            title,
+            type,
+            thumb,
+            chapter,
+            endpoint,
+            last_upload_endpoint,
+          });
         });
 
       return res.status(200).json({
@@ -88,7 +98,7 @@ export default async function handler(req, res) {
               .find(".chapter")
               .text()
               .trim();
-            endpoint = $(el)
+            last_upload_endpoint = $(el)
               .find("a > .list-update_item-info")
               .find(".other")
               .find(".chapter")
@@ -99,7 +109,17 @@ export default async function handler(req, res) {
               .find(".numscore")
               .text();
             // .trim();
-            komik_list.push({ title, type, thumb, chapter, endpoint, rating });
+            endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
+
+            komik_list.push({
+              title,
+              type,
+              thumb,
+              chapter,
+              endpoint,
+              rating,
+              last_upload_endpoint,
+            });
           });
 
         return res.status(200).json({

@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Card, Rating } from "flowbite-react";
 import Link from "next/link";
-export const CardKomik = ({ endpoint, thumb, title, chapter, rating }) => {
+export const CardKomik = ({
+  endpoint,
+  thumb,
+  title,
+  chapter,
+  rating,
+  last_upload_endpoint,
+}) => {
   let rate = Math.round((rating * 10) / 2 / 10);
 
   return (

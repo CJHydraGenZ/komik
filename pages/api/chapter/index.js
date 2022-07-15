@@ -5,7 +5,7 @@ import * as cheerio from "cheerio";
 export default async function handler(req, res) {
   const link_endpoint = "https://komikcast.me/komik/";
   const { data } = await axios.get("https://komikcast.me");
-
+  // console.log('req params', req.para);
   const $ = cheerio.load(data);
   const element = $(".listupd");
   let komik_list = [];

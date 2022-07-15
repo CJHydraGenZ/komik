@@ -48,13 +48,13 @@ export default function Chapter({ posts }) {
       {/* <h1>{process.env.NEXT_PUBLIC_RAPIDAPI_KEY}</h1> */}
       {/* <h1>{process.env.NEXT_PUBLIC_HOST}</h1> */}
       {/* <Content /> */}
-      <div className="img flex flex-col max-w-sm justify-center">
+      <div className="img flex flex-col max-w-lg items-center relative">
         {chapter_image.map((data, i) => (
           <Image
             key={i}
             src={data.chapter_image_link}
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
             alt={title}
           />
         ))}

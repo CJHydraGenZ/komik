@@ -13,7 +13,7 @@ export const CardKomik = ({
 
   return (
     <div className="max-w-sm">
-      <Link href={endpoint}>
+      <Link href={`/komik/${endpoint}`}>
         <a>
           <Card imgAlt={title} imgSrc={thumb}>
             <h2 className="font-normal text-gray-700 dark:text-gray-400">

@@ -48,7 +48,7 @@ export const Content = () => {
       {loading ? (
         "Loading....."
       ) : (
-        <div className="grid grid-cols-5 gap-2">
+        <div className="flex  w-full gap-2 overflow-hidden">
           {komik?.komik_list?.map((d, i) => (
             <CardKomik
               key={i}

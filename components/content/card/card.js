@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Rating } from "flowbite-react";
 import Link from "next/link";
+import Image from "next/image";
 export const CardKomik = ({
   endpoint,
   thumb,
@@ -12,10 +13,22 @@ export const CardKomik = ({
   let rate = Math.round((rating * 10) / 2 / 10);
 
   return (
-    <div className="max-w-sm">
+    <div className="w-full h-full ">
       <Link href={`/komik/${endpoint}`}>
         <a>
-          <Card imgAlt={title} imgSrc={thumb}>
+          {/* <Card imgAlt={title} imgSrc={thumb}> */}
+          <div className="img">
+            <div className="relative w-full h-full">
+              <Image
+                src={thumb}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+                className="h-full w-full rounded-md"
+              />
+            </div>
+          </div>
+          <div className="info text-ellipsis overflow-hidden">
             <h2 className="font-normal text-gray-700 dark:text-gray-400">
               {title}
             </h2>
@@ -35,7 +48,9 @@ export const CardKomik = ({
                 {rating}
               </h2>
             </div>
-          </Card>
+          </div>
+
+          {/* </Card> */}
         </a>
       </Link>
     </div>

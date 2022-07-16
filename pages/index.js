@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 axios;
 export default function Home({ posts }) {
-  const { status, komik_list } = posts;
-  console.log("data home", posts);
   // const options = {
   //   method: "GET",
   //   url: "https://webtoon.p.rapidapi.com/canvas/home",
@@ -52,3 +50,16 @@ export default function Home({ posts }) {
     </div>
   );
 }
+
+// "dependencies": {
+//   "next": "latest",
+//   "react": "^18",
+//   "react-dom": "^18",
+//   "react-is": "^17.0.2"
+// },
+// "devDependencies": {
+//   "@types/react": "^18",
+//   "bun-framework-next": "^12",
+//   "typescript": "latest",
+//   "react-refresh": "latest"
+// }

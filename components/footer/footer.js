@@ -38,6 +38,7 @@ const footer = () => {
               <Footer.LinkGroup col={true}>
                 <Footer.Link href="#">Privacy Policy</Footer.Link>
                 <Footer.Link href="#">Terms & Conditions</Footer.Link>
+                <Footer.Link href="#">v0.0.1</Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>

@@ -28,8 +28,8 @@ export const CardKomik = ({
               />
             </div>
           </div>
-          <div className="info text-ellipsis overflow-hidden">
-            <h2 className="font-normal text-gray-700 dark:text-gray-400">
+          <div className="info">
+            <h2 className="font-normal truncate overflow-hidden text-gray-700 dark:text-gray-400">
               {title}
             </h2>
             <h3 className="font-normal text-gray-700 dark:text-gray-400">

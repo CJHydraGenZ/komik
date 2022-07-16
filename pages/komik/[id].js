@@ -2,10 +2,27 @@ import axios from "axios";
 import { Content } from "components/content/content";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
 export default function Komik({ data }) {
+  const {
+    komik_endpoint,
+    title,
+    description,
+    type,
+    author,
+    status,
+    released,
+    total_chapter,
+    update_on,
+    thumb,
+    synopsis,
+    genre_list,
+    chapter,
+  } = data;
+
   // const router = useRouter();
   // console.log("ini endpoint", endpoint);
   // const { id } = router.query;
@@ -18,8 +35,43 @@ export default function Komik({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="img flex flex-col max-w-lg items-center relative">
-        <h1>Komik</h1>
+      <div className="flex flex-col space-y-4 w-full">
+        {/* <h1>Komik</h1> */}
+        <div className="flex">
+          <div className="img relative w-full h-full">
+            <Image src={thumb} layout="fill" alt={title} objectFit="cover" />
+          </div>
+          <div className="info flex">
+            <ul className="list-disc">
+              <li>asas</li>
+              <li>asas</li>
+              <li>asas</li>
+            </ul>
+            <ul className="list-disc">
+              <li>asas</li>
+              <li>asas</li>
+              <li>asas</li>
+            </ul>
+          </div>
+        </div>
+        <div className="synopsis">{synopsis}</div>
+      </div>
+      <div className="komik-chapter">
+        <h1>{released}</h1>
+        <ul>
+          {chapter?.map((d, i) => (
+            <li key={i}>
+              <Link
+                href={`http://localhost:3000/chapter/${d.chapter_endpoint}`}
+              >
+                <a className="flex justify-between">
+                  <h2>{d.chapter_title}</h2>
+                  <h2>{d.chapter_time}</h2>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

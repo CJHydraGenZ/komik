@@ -5,7 +5,7 @@ import Footer from "components/footer/footer";
 export const Layout = ({ children }) => (
   <>
     <Header />
-    {children}
+    <div className="container mx-auto px-4">{children}</div>
     <Footer />
   </>
 );

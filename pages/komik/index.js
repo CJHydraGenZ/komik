@@ -5,11 +5,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
-export default function Komik() {
+export default function Komik({ data }) {
   // const router = useRouter();
 
   // const { id } = router.query;
   // console.log("ini endpoint", endpoint);
+  // console.log("ini data komik", data);
   return (
     <div>
       <Head>
@@ -18,11 +19,26 @@ export default function Komik() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="img flex flex-col max-w-lg items-center relative">
+      <div className="flex flex-col max-w-full">
         <h1>Komik</h1>
+        <div className="filter bg-slate-300 h-60 w-full">filter</div>
         {/* <h1>Komik</h1> */}
         {/* <h1>{id}</h1> */}
+        <div className="list-komik bg-slate-600 h-auto w-full">list komik</div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  // const router = useRouter();
+  // console.log("ini endpoint", endpoint);
+  // const { id } = context.query;
+  const res = await fetch(`http://localhost:3000/api/komik/`);
+  const data = await res.json();
+  return {
+    props: {
+      data,
+    }, // will be passed to the page component as props
+  };
 }

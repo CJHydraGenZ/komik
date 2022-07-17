@@ -15,6 +15,25 @@ Komik bahasa Indonesia built with Next.js and Bun
     ```
 4. visit http://localhost:3000/
 
+# Using Bun (Linux,Mac,WSL)
+1. Clone this repository
+    ```bash
+    git clone https://github.com/CJHydraGenZ/komik.git
+    ```
+2. Install dependecies (`bun`)
+  ```bash
+    bun install
+    ```
+3. Bundle dependencies 
+  ```bash
+    bun bun
+    ```
+3. Start the development
+    ```bash
+    bun dev
+    ```
+4. visit http://localhost:3000/
+
 # Documentation
 __API__ __PATH__ = https://localhost:3000/api/
 </br>__ApI__ Version = `v0.0.1`

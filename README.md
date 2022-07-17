@@ -3,7 +3,7 @@
 # KOMIK API
 Komik bahasa Indonesia built with Next.js and Bun
 
-# Usage
+## Usage
 1. Clone this repository
     ```bash
     git clone https://github.com/CJHydraGenZ/komik.git
@@ -15,7 +15,7 @@ Komik bahasa Indonesia built with Next.js and Bun
     ```
 4. visit http://localhost:3000/
 
-# Using Bun (Linux,Mac,WSL)
+## Using Bun (Linux,Mac,WSL)
 1. Clone this repository
     ```bash
     git clone https://github.com/CJHydraGenZ/komik.git
@@ -34,7 +34,7 @@ Komik bahasa Indonesia built with Next.js and Bun
     ```
 5. visit http://localhost:3000/
 
-# Documentation
+## Documentation
 __API__ __PATH__ = https://localhost:3000/api/
 </br>__ApI__ Version = `v0.0.1`
 

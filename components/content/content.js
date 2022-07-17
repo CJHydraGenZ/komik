@@ -4,6 +4,8 @@ import axios from "axios";
 import { CardKomik } from "./card/card";
 import ContentList from "@/content/komik/contentList";
 import SeriesList from "@/content/komik/seriesList";
+import { CardRecommend } from "./card/cardRecommed";
+import { CardPopular } from "./card/cardPopular";
 // import { get } from "cheerio/lib/api/traversing";
 // import axios from "axios";
 export const Content = () => {
@@ -45,23 +47,21 @@ export const Content = () => {
 
   return (
     <>
-      {loading ? (
-        "Loading....."
-      ) : (
-        <div className="flex  w-full gap-2 overflow-hidden">
-          {komik?.komik_list?.map((d, i) => (
-            <CardKomik
-              key={i}
-              thumb={d.thumb}
-              title={d.title}
-              rating={d.rating}
-              endpoint={d.endpoint}
-              chapter={d.chapter}
-              last_upload_endpoint={d.last_upload_endpoint}
-            />
-          ))}
-        </div>
-      )}
+      <div className=" bg-green-200">
+        {/* {komik?.komik_list?.map((d, i) => (
+          <CardRecommend
+            key={i}
+            thumb={d.thumb}
+            title={d.title}
+            rating={d.rating}
+            endpoint={d.endpoint}
+            chapter={d.chapter}
+            last_upload_endpoint={d.last_upload_endpoint}
+          />
+        ))} */}
+
+        <CardPopular />
+      </div>
 
       <div className="flex w-full gap-2">
         <ContentList data={komikList} loading={loading} />

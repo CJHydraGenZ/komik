@@ -28,11 +28,11 @@ Komik bahasa Indonesia built with Next.js and Bun
   ```bash
     bun bun
     ```
-3. Start the development
+4. Start the development
     ```bash
     bun dev
     ```
-4. visit http://localhost:3000/
+5. visit http://localhost:3000/
 
 # Documentation
 __API__ __PATH__ = https://localhost:3000/api/

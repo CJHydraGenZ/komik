@@ -24,7 +24,7 @@ export default function Komik({ data }) {
             <h1>Daftar komik</h1>
             <h1>Daftar komik</h1>
           </div>
-          <div className="grid grid-cols-7 gap-4">
+          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
             {data?.komik_list?.map((d, i) => (
               <CardKomik
                 key={i}

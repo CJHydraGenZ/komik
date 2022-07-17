@@ -27,6 +27,10 @@ a {
   @apply relative w-full h-full !important;
 }
 
+.card-recommend {
+  @apply flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg !important;
+}
+
 /* 
 .relative span{
   @apply relative !important

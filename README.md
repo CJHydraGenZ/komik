@@ -56,7 +56,7 @@ example : https://localhost:3000/api/recommend/
 ```
 /komik/[endpoint]
 ```
-example : https://localhost:3000/api/komik/after-transformation-mine-and-her-wild-fantasy/
+example : https://localhost:3000/api/komik/academys-undercover-professor/
 <!-- 
 ## Search Manga by Name
 ```
@@ -98,8 +98,7 @@ example : https://localhost:3000/api/manhua/1 -->
 ```
 /chapter/[chapterEndpoint]
 ```
-example :https://localhost:3000/api/chapter/after-transformation-mine-and-her-wild-fantasy-chapter-70-bahasa-indonesia/
-
+example :https://localhost:3000/api/chapter/infinite-level-up-in-murim-chapter-63/
 <!-- ## Showcase
 App Showcase that use this API (you can add your app by edit this readme)
 

@@ -21,11 +21,11 @@ Komik bahasa Indonesia built with Next.js and Bun
     git clone https://github.com/CJHydraGenZ/komik.git
     ```
 2. Install dependecies (`bun`)
-  ```bash
+    ```bash
     bun install
     ```
 3. Bundle dependencies 
-  ```bash
+    ```bash
     bun bun
     ```
 4. Start the development

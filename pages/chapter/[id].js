@@ -20,8 +20,8 @@ export default function Chapter({ data }) {
       {/* <h1>Home</h1> */}
       {/* <h1>{process.env.NEXT_PUBLIC_RAPIDAPI_KEY}</h1> */}
       {/* <h1>{process.env.NEXT_PUBLIC_HOST}</h1> */}
+      {/* <Content /> */}
       <div className="container lg:px-24">
-        {/* <Content /> */}
         <div className="flex flex-col space-y-4">
           <h1>{title}</h1>
           <div className="flex flex-col space-y-6">
@@ -49,17 +49,7 @@ export default function Chapter({ data }) {
 export async function getServerSideProps(context) {
   // Call an external API endpoint to get posts
   const { id } = context.query;
-  const res = await fetch(`${server}/api/chapter/${id}`, {
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
-    mode: "no-cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    referrerPolicy: "no-referrer",
-  });
+  const res = await fetch(`${server}/api/chapter/${id}`);
   const data = await res.json();
 
   // By returning { props: { posts } }, the Blog component

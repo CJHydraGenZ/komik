@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 export default function Komik({ data }) {
-  // console.log(data);
+  console.log("inidata", data);
   return (
     <div>
       <Head>
@@ -45,7 +45,19 @@ export default function Komik({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${server}/api/komik/`);
+  const res = await fetch(`${server}/api/komik/`, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    // mode: 'cors', // no-cors, *cors, same-origin
+    // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    // credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    // redirect: "follow", // manual, *follow, error
+    // referrerPolicy: "no-referrer",
+  });
   const data = await res.json();
   return {
     props: {

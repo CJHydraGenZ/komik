@@ -4,7 +4,7 @@ import * as cheerio from "cheerio";
 import { cors, runMiddleware } from "components/middleware";
 
 export default async function handler(req, res) {
-  // await runMiddleware(req, res, cors);
+  await runMiddleware(req, res, cors);
   const link_endpoint = "https://komikcast.me/komik/";
 
   const { genre = "", statusS = "", typeS = "", orderBy = "" } = req.body;
@@ -30,51 +30,60 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       // console.log(element);
+      try {
+        element
+          .find(".list-update_items-wrapper > .list-update_item")
+          .each((i, el) => {
+            title = $(el)
+              .find("a > .list-update_item-info")
+              .find("h3")
+              .text()
+              .trim();
+            type = $(el)
+              .find("a > .list-update_item-image")
+              .find(".type")
+              .text();
+            thumb = $(el)
+              .find("a > .list-update_item-image")
+              .find("img")
+              .attr("src");
+            // thumb = $(el).find()
+            chapter = $(el)
+              .find("a > .list-update_item-info")
+              .find(".other")
+              .find(".chapter")
+              .text()
+              .trim();
+            last_upload_endpoint = $(el)
+              .find("a > .list-update_item-info")
+              .find(".other")
+              .find(".chapter")
+              .attr("href");
 
-      element
-        .find(".list-update_items-wrapper > .list-update_item")
-        .each((i, el) => {
-          title = $(el)
-            .find("a > .list-update_item-info")
-            .find("h3")
-            .text()
-            .trim();
-          type = $(el).find("a > .list-update_item-image").find(".type").text();
-          thumb = $(el)
-            .find("a > .list-update_item-image")
-            .find("img")
-            .attr("src");
-          // thumb = $(el).find()
-          chapter = $(el)
-            .find("a > .list-update_item-info")
-            .find(".other")
-            .find(".chapter")
-            .text()
-            .trim();
-          last_upload_endpoint = $(el)
-            .find("a > .list-update_item-info")
-            .find(".other")
-            .find(".chapter")
-            .attr("href");
+            endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
 
-          endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
-
-          komik_list.push({
-            title,
-            type,
-            thumb,
-            chapter,
-            endpoint,
-            last_upload_endpoint,
+            komik_list.push({
+              title,
+              type,
+              thumb,
+              chapter,
+              endpoint,
+              last_upload_endpoint,
+            });
           });
+
+        return res.status(200).json({
+          status: true,
+          message: "success",
+          komik_list,
         });
-
-      return res.status(200).json({
-        status: true,
-        message: "success",
-        komik_list,
-      });
-
+      } catch (error) {
+        return res.status(404).json({
+          status: false,
+          message: "gagal adad eror",
+          // komik_list,
+        });
+      }
     case "POST":
       try {
         element

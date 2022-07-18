@@ -5,7 +5,7 @@ import Cors from "cors";
 
 // Initializing the cors middleware
 const cors = Cors({
-  methods: ["GET", "HEAD"],
+  methods: ["GET"],
 });
 
 function runMiddleware(req, res, fn) {
@@ -22,9 +22,9 @@ function runMiddleware(req, res, fn) {
 
 export default async function handler(req, res) {
   const { kid } = req.query;
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
 
   console.log("ini", kid);
 
-  res.status(200).json(await HandlerKomikId(kid));
+  return res.status(200).json(await HandlerKomikId(kid));
 }

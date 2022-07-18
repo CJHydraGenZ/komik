@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const { server } = require("config");
 
 export const AxiosAPP = axios.create({

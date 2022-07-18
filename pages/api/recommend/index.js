@@ -1,6 +1,7 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
+import Cors from "cors";
 
 const cors = Cors({
   methods: ["GET", "HEAD"],

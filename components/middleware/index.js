@@ -4,7 +4,7 @@ import Cors from "cors";
 
 // Initializing the cors middleware
 export const cors = Cors({
-  methods: ["GET", "HEAD", , "POST", "PUT", "PATCH", "DELETE"],
+  methods: ["GET", "HEAD"],
 });
 
 export function runMiddleware(req, res, fn) {

@@ -2,4 +2,4 @@ const dev = process.env.NODE_ENV !== "production";
 
 export const server = dev
   ? "http://localhost:3000"
-  : "http://komik-eight.vercel.app";
+  : "https://komik-eight.vercel.app";

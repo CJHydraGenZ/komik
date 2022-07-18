@@ -2,6 +2,7 @@ import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { AxiosAPP } from "components/function/axios";
+import { HandlerKomikId } from "components/function/scraping";
 import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
@@ -121,8 +122,9 @@ export async function getServerSideProps(context) {
   // const router = useRouter();
   // console.log("ini endpoint", endpoint);
   const { id } = context.query;
-  const res = await fetch(`${server}/api/komik/${id}`);
-  const data = await res.json();
+  // const res = await fetch(`${server}/api/komik/${id}`);
+  // const data = await res.json();
+  const data = await HandlerKomikId(id);
   return {
     props: {
       data,

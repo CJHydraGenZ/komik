@@ -2,6 +2,7 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 import Cors from "cors";
+import fetch from "node-fetch";
 
 const cors = Cors({
   methods: ["GET"],
@@ -24,8 +25,9 @@ export default async function handler(req, res) {
 
   await runMiddleware(req, res, cors);
   try {
-    const { data } = await axios.get("https://komikcast.me");
+    const response = await fetch("https://komikcast.me");
     // console.log(response);
+    const data = await response.text();
     const $ = cheerio.load(data);
     const element = $(".listupd");
     let komik_list = [];

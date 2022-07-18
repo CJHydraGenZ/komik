@@ -37,41 +37,41 @@ export default async function handler(req, res) {
     let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
 
     element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
-      // title = $(el)
-      //   .find("a > .splide__slide-info")
-      //   .find(".title")
-      //   .text()
-      //   .trim();
-      // type = $(el).find("a > .splide__slide-image").find(".type").text().trim();
-      // thumb = $(el).find("a > .splide__slide-image").find("img").attr("src");
+      title = $(el)
+        .find("a > .splide__slide-info")
+        .find(".title")
+        .text()
+        .trim();
+      type = $(el).find("a > .splide__slide-image").find(".type").text().trim();
+      thumb = $(el).find("a > .splide__slide-image").find("img").attr("src");
       // thumb = $(el).find()
       endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
-      // chapter = $(el)
-      //   .find("a > .splide__slide-info")
-      //   .find(".other")
-      //   .find(".chapter")
-      //   .text()
-      //   .trim();
-      // last_upload_endpoint = $(el)
-      //   .find("a > .splide__slide-info")
-      //   .find(".other")
-      //   .find(".chapter")
-      //   .attr("href");
+      chapter = $(el)
+        .find("a > .splide__slide-info")
+        .find(".other")
+        .find(".chapter")
+        .text()
+        .trim();
+      last_upload_endpoint = $(el)
+        .find("a > .splide__slide-info")
+        .find(".other")
+        .find(".chapter")
+        .attr("href");
 
-      // rating = $(el)
-      //   .find("a > .splide__slide-info")
-      //   .find(".other > .rate > .rating")
-      //   .find(".numscore")
-      //   .text();
+      rating = $(el)
+        .find("a > .splide__slide-info")
+        .find(".other > .rate > .rating")
+        .find(".numscore")
+        .text();
 
       komik_list.push({
         endpoint,
-        // title,
-        // type,
-        // thumb,
-        // chapter,
-        // last_upload_endpoint,
-        // rating,
+        title,
+        type,
+        thumb,
+        chapter,
+        last_upload_endpoint,
+        rating,
       });
     });
 

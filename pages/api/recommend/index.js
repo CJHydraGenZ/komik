@@ -25,7 +25,12 @@ export default async function handler(req, res) {
   const link_endpoint = "https://komikcast.me/komik/";
 
   try {
-    const { data } = await axios.get("https://komikcast.me");
+    const { data } = await axios.get("https://komikcast.me", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    });
     const $ = cheerio.load(data);
     const element = $(".listupd");
     let komik_list = [];

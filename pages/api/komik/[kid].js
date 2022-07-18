@@ -7,7 +7,7 @@ import Cors from "cors";
 // Initializing the cors middleware
 
 export default async function handler(req, res) {
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
 
   const { kid } = req.query;
   const link_endpoint = "https://komikcast.me/komik";

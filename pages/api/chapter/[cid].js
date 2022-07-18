@@ -1,6 +1,7 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
+import Cors from "cors";
 
 const cors = Cors({
   methods: ["GET", "HEAD"],
@@ -26,15 +27,6 @@ export default async function handler(req, res) {
   const chaptera_link =
     "https://komikcast.me/chapter/chikashitsu-dungeon-binbou-kyoudai-wa-goraku-o-motomete-saikyou-e-chapter-29-bahasa-indonesia/";
 
-  // const { data } = await axios.get("https://komikcast.me");
-  // console.log('req params', req.para);
-  // const $ = cheerio.load(data);
-  // const element = $(".listupd");
-  // let komik_list = [];
-
-  // console.log(element);
-  let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
-
   const { cid } = req.query;
   try {
     // const response = await AxiosService(`${chapter_link}/${cid}/`);
@@ -56,9 +48,6 @@ export default async function handler(req, res) {
       obj.title = $(getTitlePages).find("h1").text().replace("Komik ", "");
     });
 
-    /**
-     * @Komiku
-     */
     const getPages = $(".main-reading-area > img");
 
     // const getPages = $('#chimg > img')

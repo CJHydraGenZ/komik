@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { ch } from "components/function/ch";
+import Limage from "public/loading.webp";
 export const ImageCard = ({ variant, thumb, title }) => {
   const [loading, setLoading] = useState(true);
+  const [src, setSrc] = useState(Limage);
+  useEffect(() => {
+    if (thumb) {
+      setSrc(thumb);
+    }
+  }, [thumb]);
   const variants = {
     recommend: "xl:aspect-w-16 xl:aspect-h-8",
     daftar: "xl:aspect-w-6 xl:aspect-h-7",
+    komik: "xl:aspect-w-6 xl:aspect-h-7",
   };
   const pickVarian = variants[variant];
   return (
@@ -13,8 +21,8 @@ export const ImageCard = ({ variant, thumb, title }) => {
       className={`w-full aspect-w-8 aspect-h-6 bg-gray-200 overflow-hidden ${pickVarian}`}
     >
       <Image
-        src={thumb}
-        alt={title}
+        src={src}
+        alt={src}
         layout="fill"
         // objectFit="cover"
         className={ch(

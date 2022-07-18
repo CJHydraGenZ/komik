@@ -1,5 +1,7 @@
+import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
+import { AxiosAPP } from "components/function/axios";
 import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
@@ -7,13 +9,30 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
-export default function Komik() {
+export default function KomikID() {
   const router = useRouter();
-  // console.log("ini endpoint", endpoint);
   const { id } = router.query;
-  // console.log("ini", data);
+  // console.log("ini endpoint", id);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  // console.log("ini", data);
+
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(`/api/komik/${id}`);
+      // console.log("data", data);
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (!router.isReady) return;
+    getData();
+  }, [router.isReady]);
 
   const {
     komik_endpoint,
@@ -30,34 +49,27 @@ export default function Komik() {
     genre_list,
     chapter,
   } = data;
-  const getData = async () => {
-    try {
-      setLoading(true);
-      const { data } = await AxiosAPP(`/api/komik/${id}`);
-      setData(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+
+  console.log("ini thumb", thumb);
 
   return (
     <div>
       <Head>
         <title>KomikIDC</title>
+
         <meta name="komik" content={title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col space-y-4 w-full">
-        {/* <h1>Komik</h1> */}
         <div className="flex">
           <div className="img relative w-full h-full">
-            <Image src={thumb} layout="fill" alt={title} objectFit="cover" />
+            <ImageCard variant="komik" thumb={thumb} title={title} />
+
+            {/* {loading ? (
+              "Loading..."
+            ) : (
+            )} */}
           </div>
           <div className="info flex">
             <ul className="list-disc">

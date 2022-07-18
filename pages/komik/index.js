@@ -2,6 +2,7 @@ import { CardKomik } from "@/content/card/card";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { AxiosAPP } from "components/function/axios";
+// import { AxiosAPP } from "components/function/axios";
 import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";

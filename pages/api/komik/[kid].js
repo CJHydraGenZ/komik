@@ -20,14 +20,14 @@ function runMiddleware(req, res, fn) {
 }
 
 export default async function handler(req, res) {
+  const { kid } = req.query;
   await runMiddleware(req, res, cors);
+  console.log("ini", kid);
 
   try {
-    const { kid } = req.query;
     const link_endpoint = "https://komikcast.me/komik";
     const chapter_link = "https://komikcast.me/chapter/";
     let endpoint;
-    console.log(kid);
     if (kid === "tokyo%e5%8d%8drevengers") {
       endpoint = "tokyo卍revengers/";
     } else {

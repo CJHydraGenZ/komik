@@ -1,6 +1,8 @@
+import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
-import { server } from "config";
+import { AxiosAPP } from "components/function/axios";
+// import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -49,12 +51,13 @@ export default function Chapter() {
             <div className="img">
               <div className="relative w-full h-full">
                 {chapter_image?.map((d, i) => (
-                  <Image
+                  <ImageCard
                     key={i}
-                    src={d.chapter_image_link}
-                    alt={chapter_name}
-                    layout="fill"
-                    objectFit="cover"
+                    variant="komik"
+                    thumb={d.chapter_image_link}
+                    title={chapter_name}
+                    // layout="fill"
+                    // objectFit="cover"
                   />
                 ))}
               </div>

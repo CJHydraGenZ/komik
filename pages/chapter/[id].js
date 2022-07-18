@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Content } from "components/content/content";
+import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -48,7 +49,7 @@ export default function Chapter({ data }) {
 export async function getServerSideProps(context) {
   // Call an external API endpoint to get posts
   const { id } = context.query;
-  const res = await fetch(`http://localhost:3000/api/chapter/${id}`);
+  const res = await fetch(`${server}/api/chapter/${id}`);
   const data = await res.json();
 
   // By returning { props: { posts } }, the Blog component

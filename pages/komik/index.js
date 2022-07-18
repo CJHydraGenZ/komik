@@ -1,6 +1,7 @@
 import { CardKomik } from "@/content/card/card";
 import axios from "axios";
 import { Content } from "components/content/content";
+import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -44,7 +45,7 @@ export default function Komik({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`http://localhost:3000/api/komik/`);
+  const res = await fetch(`${server}/api/komik/`);
   const data = await res.json();
   return {
     props: {

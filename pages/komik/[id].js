@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Content } from "components/content/content";
+import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,9 +62,7 @@ export default function Komik({ data }) {
         <ul>
           {chapter?.map((d, i) => (
             <li key={i}>
-              <Link
-                href={`http://localhost:3000/chapter/${d.chapter_endpoint}`}
-              >
+              <Link href={`/chapter/${d.chapter_endpoint}`}>
                 <a className="flex justify-between">
                   <h2>{d.chapter_title}</h2>
                   <h2>{d.chapter_time}</h2>
@@ -81,7 +80,7 @@ export async function getServerSideProps(context) {
   // const router = useRouter();
   // console.log("ini endpoint", endpoint);
   const { id } = context.query;
-  const res = await fetch(`http://localhost:3000/api/komik/${id}`);
+  const res = await fetch(`${server}/api/komik/${id}`);
   const data = await res.json();
   return {
     props: {

@@ -6,10 +6,29 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
 
-export default function Chapter({ data }) {
+export default function Chapter() {
+  const router = useRouter();
+  const { id } = router.query;
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
     data;
-  // console.log("ini post", data);
+
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const { data } = await AxiosAPP(`/api/chapter/${id}`);
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div>
       <Head>
@@ -46,17 +65,17 @@ export default function Chapter({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  // Call an external API endpoint to get posts
-  const { id } = context.query;
-  const res = await fetch(`${server}/api/chapter/${id}`);
-  const data = await res.json();
+// export async function getServerSideProps(context) {
+//   // Call an external API endpoint to get posts
+//   const { id } = context.query;
+//   const res = await fetch(`${server}/api/chapter/${id}`);
+//   const data = await res.json();
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      data,
-    },
-  };
-}
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }

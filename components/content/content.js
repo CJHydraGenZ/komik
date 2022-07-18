@@ -18,7 +18,7 @@ export const Content = () => {
   const getRecommend = async () => {
     try {
       setLoading(true);
-      const { data } = await axiosAPP(`/api/recommend`);
+      const { data } = await AxiosAPP(`/api/recommend`);
 
       // console.log(res);
       setkomik(data);

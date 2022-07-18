@@ -1,7 +1,14 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { cors, runMiddleware } from "components/middleware";
+
+import Cors from "cors";
+
+// Initializing the cors middleware
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
+
   const { kid } = req.query;
   const link_endpoint = "https://komikcast.me/komik";
   const chapter_link = "https://komikcast.me/chapter/";

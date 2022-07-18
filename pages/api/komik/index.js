@@ -1,8 +1,10 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
+import { cors, runMiddleware } from "components/middleware";
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   const link_endpoint = "https://komikcast.me/komik/";
 
   const { genre = "", statusS = "", typeS = "", orderBy = "" } = req.body;

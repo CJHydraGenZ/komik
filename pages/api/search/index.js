@@ -1,12 +1,25 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
-import { cors, runMiddleware } from "components/middleware";
 
-const replaceMangaPage = "https://komiku.id/manga/";
+const cors = Cors({
+  methods: ["GET", "HEAD"],
+});
+
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
 
 export default async function handler(req, res) {
-  // await runMiddleware(req, res, cors);
+  await runMiddleware(req, res, cors);
 
   const genre = "comedy";
   const statusS = "Ongoing";

@@ -2,7 +2,7 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 import Cors from "cors";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 const cors = Cors({
   methods: ["GET"],

@@ -49,7 +49,17 @@ export default function Chapter({ data }) {
 export async function getServerSideProps(context) {
   // Call an external API endpoint to get posts
   const { id } = context.query;
-  const res = await fetch(`${server}/api/chapter/${id}`);
+  const res = await fetch(`${server}/api/chapter/${id}`, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    mode: "no-cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    referrerPolicy: "no-referrer",
+  });
   const data = await res.json();
 
   // By returning { props: { posts } }, the Blog component

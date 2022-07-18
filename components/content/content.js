@@ -7,6 +7,7 @@ import SeriesList from "@/content/komik/seriesList";
 import { CardRecommend } from "./card/cardRecommed";
 import { CardPopular } from "./card/cardPopular";
 import { server } from "config";
+import { AxiosAPP } from "components/function/axios";
 // import { get } from "cheerio/lib/api/traversing";
 // import axios from "axios";
 export const Content = () => {
@@ -17,7 +18,7 @@ export const Content = () => {
   const getRecommend = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/recommend`);
+      const { data } = await axiosAPP(`/api/recommend`);
 
       // console.log(res);
       setkomik(data);
@@ -30,7 +31,7 @@ export const Content = () => {
   const getKomikList = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/komik`);
+      const { data } = await AxiosAPP(`/api/komik`);
 
       // console.log(res);
       setKomikList(data);

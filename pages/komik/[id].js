@@ -27,7 +27,7 @@ export default function Komik({ data }) {
   // const router = useRouter();
   // console.log("ini endpoint", endpoint);
   // const { id } = router.query;
-  console.log("ini", data);
+  // console.log("ini", data);
   return (
     <div>
       <Head>

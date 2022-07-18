@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 export default function Komik({ data }) {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <Head>
@@ -44,7 +44,7 @@ export default function Komik({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const res = await fetch(`${server}/api/komik/`);
   const data = await res.json();
   return {

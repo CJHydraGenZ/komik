@@ -8,5 +8,5 @@ export const AxiosAPP = axios.create({
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  // withCredentials: true,
 });

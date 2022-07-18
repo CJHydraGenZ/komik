@@ -1,6 +1,7 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
+import { AxiosAPP } from "components/function/axios";
 import Cors from "cors";
 // import fetch from "node-fetch";
 
@@ -25,20 +26,9 @@ export default async function handler(req, res) {
 
   await runMiddleware(req, res, cors);
   try {
-    const response = await fetch("https://komikcast.me", {
-      method: "GET", // *GET, POST, PUT, DELETE, etc.
-      mode: "no-cors", // no-cors, *cors, same-origin
-      cache: "force-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "include", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      // redirect: "follow", // manual, *follow, error
-      // referrerPolicy: "no-referrer",
-    });
+    const { data } = await axios.get("https://komikcast.me");
     // console.log(response);
-    const data = await response.text();
+
     const $ = cheerio.load(data);
     const element = $(".listupd");
     let komik_list = [];

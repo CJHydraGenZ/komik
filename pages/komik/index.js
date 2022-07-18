@@ -44,7 +44,7 @@ export default function Komik({ data }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const res = await fetch(`${server}/api/komik/`);
   const data = await res.json();
   return {

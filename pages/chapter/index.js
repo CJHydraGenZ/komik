@@ -6,37 +6,6 @@ import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
 axios;
 export default function Chapter({ posts }) {
-  const { title, chapter_image } = posts;
-  // const options = {
-  //   method: "GET",
-  //   url: "https://webtoon.p.rapidapi.com/canvas/home",
-  //   params: { language: "en" },
-  //   headers: {
-  //     "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-  //     "X-RapidAPI-Host": "webtoon.p.rapidapi.com",
-  //   },
-  // };
-
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.request(options);
-  //     setData(await response.data);
-  //     // console.log(response.data);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
-  // console.log("INI DATA", data?.message?.result);
-  // // console.log(process.env.NEXT_PUBLIC_HOST);
-  // console.log("ini post", posts);
   return (
     <div>
       <Head>
@@ -49,7 +18,7 @@ export default function Chapter({ posts }) {
       {/* <h1>{process.env.NEXT_PUBLIC_HOST}</h1> */}
       {/* <Content /> */}
       <div className="img flex flex-col max-w-lg items-center relative">
-        {chapter_image.map((data, i) => (
+        {/* {chapter_image.map((data, i) => (
           <Image
             key={i}
             src={data.chapter_image_link}
@@ -57,24 +26,25 @@ export default function Chapter({ posts }) {
             objectFit="contain"
             alt={title}
           />
-        ))}
+        ))} */}
+        <h1>Chapter</h1>
       </div>
     </div>
   );
 }
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch(
-    "http://localhost:3000/api/chapter/chikashitsu-dungeon-binbou-kyoudai-wa-goraku-o-motomete-saikyou-e-chapter-29-bahasa-indonesia"
-  );
-  const posts = await res.json();
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts
+//   const res = await fetch(
+//     "http://localhost:3000/api/chapter/chikashitsu-dungeon-binbou-kyoudai-wa-goraku-o-motomete-saikyou-e-chapter-29-bahasa-indonesia"
+//   );
+//   const posts = await res.json();
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// }

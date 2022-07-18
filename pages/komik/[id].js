@@ -8,6 +8,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
 export default function Komik() {
+  const router = useRouter();
+  // console.log("ini endpoint", endpoint);
+  const { id } = router.query;
+  // console.log("ini", data);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const {
     komik_endpoint,
     title,
@@ -23,13 +30,6 @@ export default function Komik() {
     genre_list,
     chapter,
   } = data;
-
-  const router = useRouter();
-  // console.log("ini endpoint", endpoint);
-  const { id } = router.query;
-  // console.log("ini", data);
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const getData = async () => {
     try {
       setLoading(true);

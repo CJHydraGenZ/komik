@@ -2,7 +2,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { cors, runMiddleware } from "components/middleware";
 
-import Cors from "cors";
+// import Cors from "cors";
 
 // Initializing the cors middleware
 

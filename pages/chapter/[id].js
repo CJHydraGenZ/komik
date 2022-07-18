@@ -20,8 +20,8 @@ export default function Chapter({ data }) {
       {/* <h1>Home</h1> */}
       {/* <h1>{process.env.NEXT_PUBLIC_RAPIDAPI_KEY}</h1> */}
       {/* <h1>{process.env.NEXT_PUBLIC_HOST}</h1> */}
-      {/* <Content /> */}
       <div className="container lg:px-24">
+        {/* <Content /> */}
         <div className="flex flex-col space-y-4">
           <h1>{title}</h1>
           <div className="flex flex-col space-y-6">

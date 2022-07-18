@@ -1,10 +1,13 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
+import { cors, runMiddleware } from "components/middleware";
 
 const replaceMangaPage = "https://komiku.id/manga/";
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
+
   const genre = "comedy";
   const statusS = "Ongoing";
   const typeS = "manga";
@@ -46,7 +49,6 @@ export default async function handler(req, res) {
       komik_list.push({ title, type, thumb, chapter, endpoint, rating });
     });
 
-  
   return res.status(200).json({
     status: true,
     message: "success",

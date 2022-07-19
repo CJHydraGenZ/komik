@@ -16,40 +16,65 @@ export const Content = () => {
   const [komik, setkomik] = useState([]);
   const [komikList, setKomikList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const getRecommend = async () => {
-    try {
-      setLoading(true);
-      // const data = await fetcher(`/api/recommend`);
-      const data = await fetcher(`${server}/api/recommend`);
+  // const getRecommend = async () => {
+  //   try {
+  //     setLoading(true);
+  //     // const data = await fetcher(`/api/recommend`);
+  //     const data = await fetcher(`${server}/api/recommend`);
 
-      // console.log(res);
-      setkomik(data);
-    } catch (error) {
-      // console.log(error);
-      console.log(error.response.data);
-    } finally {
-      setLoading(false);
-    }
-  };
-  const getKomikList = async () => {
-    try {
-      setLoading(true);
-      // const data = await fetcher(`/api/komik`);
-      const data = await fetcher(`${server}/api/komik`);
+  //     // console.log(res);
+  //     setkomik(data);
+  //   } catch (error) {
+  //     // console.log(error);
+  //     console.log(error.response.data);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  // const getKomikList = async () => {
+  //   try {
+  //     setLoading(true);
+  //     // const data = await fetcher(`/api/komik`);
+  //     const data = await fetcher(`${server}/api/komik`);
 
-      // console.log(res);
-      setKomikList(data);
+  //     // console.log(res);
+  //     setKomikList(data);
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  const getData = async () => {
+    try {
+      const resALL = await axios
+        .all([
+          axios.get(`${server}/api/recommend`),
+          axios.get(`${server}/api/komik`),
+          // axios.get('https://api.github.com/users/iliakan'),
+          // axios.get('https://api.github.com/users/taylorotwell')
+        ])
+        .then(
+          axios.spread((obj1, obj2) => {
+            setkomik(obj1.data);
+            setKomikList(obj2.data);
+          })
+        );
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    getRecommend();
-    getKomikList();
+    getData();
+    // getRecommend();
+    // getKomikList();
   }, []);
+
+  console.log(komik);
+  console.log(komikList);
 
   return (
     <>

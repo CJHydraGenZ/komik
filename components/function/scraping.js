@@ -1,11 +1,11 @@
 import axios from "axios";
 // import * as cheerio from "cheerio";
 // import axios from 'axios';
-import { wrapper } from "axios-cookiejar-support";
-import { CookieJar } from "tough-cookie";
+// import { wrapper } from "axios-cookiejar-support";
+// import { CookieJar } from "tough-cookie";
 
-const jar = new CookieJar();
-const client = wrapper(axios.create({ jar }));
+// const jar = new CookieJar();
+// const client = wrapper(axios.create({ jar }));
 
 // await client.get("https://example.com");
 
@@ -124,61 +124,68 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const { data } = await axios.get("https://komikcast.me");
+    const response = await fetcherAPI("https://komikcast.me");
+    const data = await response.text();
     // const { data } = await client.get("https://komikcast.me");
-    // console.log(data);
+    // console.log(response.status === 200);
+    console.log(data);
+    if (response.status === 200) {
+      const $ = cheerio.load(data);
+      const element = $("#content");
 
-    const $ = cheerio.load(data);
-    const element = $("#content");
+      // console.log(element);
+      const komik_list = [];
+      let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
 
-    console.log(element);
-    const komik_list = [];
-    let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
+      element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
+        title = $(el)
+          .find("a > .splide__slide-info")
+          .find(".title")
+          .text()
+          .trim();
+        type = $(el)
+          .find("a > .splide__slide-image")
+          .find(".type")
+          .text()
+          .trim();
+        thumb = $(el).find("a > .splide__slide-image").find("img").attr("src");
+        // thumb = $(el).find()
+        endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
+        chapter = $(el)
+          .find("a > .splide__slide-info")
+          .find(".other")
+          .find(".chapter")
+          .text()
+          .trim();
+        last_upload_endpoint = $(el)
+          .find("a > .splide__slide-info")
+          .find(".other")
+          .find(".chapter")
+          .attr("href");
 
-    element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
-      title = $(el)
-        .find("a > .splide__slide-info")
-        .find(".title")
-        .text()
-        .trim();
-      type = $(el).find("a > .splide__slide-image").find(".type").text().trim();
-      thumb = $(el).find("a > .splide__slide-image").find("img").attr("src");
-      // thumb = $(el).find()
-      endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
-      chapter = $(el)
-        .find("a > .splide__slide-info")
-        .find(".other")
-        .find(".chapter")
-        .text()
-        .trim();
-      last_upload_endpoint = $(el)
-        .find("a > .splide__slide-info")
-        .find(".other")
-        .find(".chapter")
-        .attr("href");
+        rating = $(el)
+          .find("a > .splide__slide-info")
+          .find(".other > .rate > .rating")
+          .find(".numscore")
+          .text();
 
-      rating = $(el)
-        .find("a > .splide__slide-info")
-        .find(".other > .rate > .rating")
-        .find(".numscore")
-        .text();
-
-      komik_list.push({
-        endpoint,
-        title,
-        type,
-        thumb,
-        chapter,
-        last_upload_endpoint,
-        rating,
+        komik_list.push({
+          endpoint,
+          title,
+          type,
+          thumb,
+          chapter,
+          last_upload_endpoint,
+          rating,
+        });
       });
-    });
-    // res.statusCode = 200;
-    return {
-      status: true,
-      message: "success",
-      komik_list,
-    };
+      // res.statusCode = 200;
+      return {
+        status: true,
+        message: "success",
+        komik_list,
+      };
+    }
   } catch (error) {
     return {
       status: false,

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "axios-cookiejar-support": "^4.0.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "flowbite": "^1.4.7",
@@ -20,7 +21,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "react-is": "^18.2.0"
+    "react-is": "^18.2.0",
+    "tough-cookie": "^4.0.0"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",

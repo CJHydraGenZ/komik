@@ -1,7 +1,7 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
-import { AxiosAPP } from "components/function/axios";
+import { AxiosAPP, AxiosService, client } from "components/function/axios";
 import Cors from "cors";
 // import fetch from "node-fetch";
 
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
   await runMiddleware(req, res, cors);
   try {
-    const { data } = await axios.get("https://komikcast.me");
+    const { data } = await client.get("https://komikcast.me");
     // console.log(response);
 
     const $ = cheerio.load(data);

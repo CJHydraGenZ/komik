@@ -102,7 +102,7 @@ export default function KomikID() {
         <div className="synopsis">{data?.synopsis}</div>
       </div>
       <div className="komik-chapter">
-        <h1>{released}</h1>
+        <h1>{data?.released}</h1>
         <ul>
           {/* {loading
             ? "Loading..."

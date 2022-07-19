@@ -20,12 +20,13 @@ export const Content = () => {
     try {
       setLoading(true);
       // const data = await fetcher(`/api/recommend`);
-      const { data } = await axios.get(`${server}/api/recommend`);
+      const data = await fetcher(`${server}/api/recommend`);
 
       // console.log(res);
       setkomik(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      console.log(error.response.data);
     } finally {
       setLoading(false);
     }
@@ -34,12 +35,12 @@ export const Content = () => {
     try {
       setLoading(true);
       // const data = await fetcher(`/api/komik`);
-      const { data } = await axios.get(`${server}/api/komik`);
+      const data = await fetcher(`${server}/api/komik`);
 
       // console.log(res);
       setKomikList(data);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     } finally {
       setLoading(false);
     }

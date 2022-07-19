@@ -124,8 +124,8 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    // const data = await fetcherAPI("https://komikcast.me");
-    const { data } = await client.get("https://komikcast.me");
+    const data = await fetcherAPI("https://komikcast.me");
+    // const { data } = await client.get("https://komikcast.me");
     // console.log(data);
 
     const $ = cheerio.load(data);
@@ -192,8 +192,8 @@ export const HandleKomikList = async (url) => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    // const data = await fetcherAPI(url);
-    const { data } = await client.get(url);
+    const data = await fetcherAPI(url);
+    // const { data } = await client.get(url);
 
     const $ = cheerio.load(data);
     const element = $(".list-update");

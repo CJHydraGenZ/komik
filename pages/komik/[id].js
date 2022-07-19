@@ -21,7 +21,7 @@ export default function KomikID() {
   const getData = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/komik/${id}`);
+      const { data } = await axios.get(`${server}/api/komik/${id}`);
       // console.log("data", data);
       setData(data);
     } catch (error) {

@@ -1,5 +1,6 @@
 import axios from "axios";
-import * as cheerio from "cheerio";
+// import * as cheerio from "cheerio";
+const cheerio = require("cheerio");
 import { fetcherAPI } from "./fetch";
 export const HandlerKomikId = async (kid) => {
   const link_endpoint = "https://komikcast.me/komik";

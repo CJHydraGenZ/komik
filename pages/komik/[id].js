@@ -10,30 +10,30 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import styles from "../styles/Home.module.css";
-export default function KomikID({ data }) {
-  // const router = useRouter();
-  // const { id } = router.query;
-  // // console.log("ini endpoint", id);
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // // console.log("ini", data);
+export default function KomikID() {
+  const router = useRouter();
+  const { id } = router.query;
+  // console.log("ini endpoint", id);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // console.log("ini", data);
 
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { data } = await axios.get(`/api/komik/${id}`);
-  //     // console.log("data", data);
-  //     setData(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-  //   getData();
-  // }, [router.isReady]);
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(`/api/komik/${id}`);
+      // console.log("data", data);
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (!router.isReady) return;
+    getData();
+  }, [router.isReady]);
 
   const {
     komik_endpoint,
@@ -118,16 +118,16 @@ export default function KomikID({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  // const router = useRouter();
-  // console.log("ini endpoint", endpoint);
-  const { id } = context.query;
-  // const res = await fetch(`${server}/api/komik/${id}`);
-  // const data = await res.json();
-  const data = await HandlerKomikId(id);
-  return {
-    props: {
-      data,
-    }, // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps(context) {
+//   // const router = useRouter();
+//   // console.log("ini endpoint", endpoint);
+//   const { id } = context.query;
+//   // const res = await fetch(`${server}/api/komik/${id}`);
+//   // const data = await res.json();
+//   const data = await HandlerKomikId(id);
+//   return {
+//     props: {
+//       data,
+//     }, // will be passed to the page component as props
+//   };
+// }

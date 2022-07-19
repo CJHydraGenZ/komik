@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         origin: "*",
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
       });
-      const data = await fetcherAPI("https://komikcast.me");
+      const { data } = await axios.get("https://komikcast.me");
       // console.log(data);
 
       const $ = cheerio.load(data);

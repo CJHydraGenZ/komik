@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     // console.log(data);
 
     const $ = cheerio.load(data);
-    const element = $(".listupd");
+    const element = $("#content");
     let komik_list = [];
 
     // console.log(element);
@@ -80,7 +80,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       status: true,
       message: "success",
-      element,
+      komik_list,
     });
   } catch (error) {
     res.status(404).json({ error });

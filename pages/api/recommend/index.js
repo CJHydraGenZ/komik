@@ -25,10 +25,10 @@ function runMiddleware(req, res, fn) {
 export default async function handler(req, res) {
   const link_endpoint = "https://komikcast.me/komik/";
 
-  // await runMiddleware(req, res, cors);
+  await runMiddleware(req, res, cors);
   if (req.method === "GET") {
     try {
-      const data = await fetcherAPI("https://komikcast.me");
+      const data = await axios.get("https://komikcast.me");
       // console.log(data);
 
       const $ = cheerio.load(data);

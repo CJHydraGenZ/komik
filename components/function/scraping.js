@@ -124,7 +124,7 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const data = await axios.get("https://komikcast.me");
+    const { data } = await axios.get("https://komikcast.me");
     // const { data } = await client.get("https://komikcast.me");
     // console.log(data);
 

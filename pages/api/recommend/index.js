@@ -26,9 +26,8 @@ export default async function handler(req, res) {
   const link_endpoint = "https://komikcast.me/komik/";
 
   // await runMiddleware(req, res, cors);
+  const data = await fetcherAPI("https://komikcast.me");
   try {
-    const data = await fetcherAPI("https://komikcast.me");
-
     // console.log(data);
 
     const $ = cheerio.load(data);
@@ -77,7 +76,7 @@ export default async function handler(req, res) {
       });
     });
 
-    return res.status(200).json({
+    res.status(200).json({
       status: true,
       message: "success",
       komik_list,

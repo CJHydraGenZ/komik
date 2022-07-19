@@ -130,9 +130,9 @@ export const HandleRecommend = async () => {
 
     const $ = cheerio.load(data);
     const element = $("#content");
-    let komik_list = [];
 
-    console.log(element.html());
+    console.log(element);
+    const komik_list = [];
     let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
 
     element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {

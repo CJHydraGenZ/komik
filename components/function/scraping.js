@@ -132,7 +132,7 @@ export const HandleRecommend = async () => {
     const element = $("#content");
     let komik_list = [];
 
-    // console.log(element);
+    console.log(element);
     let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
 
     element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
@@ -197,6 +197,7 @@ export const HandleKomikList = async (url) => {
 
     const $ = cheerio.load(data);
     const element = $(".list-update");
+    console.log(element);
 
     let komik_list = [];
     let title, type, endpoint, thumb, chapter, rating, last_upload_endpoint;

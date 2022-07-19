@@ -131,7 +131,7 @@ export const HandleRecommend = async () => {
     console.log(data);
     if (response.status === 200) {
       const $ = cheerio.load(data);
-      const element = $("#content");
+      const element = $(".listupd");
 
       // console.log(element);
       const komik_list = [];

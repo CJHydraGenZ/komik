@@ -2,6 +2,7 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 import { AxiosAPP, AxiosService, client } from "components/function/axios";
+import { fetcher, fetcherAPI } from "components/function/fetch";
 import Cors from "cors";
 // import fetch from "node-fetch";
 
@@ -24,10 +25,11 @@ function runMiddleware(req, res, fn) {
 export default async function handler(req, res) {
   const link_endpoint = "https://komikcast.me/komik/";
 
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
   try {
-    const { data } = await axios.get("https://komikcast.me");
-    // console.log(response);
+    const data = await fetcherAPI("https://komikcast.me");
+
+    // console.log(data);
 
     const $ = cheerio.load(data);
     const element = $(".listupd");

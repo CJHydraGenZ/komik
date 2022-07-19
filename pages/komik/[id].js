@@ -2,6 +2,7 @@ import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { AxiosAPP } from "components/function/axios";
+import { fetcher } from "components/function/fetch";
 import { HandlerKomikId } from "components/function/scraping";
 import { server } from "config";
 import Head from "next/head";
@@ -9,30 +10,41 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
+
 // import styles from "../styles/Home.module.css";
 export default function KomikID() {
   const router = useRouter();
   const { id } = router.query;
   // console.log("ini endpoint", id);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   // console.log("ini", data);
+  const { data, error } = useSWR(`${server}/api/komik/${id}`, fetcher);
 
-  const getData = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(`${server}/api/komik/${id}`);
-      // console.log("data", data);
-      setData(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     setLoading(true);
+
+  //     // const { data } = await axios.get(`${server}/api/komik/${id}`);
+
+  //     // const data = await HandlerKomikId(id);
+
+  //     // console.log("data", data);
+  //     setData(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // console.log("ini thumb", thumb);
   useEffect(() => {
     if (!router.isReady) return;
-    getData();
+    // if (error) return "An error has occurred.";
+    // if (!data) return "Loading...";
+    // getData();
   }, [router.isReady]);
 
   const {
@@ -50,9 +62,7 @@ export default function KomikID() {
     genre_list,
     chapter,
   } = data;
-
-  console.log("ini thumb", thumb);
-
+  // console.log(chapter);
   return (
     <div>
       <Head>

@@ -80,7 +80,9 @@ export default async function handler(req, res) {
     return res.status(200).json({
       status: true,
       message: "success",
-      komik_list,
+      lol: {
+        lol: "sd",
+      },
     });
   } catch (error) {
     res.status(404).json({ error });

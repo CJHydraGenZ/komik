@@ -165,48 +165,63 @@ export const HandleRecommend = async () => {
 };
 
 export const HandleKomikList = async (url) => {
-  const link_endpoint = "https://komikcast.me/komik/";
+  try {
+    const link_endpoint = "https://komikcast.me/komik/";
 
-  const data = await fetcherAPI(url);
-  const $ = cheerio.load(data);
-  const element = $(".list-update");
+    const data = await fetcherAPI(url);
+    const $ = cheerio.load(data);
+    const element = $(".list-update");
 
-  let komik_list = [];
-  let title, type, endpoint, thumb, chapter, rating, last_upload_endpoint;
+    let komik_list = [];
+    let title, type, endpoint, thumb, chapter, rating, last_upload_endpoint;
 
-  element
-    .find(".list-update_items-wrapper > .list-update_item")
-    .each((i, el) => {
-      title = $(el).find("a > .list-update_item-info").find("h3").text().trim();
-      type = $(el).find("a > .list-update_item-image").find(".type").text();
-      thumb = $(el).find("a > .list-update_item-image").find("img").attr("src");
-      // thumb = $(el).find()
-      chapter = $(el)
-        .find("a > .list-update_item-info")
-        .find(".other")
-        .find(".chapter")
-        .text()
-        .trim();
-      last_upload_endpoint = $(el)
-        .find("a > .list-update_item-info")
-        .find(".other")
-        .find(".chapter")
-        .attr("href");
+    element
+      .find(".list-update_items-wrapper > .list-update_item")
+      .each((i, el) => {
+        title = $(el)
+          .find("a > .list-update_item-info")
+          .find("h3")
+          .text()
+          .trim();
+        type = $(el).find("a > .list-update_item-image").find(".type").text();
+        thumb = $(el)
+          .find("a > .list-update_item-image")
+          .find("img")
+          .attr("src");
+        // thumb = $(el).find()
+        chapter = $(el)
+          .find("a > .list-update_item-info")
+          .find(".other")
+          .find(".chapter")
+          .text()
+          .trim();
+        last_upload_endpoint = $(el)
+          .find("a > .list-update_item-info")
+          .find(".other")
+          .find(".chapter")
+          .attr("href");
 
-      endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
+        endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
 
-      komik_list.push({
-        title,
-        type,
-        thumb,
-        chapter,
-        endpoint,
-        last_upload_endpoint,
+        komik_list.push({
+          title,
+          type,
+          thumb,
+          chapter,
+          endpoint,
+          last_upload_endpoint,
+        });
       });
-    });
-  return {
-    status: true,
-    message: "success",
-    komik_list,
-  };
+    return {
+      status: true,
+      message: "success",
+      komik_list,
+    };
+  } catch (error) {
+    return {
+      status: false,
+      message: "error",
+      komik_list,
+    };
+  }
 };

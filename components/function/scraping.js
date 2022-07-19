@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { fetcherAPI } from "./fetch";
 export const HandlerKomikId = async (kid) => {
   const link_endpoint = "https://komikcast.me/komik";
   const chapter_link = "https://komikcast.me/chapter/";
@@ -111,7 +112,7 @@ export const HandlerKomikId = async (kid) => {
 export const HandleRecommend = async () => {
   const link_endpoint = "https://komikcast.me/komik/";
 
-  const { data } = await axios.get("https://komikcast.me");
+  const data = await fetcherAPI("https://komikcast.me");
   // console.log(data);
 
   const $ = cheerio.load(data);
@@ -166,7 +167,7 @@ export const HandleRecommend = async () => {
 export const HandleKomikList = async (url) => {
   const link_endpoint = "https://komikcast.me/komik/";
 
-  const { data } = await axios.get(url);
+  const data = await fetcherAPI(url);
   const $ = cheerio.load(data);
   const element = $(".list-update");
 

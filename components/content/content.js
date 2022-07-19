@@ -31,20 +31,7 @@ export const Content = () => {
   //     setLoading(false);
   //   }
   // };
-  // const getKomikList = async () => {
-  //   try {
-  //     setLoading(true);
-  //     // const data = await fetcher(`/api/komik`);
-  //     const data = await fetcher(`${server}/api/komik`);
 
-  //     // console.log(res);
-  //     setKomikList(data);
-  //   } catch (error) {
-  //     console.log(error.response.data);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const getData = async () => {
     try {
       const resALL = await axios

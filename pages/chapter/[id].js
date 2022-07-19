@@ -2,42 +2,52 @@ import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { AxiosAPP } from "components/function/axios";
+import { fetcher } from "components/function/fetch";
 import { server } from "config";
 // import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 // import styles from "../styles/Home.module.css";
 export default function Chapter() {
   const router = useRouter();
   const { id } = router.query;
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
-    data;
+  // const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
+  //   data;
+  const { data, error } = useSWR(`${server}/api/chapter/${id}`, fetcher);
 
-  const getData = async () => {
-    try {
-      setLoading(true);
-      const { data } = await AxiosAPP(`${server}/api/chapter/${id}`);
-      setData(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const { data } = await AxiosAPP(`${server}/api/chapter/${id}`);
+  //     setData(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
   useEffect(() => {
-    getData();
-  }, []);
+    if (!router.isReady) return;
+    // if (error) return "An error has occurred.";
+    // if (!data) return "Loading...";
+    // getData();
+  }, [router.isReady]);
 
   return (
     <div>
       <Head>
         <title>Chapter</title>
-        <meta name="chapter" content={title} />
+        <meta name="chapter" content={data?.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <h1>Home</h1> */}
@@ -46,17 +56,17 @@ export default function Chapter() {
       {/* <Content /> */}
       <div className="container lg:px-24">
         <div className="flex flex-col space-y-4">
-          <h1>{title}</h1>
+          <h1>{data?.title}</h1>
           <div className="flex flex-col space-y-6">
-            <h1>{chapter_name}</h1>
+            <h1>{data?.chapter_name}</h1>
             <div className="img">
               <div className="relative w-full h-full">
-                {chapter_image?.map((d, i) => (
+                {data?.chapter_image?.map((d, i) => (
                   <ImageCard
                     key={i}
                     variant="komik"
                     thumb={d.chapter_image_link}
-                    title={chapter_name}
+                    title={data?.chapter_name}
                     // layout="fill"
                     // objectFit="cover"
                   />

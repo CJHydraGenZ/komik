@@ -107,3 +107,105 @@ export const HandlerKomikId = async (kid) => {
 
   return obj;
 };
+
+export const HandleRecommend = async () => {
+  const link_endpoint = "https://komikcast.me/komik/";
+
+  const { data } = await axios.get("https://komikcast.me");
+  // console.log(data);
+
+  const $ = cheerio.load(data);
+  const element = $("#content");
+  let komik_list = [];
+
+  // console.log(element);
+  let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
+
+  element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
+    title = $(el).find("a > .splide__slide-info").find(".title").text().trim();
+    type = $(el).find("a > .splide__slide-image").find(".type").text().trim();
+    thumb = $(el).find("a > .splide__slide-image").find("img").attr("src");
+    // thumb = $(el).find()
+    endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
+    chapter = $(el)
+      .find("a > .splide__slide-info")
+      .find(".other")
+      .find(".chapter")
+      .text()
+      .trim();
+    last_upload_endpoint = $(el)
+      .find("a > .splide__slide-info")
+      .find(".other")
+      .find(".chapter")
+      .attr("href");
+
+    rating = $(el)
+      .find("a > .splide__slide-info")
+      .find(".other > .rate > .rating")
+      .find(".numscore")
+      .text();
+
+    komik_list.push({
+      endpoint,
+      title,
+      type,
+      thumb,
+      chapter,
+      last_upload_endpoint,
+      rating,
+    });
+  });
+  // res.statusCode = 200;
+  return {
+    status: true,
+    message: "success",
+    komik_list,
+  };
+};
+
+export const HandleKomikList = async (url) => {
+  const link_endpoint = "https://komikcast.me/komik/";
+
+  const { data } = await axios.get(url);
+  const $ = cheerio.load(data);
+  const element = $(".list-update");
+
+  let komik_list = [];
+  let title, type, endpoint, thumb, chapter, rating, last_upload_endpoint;
+
+  element
+    .find(".list-update_items-wrapper > .list-update_item")
+    .each((i, el) => {
+      title = $(el).find("a > .list-update_item-info").find("h3").text().trim();
+      type = $(el).find("a > .list-update_item-image").find(".type").text();
+      thumb = $(el).find("a > .list-update_item-image").find("img").attr("src");
+      // thumb = $(el).find()
+      chapter = $(el)
+        .find("a > .list-update_item-info")
+        .find(".other")
+        .find(".chapter")
+        .text()
+        .trim();
+      last_upload_endpoint = $(el)
+        .find("a > .list-update_item-info")
+        .find(".other")
+        .find(".chapter")
+        .attr("href");
+
+      endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
+
+      komik_list.push({
+        title,
+        type,
+        thumb,
+        chapter,
+        endpoint,
+        last_upload_endpoint,
+      });
+    });
+  return {
+    status: true,
+    message: "success",
+    komik_list,
+  };
+};

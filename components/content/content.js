@@ -16,28 +16,14 @@ export const Content = () => {
   const [komik, setkomik] = useState([]);
   const [komikList, setKomikList] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const getRecommend = async () => {
-  //   try {
-  //     setLoading(true);
-  //     // const data = await fetcher(`/api/recommend`);
-  //     const data = await fetcher(`${server}/api/recommend`);
-
-  //     // console.log(res);
-  //     setkomik(data);
-  //   } catch (error) {
-  //     // console.log(error);
-  //     console.log(error.response.data);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const getData = async () => {
     try {
-      const resALL = await axios
+      setLoading(true);
+      await axios
         .all([
-          axios.get(`${server}/api/recommend`),
-          axios.get(`${server}/api/komik`),
+          axios.get(`/api/recommend`),
+          axios.get(`/api/komik`),
           // axios.get('https://api.github.com/users/iliakan'),
           // axios.get('https://api.github.com/users/taylorotwell')
         ])
@@ -60,8 +46,8 @@ export const Content = () => {
     // getKomikList();
   }, []);
 
-  console.log(komik);
-  console.log(komikList);
+  // console.log(komik);
+  // console.log(komikList);
 
   return (
     <>

@@ -1,6 +1,16 @@
 import axios from "axios";
 // import * as cheerio from "cheerio";
-const cheerio = require("cheerio");
+// import axios from 'axios';
+import { wrapper } from "axios-cookiejar-support";
+import { CookieJar } from "tough-cookie";
+
+const jar = new CookieJar();
+const client = wrapper(axios.create({ jar }));
+
+// await client.get("https://example.com");
+
+// const cheerio = require("cheerio");
+import * as cheerio from "cheerio";
 import { fetcherAPI } from "./fetch";
 export const HandlerKomikId = async (kid) => {
   const link_endpoint = "https://komikcast.me/komik";
@@ -114,7 +124,8 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const data = await fetcherAPI("https://komikcast.me");
+    // const data = await fetcherAPI("https://komikcast.me");
+    const { data } = await client.get("https://komikcast.me");
     // console.log(data);
 
     const $ = cheerio.load(data);
@@ -181,7 +192,9 @@ export const HandleKomikList = async (url) => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const data = await fetcherAPI(url);
+    // const data = await fetcherAPI(url);
+    const { data } = await client.get(url);
+
     const $ = cheerio.load(data);
     const element = $(".list-update");
 

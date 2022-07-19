@@ -13,8 +13,8 @@ import { useEffect, useState } from "react";
 import useSWR, { SWRConfig } from "swr";
 
 export default function Komik({ fallback }) {
-  console.log("inidata", data);
   const [data, setData] = useState([]);
+  // console.log("inidata", data);
   const [loading, setLoading] = useState(false);
   const getData = async () => {
     try {

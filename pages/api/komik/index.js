@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     req.method === "POST"
       ? `https://komikcast.me/daftar-komik/?genre%5B%5D=${genre}&status=${statusS}&type=${typeS}&orderby=${orderBy}`
       : `https://komikcast.me/daftar-komik/`;
-  const { data } = await axios.get(url);
+  const data = await fetcherAPI(url);
   const $ = cheerio.load(data);
   const element = $(".list-update");
 

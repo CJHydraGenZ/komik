@@ -28,9 +28,7 @@ export default async function handler(req, res) {
   await runMiddleware(req, res, cors);
   if (req.method === "GET") {
     try {
-      const { data } = await axios.get(
-        "https://cors-anywhere.herokuapp.com/https://komikcast.me"
-      );
+      const data = await fetcherAPI("https://komikcast.me");
       // console.log(data);
 
       const $ = cheerio.load(data);

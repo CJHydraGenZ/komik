@@ -17,6 +17,7 @@
     "flowbite": "^1.4.7",
     "flowbite-react": "^0.1.3",
     "next": "latest",
+    "nextjs-cors": "^2.1.1",
     "node-fetch": "^3.2.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",

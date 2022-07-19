@@ -3,31 +3,39 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { AxiosAPP, AxiosService, client } from "components/function/axios";
 import { fetcher, fetcherAPI } from "components/function/fetch";
-import Cors from "cors";
-// import fetch from "node-fetch";
+import NextCors from "nextjs-cors";
+// import Cors from "cors";
+// // import fetch from "node-fetch";
 
-const cors = Cors({
-  methods: ["GET"],
-});
+// const cors = Cors({
+//   methods: ["GET"],
+// });
 
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
+// function runMiddleware(req, res, fn) {
+//   return new Promise((resolve, reject) => {
+//     fn(req, res, (result) => {
+//       if (result instanceof Error) {
+//         return reject(result);
+//       }
 
-      return resolve(result);
-    });
-  });
-}
+//       return resolve(result);
+//     });
+//   });
+// }
 
 export default async function handler(req, res) {
   const link_endpoint = "https://komikcast.me/komik/";
 
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
+
   if (req.method === "GET") {
     try {
+      await NextCors(req, res, {
+        // Options
+        methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+        origin: "*",
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+      });
       const data = await fetcherAPI("https://komikcast.me");
       // console.log(data);
 

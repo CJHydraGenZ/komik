@@ -2,29 +2,38 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 import { fetcherAPI } from "components/function/fetch";
+import NextCors from "nextjs-cors";
+
 // import { cors, runMiddleware } from "components/middleware";
 
-import Cors from "cors";
+// import Cors from "cors";
 
-// Initializing the cors middleware
-const cors = Cors({
-  methods: ["GET", "HEAD"],
-});
+// // Initializing the cors middleware
+// const cors = Cors({
+//   methods: ["GET", "HEAD"],
+// });
 
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
+// function runMiddleware(req, res, fn) {
+//   return new Promise((resolve, reject) => {
+//     fn(req, res, (result) => {
+//       if (result instanceof Error) {
+//         return reject(result);
+//       }
 
-      return resolve(result);
-    });
-  });
-}
+//       return resolve(result);
+//     });
+//   });
+// }
 
 export default async function handler(req, res) {
   // await runMiddleware(req, res, cors);
+
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
   const link_endpoint = "https://komikcast.me/komik/";
 
   const { genre = "", statusS = "", typeS = "", orderBy = "" } = req.body;

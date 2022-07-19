@@ -1,26 +1,34 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
-import Cors from "cors";
+import NextCors from "nextjs-cors";
 
-const cors = Cors({
-  methods: ["GET", "HEAD"],
-});
+// import Cors from "cors";
 
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
+// const cors = Cors({
+//   methods: ["GET", "HEAD"],
+// });
 
-      return resolve(result);
-    });
-  });
-}
+// function runMiddleware(req, res, fn) {
+//   return new Promise((resolve, reject) => {
+//     fn(req, res, (result) => {
+//       if (result instanceof Error) {
+//         return reject(result);
+//       }
+
+//       return resolve(result);
+//     });
+//   });
+// }
 
 export default async function handler(req, res) {
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
 
   const link_endpoint = "https://komikcast.me/komik/";
   const chapter_link = "https://komikcast.me/chapter/";

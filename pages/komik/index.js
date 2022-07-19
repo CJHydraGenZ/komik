@@ -15,7 +15,7 @@ export default function Komik() {
   const getData = async () => {
     try {
       setLoading(true);
-      const { data } = await AxiosAPP(`/api/komik`);
+      const { data } = await axios.get(`/api/komik`);
       setData(data);
     } catch (error) {
       console.log(error);

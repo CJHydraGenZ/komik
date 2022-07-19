@@ -19,7 +19,8 @@ export const Content = () => {
   const getRecommend = async () => {
     try {
       setLoading(true);
-      const data = await fetcher(`/api/recommend`);
+      // const data = await fetcher(`/api/recommend`);
+      const { data } = await axios.get(`/api/recommend`);
 
       // console.log(res);
       setkomik(data);
@@ -32,8 +33,8 @@ export const Content = () => {
   const getKomikList = async () => {
     try {
       setLoading(true);
-      const data = await fetcher(`/api/komik`);
-      // const { data } = await axios.get(`/api/komik`);
+      // const data = await fetcher(`/api/komik`);
+      const { data } = await axios.get(`/api/komik`);
 
       // console.log(res);
       setKomikList(data);

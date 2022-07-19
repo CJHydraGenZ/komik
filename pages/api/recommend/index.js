@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
     // console.log(data);
 
-    const $ = cheerio.load(data);
+    const $ = await cheerio.load(data);
     const element = $(".listupd");
     let komik_list = [];
 

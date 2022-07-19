@@ -3,7 +3,7 @@
 import { cors, runMiddleware } from "components/middleware";
 
 export default async function handler(req, res) {
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
   try {
     //komikidc.vercel
     return res.status(200).json({ name: "John Doe" });

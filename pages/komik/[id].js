@@ -47,35 +47,39 @@ export default function KomikID() {
     // getData();
   }, [router.isReady]);
 
-  const {
-    komik_endpoint,
-    title,
-    description,
-    type,
-    author,
-    status,
-    released,
-    total_chapter,
-    update_on,
-    thumb,
-    synopsis,
-    genre_list,
-    chapter,
-  } = data;
+  // const {
+  //   komik_endpoint,
+  //   title,
+  //   description,
+  //   type,
+  //   author,
+  //   status,
+  //   released,
+  //   total_chapter,
+  //   update_on,
+  //   thumb,
+  //   synopsis,
+  //   genre_list,
+  //   chapter,
+  // } = data;
   // console.log(chapter);
   return (
     <div>
       <Head>
         <title>KomikIDC</title>
 
-        <meta name="komik" content={title} />
+        <meta name="komik" content={data?.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col space-y-4 w-full">
         <div className="flex">
           <div className="img relative w-full h-full">
-            <ImageCard variant="komik" thumb={thumb} title={title} />
+            <ImageCard
+              variant="komik"
+              thumb={data?.thumb}
+              title={data?.title}
+            />
 
             {/* {loading ? (
               "Loading..."
@@ -95,7 +99,7 @@ export default function KomikID() {
             </ul>
           </div>
         </div>
-        <div className="synopsis">{synopsis}</div>
+        <div className="synopsis">{data?.synopsis}</div>
       </div>
       <div className="komik-chapter">
         <h1>{released}</h1>
@@ -112,7 +116,7 @@ export default function KomikID() {
                   </Link>
                 </li>
               ))} */}
-          {chapter?.map((d, i) => (
+          {data?.chapter?.map((d, i) => (
             <li key={i}>
               <Link href={`/chapter/${d.chapter_endpoint}`}>
                 <a className="flex justify-between">

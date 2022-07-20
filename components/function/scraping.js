@@ -263,6 +263,7 @@ export const HandleKomikChapterId = async (cid) => {
     // const response = await AxiosService(`${chapter_link}/${cid}/`);
     // const response = await axios.get(`https://komikcast.id/${cid}`)
     const data = await fetcherAPI(`${chapter_link}/${cid}/`);
+    console.log("data chpater", data);
     const $ = cheerio.load(data);
     const content = $("#content");
     let chapter_image = [];

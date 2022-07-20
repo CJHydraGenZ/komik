@@ -128,7 +128,7 @@ export const HandleRecommend = async () => {
     // const req = await response.json();
     // const data = await req.body;
 
-    // console.log(data);
+    console.log(data);
     // const { data } = await client.get("https://komikcast.me");
     // console.log(response.status === 200);
     // console.log("ini log", data);

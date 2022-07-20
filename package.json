@@ -14,7 +14,6 @@
     "axios-cookiejar-support": "^4.0.2",
     "cheerio": "^1.0.0-rc.12",
     "cloudflare-bypasser": "^0.0.3",
-    "cloudscraper": "^4.6.0",
     "cors": "^2.8.5",
     "flowbite": "^1.4.7",
     "flowbite-react": "^0.1.3",

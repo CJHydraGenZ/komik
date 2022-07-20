@@ -123,21 +123,12 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const { data } = await axios.get("https://komikcast.me", {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-        "Accept-Language": "en-US,en;q=0.9,id;q=0.8",
-        Referer: "https://google.com",
-        DNT: "1",
-        Cahya: "sahhda",
-      },
-    });
+    const data = await fetcherAPI("https://komikcast.me");
 
     // const req = await response.json();
     // const data = await req.body;
 
-    console.log(data);
+    // console.log(data);
     // const { data } = await client.get("https://komikcast.me");
     // console.log(response.status === 200);
     // console.log("ini log", data);

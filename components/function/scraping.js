@@ -19,10 +19,10 @@ export const HandlerKomikId = async (kid) => {
     },
   };
   // const response = await AxiosService(`manga/${endpoint}/`);
-  // const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
+  const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
 
-  const res = await got(`${link_endpoint}/${endpoint}`, options);
-  const data = res.body;
+  // const res = await got(`${link_endpoint}/${endpoint}`, options);
+  // const data = res.body;
   // console.log("ini data", res.body);
   const $ = cheerio.load(data);
   // const element = $(".content");

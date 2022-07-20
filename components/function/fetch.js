@@ -10,7 +10,7 @@
 //   }
 // };
 const fetch = require("node-fetch");
-const HttpsProxyAgent = require("https-proxy-agent");
+// const HttpsProxyAgent = require("https-proxy-agent");
 export const fetcher = (url) => fetch(url).then((res) => res.json());
 // export const fetcherAPI = (url) =>
 //   fetch("https://scrapeninja.p.rapidapi.com/scrape", {
@@ -74,9 +74,9 @@ export const fetcherAPI = (url) =>
     headers: {
       "User-Agent": randomAgent,
       "Accept-Language": "en-US,en;q=0.9,id;q=0.8",
-      Referer: "https://google.com",
-      DNT: "1",
-      Cahya: "sahhda",
+      "Referer": "https://google.com",
+      "DNT": "1",
+      "Cahya": "sahhda"
     },
   }).then((res) => res.text());
 // .then((req) => req.body);

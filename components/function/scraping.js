@@ -10,8 +10,12 @@ import axios from "axios";
 // await client.get("https://example.com");
 
 // const cheerio = require("cheerio");
+// const cloudflareScraper = require("cloudflare-scraper");
+
 import * as cheerio from "cheerio";
 import { fetcherAPI } from "./fetch";
+const CloudflareBypasser = require("cloudflare-bypasser");
+let cf = new CloudflareBypasser();
 export const HandlerKomikId = async (kid) => {
   const link_endpoint = "https://komikcast.me/komik";
   const chapter_link = "https://komikcast.me/chapter/";
@@ -124,11 +128,17 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const response = await fetcherAPI("https://komikcast.me");
+    // const response = await fetcherAPI("https://komikcast.me");
+    // cf.request("https://website.org").then((res) => {
+    //   // res - full response
+    // });
+    const response = await cf.request("https://komikcast.me");
+    // console.log(response);
     const data = await response.text();
+    console.log(data);
     // const { data } = await client.get("https://komikcast.me");
     // console.log(response.status === 200);
-    console.log(data);
+    console.log("ini log", data);
     if (response.status === 200) {
       const $ = cheerio.load(data);
       const element = $(".listupd");

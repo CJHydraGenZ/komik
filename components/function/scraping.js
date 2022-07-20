@@ -1,4 +1,5 @@
 import axios from "axios";
+import got from "got";
 
 import * as cheerio from "cheerio";
 import { fetcherAPI } from "./fetch";
@@ -12,11 +13,17 @@ export const HandlerKomikId = async (kid) => {
   } else {
     endpoint = kid;
   }
-
+  const options = {
+    headers: {
+      Referer: "https://komikcast.me/",
+    },
+  };
   // const response = await AxiosService(`manga/${endpoint}/`);
   // const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
-  const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
-  console.log("ini data", data);
+
+  const res = await got(`${link_endpoint}/${endpoint}`, options);
+  const data = res.body;
+  console.log("ini data", res.body);
   const $ = cheerio.load(data);
   // const element = $(".content");
   // console.log(element);

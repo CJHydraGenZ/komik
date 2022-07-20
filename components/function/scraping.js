@@ -1,22 +1,4 @@
 import axios from "axios";
-const fetch = require("node-fetch");
-// import * as cheerio from "cheerio";
-// import axios from 'axios';
-// import { wrapper } from "axios-cookiejar-support";
-// import { CookieJar } from "tough-cookie";
-
-// const jar = new CookieJar();
-// const client = wrapper(axios.create({ jar }));
-
-// await client.get("https://example.com");
-
-// const cheerio = require("cheerio");
-// const cloudflareScraper = require("cloudflare-scraper");
-// var cloudscraper = require("cloudscraper");
-// const fetch = require('node-fetch');
-
-// get your subscription key at https://rapidapi.com/restyler/api/scrapeninja from "Code generator",
-// copy&paste it to 'x-rapidapi-key' header below
 
 import * as cheerio from "cheerio";
 import { fetcherAPI } from "./fetch";
@@ -32,10 +14,11 @@ export const HandlerKomikId = async (kid) => {
   }
 
   // const response = await AxiosService(`manga/${endpoint}/`);
-  const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
+  // const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
+  const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
 
   const $ = cheerio.load(data);
-  const element = $(".content");
+  // const element = $(".content");
   // console.log(element);
   let genre_list = [];
   let chapter = [];
@@ -130,41 +113,13 @@ export const HandlerKomikId = async (kid) => {
 };
 
 export const HandleRecommend = async () => {
-  // let req = fetch("https://scrapeninja.p.rapidapi.com/scrape", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     "x-rapidapi-host": "scrapeninja.p.rapidapi.com",
-  //     "x-rapidapi-key": "2c852202f9msha06be18b51b4ec6p1ea7d3jsne1c7731ebef2",
-  //   },
-  //   body: JSON.stringify({
-  //     url: "^",
-  //   }),
-  // });
-  // req.then((res) => res.json()).then((json) => console.log(json));
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    // const response = await fetcherAPI("https://komikcast.me");
-    const response = await fetch("https://scrapeninja.p.rapidapi.com/scrape", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-rapidapi-host": "scrapeninja.p.rapidapi.com",
-        "x-rapidapi-key": process.env.RAPID_API_KEY,
-      },
-      body: JSON.stringify({
-        url: "https://komikcast.me",
-      }),
-    });
-    // const response = await cloudscraper.get("https://komikcast.me");
-    // cf.request("https://website.org").then((res) => {
-    //   // res - full response
-    // });
-    // const response = await cf.request("https://komikcast.me");
-    // console.log(response);
-    const req = await response.json();
-    const data = await req.body;
+    const data = await fetcherAPI("https://komikcast.me");
+
+    // const req = await response.json();
+    // const data = await req.body;
 
     // console.log(data);
     // const { data } = await client.get("https://komikcast.me");
@@ -241,7 +196,7 @@ export const HandleKomikList = async (url) => {
 
     const $ = cheerio.load(data);
     const element = $(".list-update");
-    console.log(element.html());
+    // console.log(element.html());
 
     let komik_list = [];
     let title, type, endpoint, thumb, chapter, rating, last_upload_endpoint;
@@ -293,6 +248,52 @@ export const HandleKomikList = async (url) => {
       status: false,
       message: "error",
       komik_list,
+    };
+  }
+};
+
+export const HandleKomikChapterId = async (cid) => {
+  const link_endpoint = "https://komikcast.me/komik/";
+  const chapter_link = "https://komikcast.me/chapter/";
+  const chaptera_link =
+    "https://komikcast.me/chapter/chikashitsu-dungeon-binbou-kyoudai-wa-goraku-o-motomete-saikyou-e-chapter-29-bahasa-indonesia/";
+
+  // const { cid } = req.query;
+  try {
+    // const response = await AxiosService(`${chapter_link}/${cid}/`);
+    // const response = await axios.get(`https://komikcast.id/${cid}`)
+    const data = await fetcherAPI(`${chapter_link}/${cid}/`);
+    const $ = cheerio.load(data);
+    const content = $("#content");
+    let chapter_image = [];
+    const obj = {};
+    obj.chapter_endpoint = cid + "/";
+    obj.chapter_name = cid.split("-").join(" ").trim();
+
+    obj.title = $(".chapter_headpost > h1").text().trim();
+
+    const getTitlePages = content.find(".dsk2");
+    getTitlePages.filter(() => {
+      obj.title = $(getTitlePages).find("h1").text().replace("Komik ", "");
+    });
+
+    const getPages = $(".main-reading-area > img");
+
+    // const getPages = $('#chimg > img')
+    obj.chapter_pages = getPages.length;
+    getPages.each((i, el) => {
+      chapter_image.push({
+        chapter_image_link: $(el).attr("src"),
+        image_number: i + 1,
+      });
+    });
+    obj.chapter_image = chapter_image;
+    return obj;
+  } catch (error) {
+    return {
+      status: false,
+      message: error,
+      chapter_image: [],
     };
   }
 };

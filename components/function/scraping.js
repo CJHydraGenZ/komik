@@ -19,7 +19,7 @@ export const HandlerKomikId = async (kid) => {
   //   },
   // };
   // const response = await AxiosService(`manga/${endpoint}/`);
-  const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
+  const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
 
   // const res = await got(`${link_endpoint}/${endpoint}`, options);
   // const data = res.body;
@@ -115,19 +115,19 @@ export const HandlerKomikId = async (kid) => {
       }
       obj.chapter = chapter;
     });
-
   return obj;
+
 };
 
 export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const data = await fetcherAPI("https://komikcast.me");
+    const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au");
 
     // const req = await response.json();
     // const data = await req.body;
-
+    // const v = await data.result
     console.log(data);
     // const { data } = await client.get("https://komikcast.me");
     // console.log(response.status === 200);
@@ -196,6 +196,7 @@ export const HandleRecommend = async () => {
 
 export const HandleKomikList = async (url) => {
   try {
+
     const link_endpoint = "https://komikcast.me/komik/";
 
     const data = await fetcherAPI(url);

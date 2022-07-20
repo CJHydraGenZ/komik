@@ -9,7 +9,7 @@
 //     // setLoading(false);
 //   }
 // };
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 // const HttpsProxyAgent = require("https-proxy-agent");
 export const fetcher = (url) => fetch(url).then((res) => res.json());
 // export const fetcherAPI = (url) =>
@@ -68,15 +68,11 @@ const userAgent = [
 // };
 let randomAgent = userAgent[Math.floor(Math.random() * userAgent.length)];
 
+var options = {
+  'method': 'GET',
+  'url': 'https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au'
+};
+
 export const fetcherAPI = (url) =>
-  fetch(url, {
-    // method: "GET",
-    headers: {
-      "User-Agent": randomAgent,
-      "Accept-Language": "en-US,en;q=0.9,id;q=0.8",
-      "Referer": "https://google.com",
-      "DNT": "1",
-      "Cahya": "sahhda"
-    },
-  }).then((res) => res.text());
-// .then((req) => req.body);
+  fetch(url).then(res => res.json()).then(res => res.result.content)
+

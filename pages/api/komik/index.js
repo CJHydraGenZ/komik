@@ -39,10 +39,14 @@ export default async function handler(req, res) {
 
   const { genre = "", statusS = "", typeS = "", orderBy = "" } = req.body;
   // // console.log("inii pst", req.body);
+  // `https://komikcast.me/daftar-komik/?genre%5B%5D=${genre}&status=${statusS}&type=${typeS}&orderby=${orderBy}`
   const url =
     req.method === "POST"
-      ? `https://komikcast.me/daftar-komik/?genre%5B%5D=${genre}&status=${statusS}&type=${typeS}&orderby=${orderBy}`
-      : `https://komikcast.me/daftar-komik/`;
+
+
+      ? `https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fdaftar-komik%2F%3Fgenre%5B%5D%3D${genre}%26status%3D${statusS}%26type%3D${typeS}%26orderby%3D${orderBy}&country=au`
+
+      : `https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F&country=au`;
 
   switch (req.method) {
     case "GET":

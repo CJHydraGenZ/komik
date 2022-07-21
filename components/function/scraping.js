@@ -19,7 +19,25 @@ export const HandlerKomikId = async (kid) => {
   //   },
   // };
   // const response = await AxiosService(`manga/${endpoint}/`);
-  const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}%2F&tags=player%2Cproject%3Adefault&country=au`);
+  const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}%2F&tags=player%2Cproject%3Adefault&country=au`, {
+    headers: {
+      "authority": 'cdn.komikcast.com',
+
+      'accept-encoding': 'gzip, deflate, br',
+      'accept-language': 'en-US,en;q=0.9,id;q=0.8',
+      'cache-control': 'no-cache',
+      'pragma': 'no-cache',
+      // 'sec-ch-ua': ".Not/A)Brand";v="99", "Google Chrome";v="103","Chromium";v="103",
+      // 'sec-ch-ua-mobile': ?0,
+      'sec-ch-ua-platform': "Windows",
+      'sec-fetch-dest': 'document',
+      'sec-fetch-mode': 'navigate',
+      'sec-fetch-site': 'none',
+      'sec-fetch-user': 1,
+      'upgrade-insecure-requests': 1,
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+  });
 
   // const res = await got(`${link_endpoint}/${endpoint}`, options);
   // const data = res.body;

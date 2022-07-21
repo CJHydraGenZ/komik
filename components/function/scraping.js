@@ -19,7 +19,7 @@ export const HandlerKomikId = async (kid) => {
   //   },
   // };
   // const response = await AxiosService(`manga/${endpoint}/`);
-  const { data } = await axios.get(`${link_endpoint}/${endpoint}`);
+  const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}%2F&tags=player%2Cproject%3Adefault&country=au`);
 
   // const res = await got(`${link_endpoint}/${endpoint}`, options);
   // const data = res.body;
@@ -128,7 +128,7 @@ export const HandleRecommend = async () => {
     // const req = await response.json();
     // const data = await req.body;
     // const v = await data.result
-    console.log(data);
+    // console.log(data);
     // const { data } = await client.get("https://komikcast.me");
     // console.log(response.status === 200);
     // console.log("ini log", data);
@@ -270,8 +270,9 @@ export const HandleKomikChapterId = async (cid) => {
   try {
     // const response = await AxiosService(`${chapter_link}/${cid}/`);
     // const response = await axios.get(`https://komikcast.id/${cid}`)
-    const data = await fetcherAPI(`${chapter_link}/${cid}/`);
-    console.log("data chpater", data);
+    // let a = `https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`
+    const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`);
+    // console.log("data chpater", data);
     const $ = cheerio.load(data);
     const content = $("#content");
     let chapter_image = [];

@@ -61,7 +61,15 @@ export const HandleDetailId = async (kid) => {
     endpoint = kid;
   }
 
-  const data = await fetcherAPI(`https://komiku.id/manga/${endpoint}/`);
+  const data = await fetcherAPI(`https://komiku.id/manga/${endpoint}/`, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+      'Accept-Language': 'en-GB,en;q=0.5',
+      'Referer': 'https://google.com',
+      'DNT': '1',
+      'Cahya': 'sahhda'
+    }
+  });
   console.log(data);
   const $ = cheerio.load(data);
   const element = $(".perapih");
@@ -124,7 +132,15 @@ export const HandleDetailId = async (kid) => {
 
 export const HandleChapterId = async (slug) => {
   // try {
-  const data = await fetcherAPI(`https://komiku.id/ch/${slug}/`);
+  const data = await fetcherAPI(`https://komiku.id/ch/${slug}/`, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+      'Accept-Language': 'en-GB,en;q=0.5',
+      'Referer': 'https://google.com',
+      'DNT': '1',
+      'Cahya': 'sahhda'
+    }
+  });
   // const response = await axios.get(`https://komikcast.id/${slug}`)
   console.log(data);
   const $ = cheerio.load(data);

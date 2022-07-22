@@ -141,7 +141,8 @@ export const HandleRecommend = async () => {
   try {
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au");
+    // const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au");
+    const data = await fetch("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au").then(res => res.json()).then(a => a.result.content);
 
     // const req = await response.json();
     // const data = await req.body;
@@ -217,7 +218,7 @@ export const HandleKomikList = async (url) => {
 
     const link_endpoint = "https://komikcast.me/komik/";
 
-    const data = await fetcherAPI(url);
+    const data = await fetch(url).then(res => res.json()).then(a => a.result.content);
     // const { data } = await client.get(url);
 
     const $ = cheerio.load(data);

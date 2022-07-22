@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import { HandlerKomikId } from "components/function/scraping";
+import { HandleDetailId } from "components/function/scraping_komikid";
 import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {
@@ -15,5 +16,5 @@ export default async function handler(req, res) {
 
   // console.log("ini", kid);
 
-  res.status(200).json(await HandlerKomikId(kid));
+  res.status(200).json(await HandleDetailId(kid));
 }

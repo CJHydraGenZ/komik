@@ -1,6 +1,7 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
+import { fetcherAPI } from "components/function/fetch";
 import NextCors from "nextjs-cors";
 
 // const cors = Cors({
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
   });
   try {
     const link_endpoint = "https://komikcast.me/komik/";
-    const { data } = await axios.get("https://komikcast.me");
+    const data = await fetcherAPI("https://komikcast.me");
     // console.log('req params', req.para);
     const $ = cheerio.load(data);
     const element = $(".listupd");

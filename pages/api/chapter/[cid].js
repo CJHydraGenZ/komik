@@ -2,6 +2,7 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 import { HandleKomikChapterId } from "components/function/scraping";
+import { HandleChapterId } from "components/function/scraping_komikid";
 import NextCors from "nextjs-cors";
 
 // import Cors from "cors";
@@ -32,5 +33,5 @@ export default async function handler(req, res) {
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
 
-  res.status(200).json(await HandleKomikChapterId(cid));
+  res.status(200).json(await HandleChapterId(cid));
 }

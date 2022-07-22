@@ -13,6 +13,8 @@ const nextConfig = {
       "i3.wp.com",
       "komikcast.me",
       "cdn.komikcast.com",
+      "thumbnail.komiku.id",
+      "cdn.komiku.co.id",
     ],
   },
 };

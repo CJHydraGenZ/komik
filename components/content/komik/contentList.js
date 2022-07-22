@@ -8,17 +8,17 @@ const contentList = ({ data, loading }) => {
 
       {loading
         ? "Loading..."
-        : data?.komik_list?.map((d, i) => (
-            <CardRecommend
-              key={i}
-              thumb={d.thumb}
-              title={d.title}
-              chapter={d.chapter}
-              rating={d.rating}
-              endpoint={d.endpoint}
-              last_upload_endpoint={d.last_upload_endpoint}
-            />
-          ))}
+        : data?.manga_list?.map((d, i) => (
+          <CardRecommend
+            key={i}
+            thumb={d.thumb}
+            title={d.title}
+            chapter={d.chapter}
+            rating={d.rating}
+            endpoint={d.endpoint}
+            last_upload_endpoint={d.last_upload_endpoint}
+          />
+        ))}
     </div>
   );
 };

@@ -19,7 +19,7 @@ export default function Chapter() {
   const [loading, setLoading] = useState(false);
   // const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
   //   data;
-  const { data, error } = useSWR(`${server}/api/chapter/${id}`, fetcher);
+  const { data, error } = useSWR(`/api/chapter/${id}`, fetcher);
 
   // const getData = async () => {
   //   try {
@@ -67,8 +67,8 @@ export default function Chapter() {
                     variant="komik"
                     thumb={d.chapter_image_link}
                     title={data?.chapter_name}
-                    // layout="fill"
-                    // objectFit="cover"
+                  // layout="fill"
+                  // objectFit="cover"
                   />
                 ))}
               </div>

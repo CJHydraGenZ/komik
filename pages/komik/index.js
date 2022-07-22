@@ -19,8 +19,9 @@ export default function Komik({ fallback }) {
   const getData = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/komik`);
+      const { data } = await axios.get(`/api/komik/`);
       setData(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -54,17 +55,17 @@ export default function Komik({ fallback }) {
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
             {loading
               ? "Loading..."
-              : data?.komik_list?.map((d, i) => (
-                  <CardKomik
-                    key={i}
-                    thumb={d.thumb}
-                    title={d.title}
-                    rating={d.rating}
-                    endpoint={d.endpoint}
-                    chapter={d.chapter}
-                    last_upload_endpoint={d.last_upload_endpoint}
-                  />
-                ))}
+              : data?.manga_list?.map((d, i) => (
+                <CardKomik
+                  key={i}
+                  thumb={d.thumb}
+                  title={d.title}
+                  rating={d.rating}
+                  endpoint={d.endpoint}
+                  chapter={d.chapter}
+                  last_upload_endpoint={d.last_upload_endpoint}
+                />
+              ))}
           </div>
         </div>
       </div>

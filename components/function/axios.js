@@ -1,25 +1,25 @@
 import axios from "axios";
 // import axiosCookieJarSupport from "axios-cookiejar-support";
-import { wrapper } from "axios-cookiejar-support";
-import { CookieJar } from "tough-cookie";
-const { server } = require("config");
+// import { wrapper } from "axios-cookiejar-support";
+// import { CookieJar } from "tough-cookie";
+// const { server } = require("config");
 
-export const AxiosAPP = axios.create({
-  baseURL: server,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/json",
-  },
-  // withCredentials: true,
-});
+// export const AxiosAPP = axios.create({
+//   baseURL: server,
+//   headers: {
+//     "Access-Control-Allow-Origin": "*",
+//     "Content-Type": "application/json",
+//   },
+//   // withCredentials: true,
+// });
 
-// const axios = require("axios").default;
-// const baseUrl = require("../constants/urls");
-// const axiosCookieJarSupport = require("axios-cookiejar-support");
-// axiosCookieJarSupport(axios);
+// // const axios = require("axios").default;
+// // const baseUrl = require("../constants/urls");
+// // const axiosCookieJarSupport = require("axios-cookiejar-support");
+// // axiosCookieJarSupport(axios);
 
-const jar = new CookieJar();
-export const client = wrapper(axios.create({ jar }));
+// const jar = new CookieJar();
+// export const client = wrapper(axios.create({ jar }));
 
 // axios.defaults.baseURL = "https://komikcast.me";
 

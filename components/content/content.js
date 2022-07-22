@@ -23,7 +23,7 @@ export const Content = () => {
       await axios
         .all([
           axios.get(`/api/recommend`),
-          axios.get(`/api/komik`),
+          axios.get(`/api/komik/page/1`),
           // axios.get('https://api.github.com/users/iliakan'),
           // axios.get('https://api.github.com/users/taylorotwell')
         ])

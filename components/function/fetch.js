@@ -73,6 +73,8 @@ var options = {
   'url': 'https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au'
 };
 
+// export const fetcherAPI = (url, options) =>
+//   fetch(url, options).then(res => res.json()).then(res => res.result.content)
 export const fetcherAPI = (url, options) =>
-  fetch(url, options).then(res => res.json()).then(res => res.result.content)
+  fetch(url, options).then(res => res.text())
 

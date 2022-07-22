@@ -62,6 +62,7 @@ export const HandleDetailId = async (kid) => {
   }
 
   const data = await fetcherAPI(`https://komiku.id/manga/${endpoint}/`);
+  console.log(data);
   const $ = cheerio.load(data);
   const element = $(".perapih");
   console.log(element);
@@ -125,6 +126,7 @@ export const HandleChapterId = async (slug) => {
   // try {
   const data = await fetcherAPI(`https://komiku.id/ch/${slug}/`);
   // const response = await axios.get(`https://komikcast.id/${slug}`)
+  console.log(data);
   const $ = cheerio.load(data);
   const content = $("#article");
   let chapter_image = [];

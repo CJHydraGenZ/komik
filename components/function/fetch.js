@@ -66,7 +66,7 @@ const userAgent = [
 //     ),
 //   ]);
 // };
-let randomAgent = userAgent[Math.floor(Math.random() * userAgent.length)];
+export let randomAgent = userAgent[Math.floor(Math.random() * userAgent.length)];
 
 var options = {
   'method': 'GET',

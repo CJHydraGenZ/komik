@@ -2,7 +2,7 @@ import axios from "axios";
 // import got from "got";
 
 import * as cheerio from "cheerio";
-import { fetcherAPI } from "./fetch";
+import { fetcherAPI, randomAgent } from "./fetch";
 
 const replaceMangaPage = "https://komiku.id/manga/";
 
@@ -63,9 +63,9 @@ export const HandleDetailId = async (kid) => {
 
   const data = await fetcherAPI(`https://komiku.id/manga/${endpoint}/`, {
     headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+      'User-Agent': randomAgent,
       'Accept-Language': 'en-GB,en;q=0.5',
-      'Referer': 'https://google.com',
+      'Referer': 'https://komiku.id/' + endpoint,
       'DNT': '1',
       'Cahya': 'sahhda'
     }
@@ -134,9 +134,9 @@ export const HandleChapterId = async (slug) => {
   // try {
   const data = await fetcherAPI(`https://komiku.id/ch/${slug}/`, {
     headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+      'User-Agent': randomAgent,
       'Accept-Language': 'en-GB,en;q=0.5',
-      'Referer': 'https://google.com',
+      'Referer': `https://komiku.id/ch/${slug}/`,
       'DNT': '1',
       'Cahya': 'sahhda'
     }

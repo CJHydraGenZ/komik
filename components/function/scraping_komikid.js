@@ -61,16 +61,9 @@ export const HandleDetailId = async (kid) => {
     endpoint = kid;
   }
 
-  const data = await fetcherAPI(`https://komiku.id/manga/${endpoint}/`, {
-    headers: {
-      'User-Agent': randomAgent,
-      'Accept-Language': 'en-GB,en;q=0.5',
-      'Referer': 'https://komiku.id/' + endpoint,
-      'DNT': '1',
-      'Cahya': 'sahhda'
-    }
-  });
-  console.log(data);
+  const data = await fetch(`  https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomiku.id%2Fmanga%2F${endpoint}%2F&tags=player%2Cproject%3Adefault&country=au`).then(res => res.json()).then(r => r.result.content)
+
+  // console.log(data);
   const $ = cheerio.load(data);
   const element = $(".perapih");
   console.log(element);
@@ -132,17 +125,10 @@ export const HandleDetailId = async (kid) => {
 
 export const HandleChapterId = async (slug) => {
   // try {
-  const data = await fetcherAPI(`https://komiku.id/ch/${slug}/`, {
-    headers: {
-      'User-Agent': randomAgent,
-      'Accept-Language': 'en-GB,en;q=0.5',
-      'Referer': `https://komiku.id/ch/${slug}/`,
-      'DNT': '1',
-      'Cahya': 'sahhda'
-    }
-  });
+  const data = await fetch(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomiku.id%2Fch%2F${slug}%2F&tags=player%2Cproject%3Adefault&country=au`).then(res => res.json()).then(r => r.result.content)
+
   // const response = await axios.get(`https://komikcast.id/${slug}`)
-  console.log(data);
+  // console.log(data);
   const $ = cheerio.load(data);
   const content = $("#article");
   let chapter_image = [];

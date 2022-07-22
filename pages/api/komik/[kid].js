@@ -16,5 +16,5 @@ export default async function handler(req, res) {
 
   // console.log("ini", kid);
 
-  res.status(200).json(await HandleDetailId(kid));
+  res.status(200).json(await HandlerKomikId(kid));
 }

@@ -33,5 +33,5 @@ export default async function handler(req, res) {
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
 
-  res.status(200).json(await HandleChapterId(cid));
+  res.status(200).json(await HandleKomikChapterId(cid));
 }

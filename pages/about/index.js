@@ -30,6 +30,7 @@ const About = () => {
           </Timeline.Content>
         </Timeline.Item>
       </Timeline>
+
     </div>
   );
 };

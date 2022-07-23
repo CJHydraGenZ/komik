@@ -64,10 +64,10 @@ export const Content = () => {
           />
         ))} */}
 
-        <CardPopular />
+        {/* <CardPopular /> */}
       </div>
 
-      <div className="flex w-full gap-2">
+      <div className="lg:flex w-full gap-2">
         <ContentList data={komikList} loading={loading} />
 
         <SeriesList />

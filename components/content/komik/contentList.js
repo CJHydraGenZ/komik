@@ -3,7 +3,7 @@ import KomikCard from "@/content/komik/komikCard";
 import { CardRecommend } from "../card/cardRecommed";
 const contentList = ({ data, loading }) => {
   return (
-    <div className="flex flex-col w-3/4">
+    <div className="flex flex-col lg:w-3/4">
       <h1 className="text-lg font-bold my-2">Rilisan Terbaru</h1>
 
       {loading

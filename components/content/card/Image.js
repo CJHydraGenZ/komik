@@ -18,7 +18,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
   const pickVarian = variants[variant];
   return (
     <div
-      className={`w-full aspect-w-8 aspect-h-6 bg-gray-200 overflow-hidden ${pickVarian}`}
+      className={`w-full bg-gray-200 overflow-hidden ${pickVarian}`}
     >
       <Image
         src={src}
@@ -31,7 +31,14 @@ export const ImageCard = ({ variant, thumb, title }) => {
             ? "grayscale blur-2xl scale-110"
             : "grayscale-0 blur-0 scale-100"
         )}
-        onLoadingComplete={() => setLoading(false)}
+        //   onLoadingComplete={() => setLoading(false)}
+        onLoadingComplete={(result) => {
+          setLoading(false)
+          if (result.naturalWidth === 0) {
+            // Broken image
+            setSrc(thumb);
+          }
+        }}
       />
     </div>
   );

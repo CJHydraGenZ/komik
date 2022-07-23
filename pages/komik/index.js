@@ -2,9 +2,7 @@ import { CardKomik } from "@/content/card/card";
 import { KomikList } from "@/content/komik/komikList";
 import axios from "axios";
 import { Content } from "components/content/content";
-import { AxiosAPP } from "components/function/axios";
 import { fetcher } from "components/function/fetch";
-// import { AxiosAPP } from "components/function/axios";
 import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
@@ -49,7 +47,7 @@ export default function Komik({ fallback }) {
         <div className="list-komik  h-auto w-full px-4 py-2">
           <div className="flex items-center justify-between">
             <h1>Daftar komik</h1>
-            <h1>Daftar komik</h1>
+            {/* <h1>Daftar komik</h1> */}
           </div>
 
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">

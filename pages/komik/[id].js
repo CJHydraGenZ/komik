@@ -63,6 +63,10 @@ export default function KomikID() {
   //   chapter,
   // } = data;
   // console.log(chapter);
+
+  // const genre_name = data?.genre_list.map((g, i) => g)[0].map((c, i) => c)
+  // console.log(genre_name);
+
   return (
     <div>
       <Head>
@@ -73,8 +77,8 @@ export default function KomikID() {
       </Head>
 
       <div className="flex flex-col space-y-4 w-full">
-        <div className="flex">
-          <div className="img relative w-full h-full">
+        <div className="flex flex-col">
+          <div className="relative w-full h-full">
             <ImageCard
               variant="komik"
               thumb={data?.thumb}
@@ -88,15 +92,14 @@ export default function KomikID() {
           </div>
           <div className="info flex">
             <ul className="list-disc">
+              {
+                data?.genre_list?.map((g, i) => <li key={i}>{g}</li>)
+              }
+              {/* <li>asas</li>
               <li>asas</li>
-              <li>asas</li>
-              <li>asas</li>
+              <li>asas</li> */}
             </ul>
-            <ul className="list-disc">
-              <li>asas</li>
-              <li>asas</li>
-              <li>asas</li>
-            </ul>
+
           </div>
         </div>
         <div className="synopsis">{data?.synopsis}</div>

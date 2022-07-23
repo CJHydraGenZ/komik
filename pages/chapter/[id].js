@@ -73,6 +73,10 @@ export default function Chapter() {
                 ))}
               </div>
             </div>
+            <div className="flex justify-between">
+              <button>Kembali</button>
+              <button>Lanjut</button>
+            </div>
           </div>
         </div>
       </div>

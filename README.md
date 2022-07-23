@@ -99,7 +99,3 @@ example : https://localhost:3000/api/manhua/1 -->
 /chapter/[chapterEndpoint]
 ```
 example :https://localhost:3000/api/chapter/infinite-level-up-in-murim-chapter-63/
-<!-- ## Showcase
-App Showcase that use this API (you can add your app by edit this readme)
-
-- [MangaMint](https://github.com/febryardiansyah/manga_mint) Flutter Manga Reader Application by [Febry ardiansyah](https://github.com/febryardiansyah) -->

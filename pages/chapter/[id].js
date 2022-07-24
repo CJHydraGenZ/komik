@@ -64,7 +64,7 @@ export default function Chapter() {
                 {data?.chapter_image?.map((d, i) => (
                   <ImageCard
                     key={i}
-                    variant="komik"
+                    variant="chapter"
                     thumb={d.chapter_image_link}
                     title={data?.chapter_name}
                   // layout="fill"
@@ -75,6 +75,12 @@ export default function Chapter() {
             </div>
             <div className="flex justify-between">
               <button>Kembali</button>
+              {/* <button>Kembali</button> */}
+              <select name="" id="">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
               <button>Lanjut</button>
             </div>
           </div>

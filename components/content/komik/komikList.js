@@ -35,16 +35,16 @@ export const KomikList = () => {
             {!data
               ? "Loading..."
               : data?.komik_list?.map((d, i) => (
-                  <CardKomik
-                    key={i}
-                    thumb={d.thumb}
-                    title={d.title}
-                    rating={d.rating}
-                    endpoint={d.endpoint}
-                    chapter={d.chapter}
-                    last_upload_endpoint={d.last_upload_endpoint}
-                  />
-                ))}
+                <CardKomik
+                  key={i}
+                  thumb={d.thumb}
+                  title={d.title}
+                  rating={d.rating}
+                  endpoint={d.endpoint}
+                  chapter={d.chapter}
+                  last_upload_endpoint={d.last_upload_endpoint}
+                />
+              ))}
           </div>
         </div>
       </div>

@@ -41,14 +41,11 @@ export default function Komik({ fallback }) {
       </Head>
 
       <div className="flex flex-col max-w-full">
-        <h1>Komik</h1>
+        <h1 className="mx-auto">Daftar Komik</h1>
         {/* <div className="filter bg-slate-300 h-60 w-full">filter</div> */}
 
         <div className="list-komik  h-auto w-full px-4 py-2">
-          <div className="flex items-center justify-between">
-            <h1>Daftar komik</h1>
-            {/* <h1>Daftar komik</h1> */}
-          </div>
+
 
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
             {loading
@@ -67,7 +64,7 @@ export default function Komik({ fallback }) {
           </div>
         </div>
       </div>
-    </div>
+    </div >
     // </SWRConfig>
   );
 }

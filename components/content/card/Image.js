@@ -11,9 +11,10 @@ export const ImageCard = ({ variant, thumb, title }) => {
     }
   }, [thumb]);
   const variants = {
-    recommend: "xl:aspect-w-16 xl:aspect-h-8",
-    daftar: "xl:aspect-w-6 xl:aspect-h-7",
-    komik: "xl:aspect-w-6 xl:aspect-h-4",
+    recommend: "aspect-w-16 aspect-h-8",
+    daftar: "aspect-w-6 aspect-h-7",
+    komik: "aspect-w-6 aspect-h-4",
+    chapter: "aspect-w-14",
   };
   const pickVarian = variants[variant];
   return (
@@ -24,7 +25,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
         src={src}
         alt={title}
         layout="fill"
-        // objectFit="cover"
+        // objectFit=""
         className={ch(
           "group-hover:opacity-75 duration-700 ease-in-out",
           loading

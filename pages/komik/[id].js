@@ -78,7 +78,7 @@ export default function KomikID() {
 
       <div className="flex flex-col space-y-4 w-full">
         <div className="flex flex-col">
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-full my-2">
             <ImageCard
               variant="komik"
               thumb={data?.thumb}
@@ -90,19 +90,22 @@ export default function KomikID() {
             ) : (
             )} */}
           </div>
-          <div className="info flex">
-            <ul className="list-disc">
-              {
-                data?.genre_list?.map((g, i) => <li key={i}>{g}</li>)
-              }
-              {/* <li>asas</li>
+          <div className="info flex flex-wrap gap-2">
+            {/* <ul className="list-disc"> */}
+            {
+              data?.genre_list?.map((g, i) => <Link key={i} href=''><a className="block bg-slate-500 rounded-sm py-2 px-3 text-white font-sans text-sm">
+                {g}
+              </a>
+              </Link>)
+            }
+            {/* <li>asas</li>
               <li>asas</li>
               <li>asas</li> */}
-            </ul>
+            {/* </ul> */}
 
           </div>
         </div>
-        <div className="synopsis">{data?.synopsis}</div>
+        <div className="synopsis bg-slate-600 p-2 text-white rounded-sm">{data?.synopsis}</div>
       </div>
       <div className="komik-chapter">
         <h1>{data?.released}</h1>

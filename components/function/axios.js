@@ -4,14 +4,7 @@ import axios from "axios";
 // import { CookieJar } from "tough-cookie";
 // const { server } = require("config");
 
-// export const AxiosAPP = axios.create({
-//   baseURL: server,
-//   headers: {
-//     "Access-Control-Allow-Origin": "*",
-//     "Content-Type": "application/json",
-//   },
-//   // withCredentials: true,
-// });
+
 
 // // const axios = require("axios").default;
 // // const baseUrl = require("../constants/urls");

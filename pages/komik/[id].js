@@ -1,7 +1,6 @@
 import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
-import { AxiosAPP } from "components/function/axios";
 import { fetcher } from "components/function/fetch";
 import { HandlerKomikId } from "components/function/scraping";
 import { server } from "config";

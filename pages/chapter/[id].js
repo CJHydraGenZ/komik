@@ -1,7 +1,6 @@
 import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
-import { AxiosAPP } from "components/function/axios";
 import { fetcher } from "components/function/fetch";
 import { server } from "config";
 // import { server } from "config";
@@ -24,7 +23,6 @@ export default function Chapter() {
   // const getData = async () => {
   //   try {
   //     setLoading(true);
-  //     const { data } = await AxiosAPP(`${server}/api/chapter/${id}`);
   //     setData(data);
   //   } catch (error) {
   //     console.log(error);

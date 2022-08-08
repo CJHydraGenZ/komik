@@ -8,7 +8,7 @@ const contentList = ({ data, loading }) => {
 
       {loading
         ? "Loading..."
-        : data?.manga_list?.map((d, i) => (
+        : data?.komik_list?.map((d, i) => (
           <CardRecommend
             key={i}
             thumb={d.thumb}

@@ -24,6 +24,9 @@ export const Header = () => {
         <Link href={`/about`}>
           <a>About</a>
         </Link>
+        <Link href={`/dashboard`}>
+          <a>Dashboard</a>
+        </Link>
         {/* </Navbar.Link> */}
         {/* <Navbar.Link href="/navbars">Services</Navbar.Link>
         <Navbar.Link href="/navbars">Pricing</Navbar.Link>

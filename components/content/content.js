@@ -21,8 +21,8 @@ export const Content = () => {
       setLoading(true);
       await axios
         .all([
-          axios.get(`/api/recommend`),
-          axios.get(`/api/komik/page/1`),
+          axios.get(`${server}/api/recommend`),
+          axios.get(`${server}/api/komik/`),
           // axios.get('https://api.github.com/users/iliakan'),
           // axios.get('https://api.github.com/users/taylorotwell')
         ])
@@ -45,8 +45,8 @@ export const Content = () => {
     // getKomikList();
   }, []);
 
-  // console.log(komik);
-  // console.log(komikList);
+  console.log(komik);
+  console.log(komikList);
 
   return (
     <>

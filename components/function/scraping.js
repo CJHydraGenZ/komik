@@ -15,7 +15,10 @@ export const HandlerKomikId = async (kid) => {
   }
 
 
-  const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
+  // const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
+  const data = await fetch(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&tags=player%2Cproject%3Adefault&proxy_pool=public_residential_pool&country=au`).then(res => res.json()).then(a => a.result.content);
+
+
   // const data = res.body;
   // console.log("ini data", res.body);
   const $ = cheerio.load(data);
@@ -117,13 +120,13 @@ export const HandleRecommend = async () => {
     const link_endpoint = "https://komikcast.me/komik/";
 
     // const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au");
-    // const data = await fetch("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au").then(res => res.json()).then(a => a.result.content);
+    const data = await fetch("https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me&country=au").then(res => res.json()).then(a => a.result.content);
 
     // const req = await response.json();
     // const data = await req.body;
     // const v = await data.result
     // console.log(data);
-    const data = await fetcherAPI("https://komikcast.me");
+    // const data = await fetcherAPI("https://komikcast.me");
     // console.log(response.status === 200);
     // console.log("ini log", data);
     // if (response.status === 200) {
@@ -193,8 +196,8 @@ export const HandleKomikList = async (url) => {
 
     const link_endpoint = "https://komikcast.me/komik/";
 
-    // const data = await fetch(url).then(res => res.json()).then(a => a.result.content);
-    const data = await fetcherAPI(url);
+    const data = await fetch(url).then(res => res.json()).then(a => a.result.content);
+    // const data = await fetcherAPI(url);
 
     const $ = cheerio.load(data);
     const element = $(".list-update");
@@ -263,9 +266,11 @@ export const HandleKomikChapterId = async (cid) => {
   // const { cid } = req.query;
   try {
     // const response = await AxiosService(`${chapter_link}/${cid}/`);
-    const data = await fetcherAPI(`${chapter_link}/${cid}`)
+    // const data = await fetcherAPI(`${chapter_link}/${cid}`)
     // let a = `https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`
     // const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`);
+    const data = await fetch(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`).then(res => res.json()).then(a => a.result.content);
+
     // console.log("data chpater", data);
     const $ = cheerio.load(data);
     const content = $("#content");

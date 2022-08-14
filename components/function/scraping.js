@@ -74,7 +74,8 @@ export const HandlerKomikId = async (kid) => {
     .trim();
   obj.thumb = $(".komik_info-content > .komik_info-content-thumbnail")
     .find("img")
-    .attr("src");
+    .attr("src").replace(/.*?:\/\//g,
+      "https://cdn.statically.io/img/");
 
   $(".komik_info-content-body > .komik_info-content-genre").each((idx, el) => {
     let genre_name = $(el)
@@ -286,7 +287,8 @@ export const HandleKomikChapterId = async (cid) => {
     obj.chapter_pages = getPages.length;
     getPages.each((i, el) => {
       chapter_image.push({
-        chapter_image_link: $(el).attr("src"),
+        chapter_image_link: $(el).attr("src").replace(/.*?:\/\//g,
+          "https://cdn.statically.io/img/"),
         image_number: i + 1,
       });
     });

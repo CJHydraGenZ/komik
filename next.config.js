@@ -15,6 +15,7 @@ const nextConfig = {
       "cdn.komikcast.com",
       "thumbnail.komiku.id",
       "cdn.komiku.co.id",
+      "cdn.statically.io"
     ],
   },
 };

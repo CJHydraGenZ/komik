@@ -128,6 +128,7 @@ export const HandlerKomikId = async (kid) => {
       status: true,
       message: "gagal",
       // komik_list,
+      error
     };
   }
 };

@@ -121,7 +121,7 @@ export const HandlerKomikId = async (kid) => {
     return {
       status: true,
       message: "success",
-      ...obj,
+      // ...obj,
     };
   } catch (error) {
     return {

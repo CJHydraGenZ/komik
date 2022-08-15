@@ -2,7 +2,7 @@ import axios from "axios";
 // import got from "got";
 
 import * as cheerio from "cheerio";
-import { fetcherAPI } from "./fetch";
+import { fetcherAPI, fetch_scrap_ninja } from "./fetch";
 
 const dev = process.env.NODE_ENV !== "production";
 
@@ -21,7 +21,9 @@ export const HandlerKomikId = async (kid) => {
 
   // const API = dev ? `${link_endpoint}/${endpoint}` : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`
   // const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
-  const data = dev ? await fetch(`${link_endpoint}/${endpoint}`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2Fthe-hero-returns%2F&tags=player%2Cproject%3Adefault`).then(res => res.json()).then(a => a.result.content);
+  const data = dev ? await fetch(`${link_endpoint}/${endpoint}`).then(res => res.text()) :
+    // await fetch(`https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2Fthe-hero-returns%2F&tags=player%2Cproject%3Adefault`).then(res => res.json()).then(a => a.result.content);
+    await fetch_scrap_ninja(`${link_endpoint}/${endpoint}`)
 
   console.log(data);
   // const data = res.body;
@@ -128,7 +130,10 @@ export const HandleRecommend = async () => {
 
     // const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=$process.env.SCRAPFLY_API_KEY&url=https%3A%2F%2Fkomikcast.me&country=au");
 
-    const data = dev ? await fetch(`https://komikcast.me`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me&country=au`).then(res => res.json()).then(a => a.result.content);
+    const data = dev ? await fetch(`https://komikcast.me`).then(res => res.text()) :
+      await fetch_scrap_ninja(`https://komikcast.me`)
+    // await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me&country=au`).then(res => res.json()).then(a => a.result.content);
+
 
     // const req = await response.json();
     // const data = await req.body;
@@ -208,7 +213,9 @@ export const HandleKomikList = async (url) => {
 
     // https://komikcast.me/daftar-komik/
 
-    const data = dev ? await fetch(`https://komikcast.me/daftar-komik/`).then(res => res.text()) : await fetch(url).then(res => res.json()).then(a => a.result.content);
+    const data = dev ? await fetch(`https://komikcast.me/daftar-komik/`).then(res => res.text()) :
+      await fetch_scrap_ninja(url)
+    // await fetch(url).then(res => res.json()).then(a => a.result.content);
     // const data = await fetcherAPI(url);
 
     const $ = cheerio.load(data);
@@ -285,7 +292,9 @@ export const HandleKomikChapterId = async (cid) => {
     // let a = `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`
     // const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`);
 
-    const data = dev ? await fetch(`${chapter_link}/${cid}/`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`).then(res => res.json()).then(a => a.result.content);
+    const data = dev ? await fetch(`${chapter_link}/${cid}/`).then(res => res.text()) :
+      await fetch_scrap_ninja(`${chapter_link}/${cid}/`)
+    // await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`).then(res => res.json()).then(a => a.result.content);
 
     // console.log("data chpater", data);
     const $ = cheerio.load(data);

@@ -126,8 +126,8 @@ export const HandlerKomikId = async (kid) => {
   } catch (error) {
     return {
       status: true,
-      message: "success",
-      komik_list,
+      message: "gagal",
+      // komik_list,
     };
   }
 };

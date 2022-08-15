@@ -16,9 +16,9 @@ export const HandlerKomikId = async (kid) => {
     endpoint = kid;
   }
 
-  const API = dev ? `${link_endpoint}/${endpoint}` : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`
+  // const API = dev ? `${link_endpoint}/${endpoint}` : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`
   // const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
-  const data = dev ? await fetch(API).then(res => res.text()) : await fetch(API).then(res => res.json()).then(a => a.result.content);
+  const data = dev ? await fetch(`${link_endpoint}/${endpoint}`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`).then(res => res.json()).then(a => a.result.content);
 
 
   // const data = res.body;
@@ -197,7 +197,7 @@ export const HandleRecommend = async () => {
 };
 
 export const HandleKomikList = async (url) => {
-  const API = dev ? 'https://komikcast.me/daftar-komik/' : url
+  // const API = dev ? 'https://komikcast.me/daftar-komik/' : url
   try {
 
     const link_endpoint = "https://komikcast.me/komik/";
@@ -205,7 +205,7 @@ export const HandleKomikList = async (url) => {
 
     // https://komikcast.me/daftar-komik/
 
-    const data = dev ? await fetch(API).then(res => res.text()) : await fetch(API).then(res => res.json()).then(a => a.result.content);
+    const data = dev ? await fetch(`https://komikcast.me/daftar-komik/`).then(res => res.text()) : await fetch(url).then(res => res.json()).then(a => a.result.content);
     // const data = await fetcherAPI(url);
 
     const $ = cheerio.load(data);
@@ -273,7 +273,7 @@ export const HandleKomikChapterId = async (cid) => {
   //   "https://komikcast.me/chapter/chikashitsu-dungeon-binbou-kyoudai-wa-goraku-o-motomete-saikyou-e-chapter-29-bahasa-indonesia/";
 
   // const { cid } = req.query;
-  const API = dev ? `${chapter_link}/${cid}/` : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`
+  // const API = dev ? `${chapter_link}/${cid}/` : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`
 
 
   try {
@@ -282,7 +282,7 @@ export const HandleKomikChapterId = async (cid) => {
     // let a = `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`
     // const data = await fetcherAPI(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`);
 
-    const data = dev ? await fetch(API).then(res => res.text()) : await fetch(API).then(res => res.json()).then(a => a.result.content);
+    const data = dev ? await fetch(`${chapter_link}/${cid}/`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fchapter%2F${cid}%2F&tags=project%3Adefault&country=au`).then(res => res.json()).then(a => a.result.content);
 
     // console.log("data chpater", data);
     const $ = cheerio.load(data);

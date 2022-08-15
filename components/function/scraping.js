@@ -20,8 +20,8 @@ export const HandlerKomikId = async (kid) => {
       endpoint = kid;
     }
     // const API = dev ? `${link_endpoint}/${endpoint}` : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`
-    // const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
-    const data = dev ? await fetch(`${link_endpoint}/${endpoint}`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`).then(res => res.json()).then(a => a.result.content);
+    const data = await fetcherAPI(`${link_endpoint}/${endpoint}`);
+    // const data = dev ? await fetch(`${link_endpoint}/${endpoint}`).then(res => res.text()) : await fetch(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me%2Fkomik%2F${endpoint}&country=au`).then(res => res.json()).then(a => a.result.content);
 
 
     // const data = res.body;

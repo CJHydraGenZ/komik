@@ -84,7 +84,7 @@ export const HandlerKomikId = async (kid) => {
     .find("img")
     .attr("src")
     .replace(/.*?:\/\//g,
-      "https://cdn.statically.io/img/") || null;
+      "https://cdn.statically.io/img/");
 
   $(".komik_info-content-body > .komik_info-content-genre").each((idx, el) => {
     let genre_name = $(el)

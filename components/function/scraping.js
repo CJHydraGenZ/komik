@@ -322,8 +322,9 @@ export const HandleKomikChapterId = async (cid) => {
     obj.chapter_pages = getPages.length;
     getPages.each((i, el) => {
       chapter_image.push({
-        chapter_image_link: $(el).attr("src").replace(/.*?:\/\//g,
-          "https://cdn.statically.io/img/"),
+        chapter_image_link: $(el).attr("src"),
+        // .replace(/.*?:\/\//g,
+        //   "https://cdn.statically.io/img/"),
         image_number: i + 1,
       });
     });

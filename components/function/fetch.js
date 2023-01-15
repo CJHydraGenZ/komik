@@ -7,6 +7,8 @@ import axios from "axios";
 
 export const fetch_scrapfly = (url, options) =>
   fetch(url, options).then(res => res.json()).then(res => res.result.content)
+export const fetcher = (url, options) =>
+  fetch(url, options).then(res => res.json())
 
 export const fetch_scrap_ninja = (url) => axios.request({
   method: 'POST',

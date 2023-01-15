@@ -130,10 +130,11 @@ export const HandleRecommend = async () => {
 
     // const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=$process.env.SCRAPFLY_API_KEY&url=https%3A%2F%2Fkomikcast.me&country=au");
 
-    const data = dev ? await fetch(`https://komikcast.me`).then(res => res.text()) :
-      await fetch_scrapfly(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me&country=au`)
+    // const data = dev ? await fetch(`https://komikcast.me`).then(res => res.text()) :
+    //   await fetch_scrapfly(`https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me&country=au`)
     // await fetch_scrap_ninja(`https://komikcast.me`)
 
+    const data = await fetch(`https://komikcast.site/?426ec24061=59a4e26d32&1bec38a803=79518e3667&73b2b42ed8=60aaee3279&4a03c0d613=1530a72e37&c733506b41=5746baa435&fbclid=IwAR2t5M2CxlR44vadWguQ18lW_8qER0wOKj0O_qgoEF5lCGwK1cBQzIwNWvh`).then(res => res.text())
 
     // const req = await response.json();
     // const data = await req.body;

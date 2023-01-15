@@ -11,7 +11,7 @@ const nextConfig = {
     domains: [
       "img.statically.io",
       "i3.wp.com",
-      "komikcast.me",
+      "komikcast.site",
       "cdn.komikcast.com",
       "thumbnail.komiku.id",
       "cdn.komiku.co.id",

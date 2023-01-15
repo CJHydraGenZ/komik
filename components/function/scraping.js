@@ -9,7 +9,7 @@ const dev = process.env.NODE_ENV !== "production";
 export const HandlerKomikId = async (kid) => {
   const link_endpoint = "https://komikcast.me/komik";
   const link_endpoin = "https://komikcast.site/komik/?3a24865d44=34bc35bc9a&9d047e76e1=5a0ad9215b&6baa5a75ed=4893b65c36&dd91d164d6=daad574380&7328157bb0=277750332e&fbclid=IwAR1BfHI7WDlJA_KQopLNRwuCKMU26DmvlmZJFU1-zkZr3yNNOKPmR9SVJA8";
-  const chapter_link = "https://komikcast.me/chapter/";
+  const chapter_link = "https://komikcast.site/chapter/";
   let endpoint = kid;
   // if (kid === "tokyo%e5%8d%8drevengers") {
   //   endpoint = "tokyo卍revengers/";
@@ -128,7 +128,7 @@ export const HandlerKomikId = async (kid) => {
 export const HandleRecommend = async () => {
   // const API = dev ? '' : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me&country=au`
   try {
-    const link_endpoint = "https://komikcast.me/komik/";
+    const link_endpoint = "https://komikcast.site/komik/";
 
     // const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=$process.env.SCRAPFLY_API_KEY&url=https%3A%2F%2Fkomikcast.me&country=au");
 
@@ -211,7 +211,7 @@ export const HandleKomikList = async (url) => {
   // const API = dev ? 'https://komikcast.me/daftar-komik/' : url
   try {
 
-    const link_endpoint = "https://komikcast.me/komik/";
+    const link_endpoint = "https://komikcast.site/komik/";
 
 
     // https://komikcast.me/daftar-komik/

@@ -7,8 +7,18 @@ import axios from "axios";
 
 export const fetch_scrapfly = (url, options) =>
   fetch(url, options).then(res => res.json()).then(res => res.result.content)
-export const fetcher = (url, options) =>
-  fetch(url, options).then(res => res.json())
+
+
+let headers = new Headers({
+  "Accept": "application/json",
+  "Content-Type": "application/json",
+  "User-Agent": "Statically-Images/2.0"
+});
+export const fetcher = (url) =>
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(res => res.json())
 
 export const fetch_scrap_ninja = (url) => axios.request({
   method: 'POST',

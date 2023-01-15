@@ -21,7 +21,8 @@ export const ImageCard = ({ variant, thumb, title }) => {
     <div
       className={`w-full bg-gray-200 overflow-hidden ${pickVarian}`}
     >
-      <Image
+      <img className="flex aspect-w-10" src={src} alt={title} />
+      {/* <Image
         src={src}
         alt={title}
         layout="fill"
@@ -40,7 +41,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
             setSrc(thumb);
           }
         }}
-      />
+      /> */}
     </div>
   );
 };

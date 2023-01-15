@@ -214,8 +214,9 @@ export const HandleKomikList = async (url) => {
 
     // https://komikcast.me/daftar-komik/
 
-    const data = dev ? await fetch(`https://komikcast.me/daftar-komik/`).then(res => res.text()) :
-      await fetch_scrapfly(url);
+    const data = await fetch(`https://komikcast.site/daftar-komik/?be26e90c7e=4552a9aa2c&6e6e79dd1b=a41bc659ce&8091b19c8b=d6959158be&2a573a5c82=35b4a7ed16&483766e8e9=d7a6ac3c70&fbclid=IwAR2W37t3S7N3Goj5ak5ivH6B3NdE6QCBaJNxaGLEznV_ZRbPEa3QIVmDlIO`).then(res => res.text())
+    // const data = dev ? await fetch(`https://komikcast.me/daftar-komik/`).then(res => res.text()) :
+    //   await fetch_scrapfly(url);
     // await fetch_scrap_ninja(url)
     // const data = await fetcherAPI(url);
 

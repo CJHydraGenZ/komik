@@ -19,7 +19,7 @@ export default function KomikID() {
   // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   // console.log("ini", data);
-  const { data, error } = useSWR(`${server}/api/komik/${id}`, fetcher);
+  const { data, error } = useSWR(`/api/komik/${id}`, fetcher);
 
   // const getData = async () => {
   //   try {

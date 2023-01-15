@@ -15,10 +15,27 @@ export default function Chapter() {
   const router = useRouter();
   const { id } = router.query;
   // const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
   //   data;
   const { data, error } = useSWR(`/api/chapter/${id}`, fetcher);
+  // const [data, setData] = useState([]);
+  // console.log("inidata", data);
+  // const [loading, setLoading] = useState(false);
+  // const getData = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const { data } = await fetcher(`/api/chapter/${id}`);
+  //     setData(data);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  // // useEffect(() => {
+  // }, []);
 
   // const getData = async () => {
   //   try {
@@ -35,6 +52,7 @@ export default function Chapter() {
   // }, []);
 
   useEffect(() => {
+    // getData();
     if (!router.isReady) return;
     // if (error) return "An error has occurred.";
     // if (!data) return "Loading...";

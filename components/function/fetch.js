@@ -14,11 +14,14 @@ let headers = new Headers({
   "Content-Type": "application/json",
   "User-Agent": "Statically-Images/2.0"
 });
-export const fetcher = (url) =>
-  fetch(url, {
-    method: 'GET',
-    headers: headers
-  }).then(res => res.json())
+export const fetcher = (url) => axios.get(url, {
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "User-Agent": "Statically-Images/2.0"
+  }
+}).then(res => res.data)
+
 
 export const fetch_scrap_ninja = (url) => axios.request({
   method: 'POST',

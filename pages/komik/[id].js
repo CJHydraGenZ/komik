@@ -3,7 +3,7 @@ import axios from "axios";
 import { Content } from "components/content/content";
 import { fetcher } from "components/function/fetch";
 import { HandlerKomikId } from "components/function/scraping";
-import { server } from "config";
+// import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,25 +46,7 @@ export default function KomikID() {
     // getData();
   }, [router.isReady]);
 
-  // const {
-  //   komik_endpoint,
-  //   title,
-  //   description,
-  //   type,
-  //   author,
-  //   status,
-  //   released,
-  //   total_chapter,
-  //   update_on,
-  //   thumb,
-  //   synopsis,
-  //   genre_list,
-  //   chapter,
-  // } = data;
-  // console.log(chapter);
 
-  // const genre_name = data?.genre_list.map((g, i) => g)[0].map((c, i) => c)
-  // console.log(genre_name);
 
   return (
     <div>
@@ -92,9 +74,8 @@ export default function KomikID() {
           <div className="info flex flex-wrap gap-2">
             {/* <ul className="list-disc"> */}
             {
-              data?.genre_list?.map((g, i) => <Link key={i} href=''><a className="block bg-slate-500 rounded-sm py-2 px-3 text-white font-sans text-sm">
+              data?.genre_list?.map((g, i) => <Link key={i} href='/'>
                 {g}
-              </a>
               </Link>)
             }
             {/* <li>asas</li>
@@ -123,11 +104,11 @@ export default function KomikID() {
               ))} */}
           {data?.chapter?.map((d, i) => (
             <li key={i}>
-              <Link href={`/chapter/${d.chapter_endpoint}`}>
-                <a className="flex justify-between">
-                  <h2>{d.chapter_title}</h2>
-                  <h2>{d.chapter_time}</h2>
-                </a>
+              <Link className="flex justify-between" href={`/chapter/${d.chapter_endpoint}`}>
+                {/* <a > */}
+                <h2>{d.chapter_title}</h2>
+                <h2>{d.chapter_time}</h2>
+                {/* </a> */}
               </Link>
             </li>
           ))}

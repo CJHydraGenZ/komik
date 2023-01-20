@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { HandlerKomikId } from "components/function/scraping";
+import { HandlerKomikId } from "components/scaping/komikcash/scraping";
 import { HandleDetailId, HandleListPage } from "components/function/scraping_komikid";
 import NextCors from "nextjs-cors";
 

@@ -1,7 +1,7 @@
 // import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
-import { HandleRecommend } from "components/function/scraping";
+import { HandleRecommend } from "components/scaping/komikcash/scraping";
 import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {

@@ -2,7 +2,7 @@ import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { fetcher } from "components/function/fetch";
-import { HandlerKomikId } from "components/function/scraping";
+import { HandlerKomikId } from "components/scaping/komikcash/scraping";
 // import { server } from "config";
 import Head from "next/head";
 import Image from "next/image";

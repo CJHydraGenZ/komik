@@ -2,7 +2,7 @@ import axios from "axios";
 // import got from "got";
 
 import * as cheerio from "cheerio";
-import { fetcherAPI, fetch_scrapfly, fetch_scrap_ninja } from "./fetch";
+import { fetcherAPI, fetch_scrapfly, fetch_scrap_ninja } from "../../function/fetch";
 
 const dev = process.env.NODE_ENV !== "production";
 

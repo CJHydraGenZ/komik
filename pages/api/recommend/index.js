@@ -1,7 +1,6 @@
 // import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
-import { fetcher, fetcherAPI } from "components/function/fetch";
 import { HandleRecommend } from "components/function/scraping";
 import NextCors from "nextjs-cors";
 

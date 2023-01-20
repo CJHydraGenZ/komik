@@ -7,9 +7,6 @@ import SeriesList from "@/content/komik/seriesList";
 import { CardRecommend } from "./card/cardRecommed";
 import { CardPopular } from "./card/cardPopular";
 import { server } from "config";
-import { fetcher, fetcherAPI } from "components/function/fetch";
-// import { get } from "cheerio/lib/api/traversing";
-// import axios from "axios";
 export const Content = () => {
   // console.log("dsad", posts);
   const [komik, setkomik] = useState([]);

@@ -1,7 +1,6 @@
 import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
-import { fetcherAPI } from "components/function/fetch";
 import { HandleKomikList } from "components/function/scraping";
 import { HandleListPage } from "components/function/scraping_komikid";
 import NextCors from "nextjs-cors";

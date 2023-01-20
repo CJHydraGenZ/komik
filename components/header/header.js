@@ -1,40 +1,26 @@
 import React from "react";
-import { Navbar } from "flowbite-react";
+// import { Navbar } from "flowbite-react";
+// import Link from "";
 import Link from "next/link";
 export const Header = () => {
   return (
-    <Navbar fluid={true} rounded={true}>
-      {/* <Navbar.Brand href="https://flowbite.com/"> */}
-      <Link href={`/`}>
-        <a>
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            KomikIDC
-          </span>
-        </a>
-      </Link>
-      {/* </Navbar.Brand> */}
-      <Navbar.Toggle />
-      <Navbar.Collapse>
-        {/* <Navbar.Link href="/komik" active={true}> */}
-        <Link href={`/komik`}>
-          <a>Daftar komik</a>
-        </Link>
-        {/* </Navbar.Link> */}
-        {/* <Navbar.Link href="/navbars"> */}
-        <Link href={`/about`}>
-          <a>About</a>
-        </Link>
-        <Link href={`/dashboard`}>
-          <a>Dashboard</a>
-        </Link>
-        <Link href={`/login`}>
-          <a>Login</a>
-        </Link>
-        {/* </Navbar.Link> */}
-        {/* <Navbar.Link href="/navbars">Services</Navbar.Link>
-        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-        <Navbar.Link href="/navbars">Contact</Navbar.Link> */}
-      </Navbar.Collapse>
-    </Navbar>
+    <div className="navbar bg-base-100">
+      <div className="flex-1">
+        {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
+        <Link href={`/`}>KomikIDC</Link>
+      </div>
+      <div className="flex-none">
+        <ul className="menu menu-horizontal px-1">
+          {/* <li><Link href={`/`}>KomikIDC</Link></li> */}
+          <li tabIndex={0}>
+            <Link href={`/komik`}>
+              Daftar Komik
+            </Link>
+
+          </li>
+          {/* <li><Link>Item 3</Link></li> */}
+        </ul>
+      </div>
+    </div>
   );
 };

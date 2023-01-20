@@ -1,14 +1,15 @@
-import { CardKomik } from "@/content/card/card";
-import { KomikList } from "@/content/komik/komikList";
+// import { KomikList } from "@/content/komik/komikList";
 import axios from "axios";
-import { Content } from "components/content/content";
-import { fetcher } from "components/function/fetch";
-import { server } from "config";
+// import { Content } from "components/content/content";
+// import { fetcher } from "components/function/fetch";
+// import { server } from "config";
+import { CardKomik } from "@/content/card/card";
 import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
+// import Image from "next/image";
+// import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import useSWR, { SWRConfig } from "swr";
+import Image from "next/image";
+// import useSWR, { SWRConfig } from "swr";
 
 export default function Komik({ fallback }) {
   const [data, setData] = useState([]);
@@ -19,9 +20,9 @@ export default function Komik({ fallback }) {
       setLoading(true);
       const { data } = await axios.get(`/api/komik/`);
       setData(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -51,15 +52,25 @@ export default function Komik({ fallback }) {
             {loading
               ? "Loading..."
               : data?.komik_list?.map((d, i) => (
-                <CardKomik
-                  key={i}
-                  thumb={d.thumb}
-                  title={d.title}
-                  rating={d.rating}
-                  endpoint={d.endpoint}
-                  chapter={d.chapter}
-                  last_upload_endpoint={d.last_upload_endpoint}
-                />
+                // <CardKomik
+                //   key={i}
+                //   thumb={d.thumb}
+                //   title={d.title}
+                //   rating={d.rating}
+                //   endpoint={d.endpoint}
+                //   chapter={d.chapter}
+                //   last_upload_endpoint={d.last_upload_endpoint}
+                // />
+                <div key={i} className="card lg:card-side bg-base-100 shadow-xl">
+                  <figure><Image src={d.thumb} alt={d.title} /></figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{d.title}</h2>
+                    <p>{d.rating}</p>
+                    {/* <div className="card-actions justify-end">
+                      <button className="btn btn-primary">Listen</button>
+                    </div> */}
+                  </div>
+                </div>
               ))}
           </div>
         </div>

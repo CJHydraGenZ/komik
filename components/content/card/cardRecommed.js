@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Rating } from "flowbite-react";
+// import { Card, Rating } from "flowbite-react";
 import Link from "next/link";
 import Image from "next/image";
 // import { ch } from "components/function/ch";
@@ -17,26 +17,26 @@ export const CardRecommend = ({
   return (
     <div className="w-full h-full my-2">
       <Link href={`/komik/${endpoint}`}>
-        <a className="group">
-          {/* <Card imgAlt={title} imgSrc={thumb}> */}
-          {/* <div className="block"> */}
-          <div className="flex">
-            <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg ">
-              <ImageCard variant="recommend" title={title} thumb={thumb} />
-              <div className="p-6 flex flex-col justify-start">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">
-                  {title}
-                </h5>
-                <p className="text-gray-700 text-base mb-4">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="text-gray-600 text-xs">{chapter}</p>
-              </div>
+        {/* <a className="group"> */}
+        {/* <Card imgAlt={title} imgSrc={thumb}> */}
+        {/* <div className="block"> */}
+        <div className="flex">
+          <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg ">
+            <ImageCard variant="recommend" title={title} thumb={thumb} />
+            <div className="p-6 flex flex-col justify-start">
+              <h5 className="text-gray-900 text-xl font-medium mb-2">
+                {title}
+              </h5>
+              <p className="text-gray-700 text-base mb-4">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+              <p className="text-gray-600 text-xs">{chapter}</p>
             </div>
-            {/* </div> */}
-            {/* <div className="relative w-full h-full">
+          </div>
+          {/* </div> */}
+          {/* <div className="relative w-full h-full">
               <Image
                 src={thumb}
                 alt={title}
@@ -66,10 +66,10 @@ export const CardRecommend = ({
                 {rating}
               </h2>
             </div> */}
-          </div>
+        </div>
 
-          {/* </Card> */}
-        </a>
+        {/* </Card> */}
+        {/* </a> */}
       </Link>
     </div>
   );

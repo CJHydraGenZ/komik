@@ -1,8 +1,8 @@
-import axios from "axios";
-import { Content } from "components/content/content";
+
+import { Content } from "@/content/content";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+
 import styles from "../styles/Home.module.css";
 
 export default function Home() {

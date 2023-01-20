@@ -9,8 +9,8 @@ export const KomikList = () => {
   const { data, error } = useSWR(API);
 
   // there should be no `undefined` state
-  console.log("Is data ready?", !!data);
-  console.log(data);
+  // console.log("Is data ready?", !!data);
+  // console.log(data);
   if (error) return "An error has occurred.";
   if (!data) return "Loading...";
   return (

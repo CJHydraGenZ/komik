@@ -306,6 +306,7 @@ export const HandleKomikChapterId = async (cid) => {
     const content = $("#content");
     let chapter_image = [];
     const obj = {};
+    obj.komik_endpoint = cid.split(/-chapter\S+/gm).join(" ").trim()
     obj.chapter_endpoint = cid + "/";
     obj.chapter_name = cid.split("-").join(" ").trim();
 

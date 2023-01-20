@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.img span {
+/* .img span {
   @apply relative !important;
 }
 .img span img {
@@ -11,6 +11,22 @@
 
 .card-recommend {
   @apply flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg !important;
+} */
+
+.image-container {
+  /* position: relative; */
+  width: 100%;
+}
+div,
+span {
+  position: unset !important;
+}
+
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }
 
 /* 

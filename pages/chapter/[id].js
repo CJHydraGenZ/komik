@@ -18,84 +18,67 @@ export default function Chapter() {
   // const [loading, setLoading] = useState(false);
   // const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
   //   data;
-  const { data, error } = useSWR(`/api/chapter/${id}`, fetcher);
-  // const [data, setData] = useState([]);
-  // console.log("inidata", data);
-  // const [loading, setLoading] = useState(false);
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { data } = await fetcher(`/api/chapter/${id}`);
-  //     setData(data);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  // // useEffect(() => {
-  // }, []);
+  const [page, setPage] = useState(0)
 
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
-  //     setData(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const { data: chapter } = useSWR(`/api/chapter/${id}`, fetcher);
+  const { data: komik } = useSWR(`/api/komik/${chapter?.komik_endpoint}`, fetcher);
+  // console.log(komik);
+
   // useEffect(() => {
-  //   getData();
-  // }, []);
+  //   // getData();
+  //   if (!router.isReady) return;
+  //   // if (error) return "An error has occurred.";
+  //   // if (!data) return "Loading...";
+  //   // getData();
+  // }, [router.isReady]);
 
-  useEffect(() => {
-    // getData();
-    if (!router.isReady) return;
-    // if (error) return "An error has occurred.";
-    // if (!data) return "Loading...";
-    // getData();
-  }, [router.isReady]);
+  if (!chapter) return 'loading...'
+  if (!komik) return 'loading...'
+
+  const handleChange = (e) => {
+
+    router.push(`/chapter/${e.target.value}`)
+    setPage(e.target.value)
+
+
+  }
+  // console.log(page);
 
   return (
     <div>
       <Head>
         <title>Chapter</title>
-        <meta name="chapter" content={data?.title} />
+        <meta name="chapter" content={chapter?.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <h1>Home</h1> */}
-      {/* <h1>{process.env.NEXT_PUBLIC_RAPIDAPI_KEY}</h1> */}
-      {/* <h1>{process.env.NEXT_PUBLIC_HOST}</h1> */}
-      {/* <Content /> */}
+
       <div className="container lg:px-24">
         <div className="flex flex-col space-y-4">
-          <h1>{data?.title}</h1>
+          <h1>{chapter?.title}</h1>
           <div className="flex flex-col space-y-6">
-            <h1>{data?.chapter_name}</h1>
-            <div className="img">
-              <div className="relative w-full h-full">
-                {data?.chapter_image?.map((d, i) => (
-                  <ImageCard
-                    key={i}
-                    variant="chapter"
-                    thumb={d.chapter_image_link}
-                    title={data?.chapter_name}
-                  // layout="fill"
-                  // objectFit="cover"
-                  />
-                ))}
-              </div>
+            <h1>{chapter?.chapter_name}</h1>
+            {/* <div className="img"> */}
+            <div className="w-full h-full">
+              {chapter?.chapter_image?.map((d, i) => (
+                <ImageCard
+                  key={i}
+                  variant="chapter"
+                  thumb={d.chapter_image_link}
+                  title={chapter?.chapter_name}
+                // layout="fill"
+                // objectFit="cover"
+                />
+              ))}
+              {/* </div> */}
             </div>
             <div className="flex justify-between">
               <button>Kembali</button>
-              {/* <button>Kembali</button> */}
-              <select name="" id="">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+              <select onChange={(e) => handleChange(e)} value={page}>
+                {
+                  komik?.chapter?.map((d, i) => <option key={i} value={d.chapter_endpoint}>{d.chapter_endpoint.split(/\D+/gm).join(' ')}</option>)
+                }
+                {/* <option value="2">2</option>
+                <option value="3">3</option> */}
               </select>
               <button>Lanjut</button>
             </div>
@@ -110,13 +93,13 @@ export default function Chapter() {
 //   // Call an external API endpoint to get posts
 //   const { id } = context.query;
 //   const res = await fetch(`${server}/api/chapter/${id}`);
-//   const data = await res.json();
+//   const chapter = await res.json();
 
 //   // By returning { props: { posts } }, the Blog component
 //   // will receive `posts` as a prop at build time
 //   return {
 //     props: {
-//       data,
+//       chapter,
 //     },
 //   };
 // }

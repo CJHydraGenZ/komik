@@ -45,8 +45,8 @@ export const Content = () => {
     // getKomikList();
   }, []);
 
-  console.log(komik);
-  console.log(komikList);
+  // console.log(komik);
+  // console.log(komikList);
 
   return (
     <>

@@ -4,12 +4,12 @@ import { ch } from "components/function/ch";
 import Limage from "public/loading.webp";
 export const ImageCard = ({ variant, thumb, title }) => {
   const [loading, setLoading] = useState(true);
-  const [src, setSrc] = useState(Limage);
-  useEffect(() => {
-    if (thumb) {
-      setSrc(thumb);
-    }
-  }, [thumb]);
+  // const [src, setSrc] = useState(Limage);
+  // useEffect(() => {
+  //   if (thumb) {
+  //     setSrc(thumb);
+  //   }
+  // }, [thumb]);
   const variants = {
     recommend: "aspect-w-16 aspect-h-8",
     daftar: "aspect-w-6 aspect-h-7",
@@ -19,20 +19,21 @@ export const ImageCard = ({ variant, thumb, title }) => {
   const pickVarian = variants[variant];
   return (
     <div
-      className={`w-full bg-gray-200 overflow-hidden ${pickVarian}`}
+      className={`image-container w-full bg-gray-200 overflow-hidden ${pickVarian} `}
     >
-      <img className="flex aspect-w-10" src={src} alt={title} />
-      {/* <Image
-        src={src}
+      {/* <img className="flex aspect-w-10" src={src} alt={title} /> */}
+      <Image
+        src={thumb}
         alt={title}
-        layout="fill"
-        // objectFit=""
+
+
         className={ch(
-          "group-hover:opacity-75 duration-700 ease-in-out",
+          "image group-hover:opacity-75 duration-700 ease-in-out",
           loading
-            ? "grayscale blur-2xl scale-110"
-            : "grayscale-0 blur-0 scale-100"
+            ? "image grayscale blur-2xl scale-110"
+            : "image grayscale-0 blur-0 scale-100"
         )}
+        fill
         //   onLoadingComplete={() => setLoading(false)}
         onLoadingComplete={(result) => {
           setLoading(false)
@@ -41,7 +42,8 @@ export const ImageCard = ({ variant, thumb, title }) => {
             setSrc(thumb);
           }
         }}
-      /> */}
+        priority
+      />
     </div>
   );
 };

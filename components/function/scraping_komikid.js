@@ -70,10 +70,10 @@ export const HandleDetailId = async (kid) => {
       'Cahya': 'sahhda'
     }
   });
-  console.log(data);
+  // console.log(data);
   const $ = cheerio.load(data);
   const element = $(".perapih");
-  console.log(element);
+  // console.log(element);
   let genre_list = [];
   let chapter = [];
   const obj = {};
@@ -142,7 +142,7 @@ export const HandleChapterId = async (slug) => {
     }
   });
   // const response = await axios.get(`https://komikcast.id/${slug}`)
-  console.log(data);
+  // console.log(data);
   const $ = cheerio.load(data);
   const content = $("#article");
   let chapter_image = [];

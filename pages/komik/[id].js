@@ -74,7 +74,7 @@ export default function KomikID() {
           <div className="info flex flex-wrap gap-2">
             {/* <ul className="list-disc"> */}
             {
-              data?.genre_list?.map((g, i) => <Link key={i} href='/'>
+              data?.genre_list?.map((g, i) => <Link key={i} href={`/genre/${g}`}>
                 {g}
               </Link>)
             }

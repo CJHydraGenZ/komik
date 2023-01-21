@@ -15,8 +15,9 @@ export default function Home() {
         <meta name="komik_idc" content="KomikIDC recomendasi listkomik" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      {/* <div className="container"> */}
       <Content />
+      {/* </div> */}
     </div>
   );
 }

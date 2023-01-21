@@ -47,23 +47,9 @@ export const Content = () => {
 
   return (
     <>
-      <div className=" bg-green-200">
-        {/* {komik?.komik_list?.map((d, i) => (
-          <CardRecommend
-            key={i}
-            thumb={d.thumb}
-            title={d.title}
-            rating={d.rating}
-            endpoint={d.endpoint}
-            chapter={d.chapter}
-            last_upload_endpoint={d.last_upload_endpoint}
-          />
-        ))} */}
 
-        {/* <CardPopular /> */}
-      </div>
 
-      <div className="lg:flex w-full gap-2">
+      <div className="lg:flex w-full gap-2 bg-slate-600">
         <ContentList data={komikList} loading={loading} />
 
         <SeriesList />

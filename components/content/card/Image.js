@@ -13,7 +13,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
   const variants = {
     recommend: "aspect-w-16 aspect-h-8",
     daftar: "aspect-w-6 aspect-h-7",
-    komik: "aspect-w-6 aspect-h-4",
+    komik: "aspect-h-4",
     chapter: "aspect-w-14",
   };
   const pickVarian = variants[variant];

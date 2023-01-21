@@ -212,6 +212,7 @@ export const HandleKomikList = async (url) => {
   try {
 
     const link_endpoint = "https://komikcast.site/komik/";
+    const chapter_link_endpoint = "https://komikcast.site/chapter/";
 
 
     // https://komikcast.me/daftar-komik/
@@ -241,7 +242,8 @@ export const HandleKomikList = async (url) => {
         thumb = $(el)
           .find("a > .list-update_item-image")
           .find("img")
-          .attr("src");
+          .attr("src").replace(/.*?:\/\//g,
+            "https://cdn.statically.io/img/");
         // thumb = $(el).find()
         chapter = $(el)
           .find("a > .list-update_item-info")
@@ -253,7 +255,7 @@ export const HandleKomikList = async (url) => {
           .find("a > .list-update_item-info")
           .find(".other")
           .find(".chapter")
-          .attr("href");
+          .attr("href").replace(chapter_link_endpoint, "");
 
         endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
 

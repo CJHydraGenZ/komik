@@ -9,6 +9,7 @@ import Head from "next/head";
 // import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 // import useSWR, { SWRConfig } from "swr";
 
 export default function Komik({ fallback }) {
@@ -48,7 +49,7 @@ export default function Komik({ fallback }) {
         <div className="list-komik  h-auto w-full px-4 py-2">
 
 
-          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
+          <div className="grid grid-cols-1 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
             {loading
               ? "Loading..."
               : data?.komik_list?.map((d, i) => (
@@ -61,15 +62,19 @@ export default function Komik({ fallback }) {
                 //   chapter={d.chapter}
                 //   last_upload_endpoint={d.last_upload_endpoint}
                 // />
-                <div key={i} className="card lg:card-side bg-base-100 shadow-xl">
-                  <figure><Image src={d.thumb} alt={d.title} /></figure>
-                  <div className="card-body">
-                    <h2 className="card-title">{d.title}</h2>
-                    <p>{d.rating}</p>
-                    {/* <div className="card-actions justify-end">
+                <div key={i} className=" rounded-sm bg-base-100 shadow-xl">
+                  <Link className="flex gap-1" href={`/komik/${d.endpoint}`}>
+                    <figure className="w-1/6" ><Image className="image" fill src={d.thumb} alt={d.title} /></figure>
+                    <div className="w-5/6">
+                      <h2 className="">{d.title}</h2>
+                      {/* <h2 >{d.chapter}</h2> */}
+                      <Link href={`/chapter/${d.last_upload_endpoint}`}>{d.chapter}</Link>
+                      <p>{d.rating}</p>
+                      {/* <div className="card-actions justify-end">
                       <button className="btn btn-primary">Listen</button>
                     </div> */}
-                  </div>
+                    </div>
+                  </Link>
                 </div>
               ))}
           </div>

@@ -21,30 +21,13 @@ export default function KomikID() {
   // console.log("ini", data);
   const { data, error } = useSWR(`/api/komik/${id}`, fetcher);
 
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
+  if (!data) return "Loading...";
 
-  //     // const { data } = await axios.get(`${server}/api/komik/${id}`);
-
-  //     // const data = await HandlerKomikId(id);
-
-  //     // console.log("data", data);
-  //     setData(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // console.log("ini thumb", thumb);
-  useEffect(() => {
-    if (!router.isReady) return;
-    // if (error) return "An error has occurred.";
-    // if (!data) return "Loading...";
-    // getData();
-  }, [router.isReady]);
+  // useEffect(() => {
+  //   if (!router.isReady) return;
+  //   // if (error) return "An error has occurred.";
+  //   // getData();
+  // }, [router.isReady]);
 
 
 
@@ -59,18 +42,18 @@ export default function KomikID() {
 
       <div className="flex flex-col space-y-4 w-full">
         <div className="flex flex-col">
-          <div className="relative w-full h-full my-2">
-            <ImageCard
-              variant="komik"
-              thumb={data?.thumb}
-              title={data?.title}
-            />
 
-            {/* {loading ? (
+          <ImageCard
+            variant="komik"
+            thumb={data?.thumb}
+            title={data?.title}
+          />
+
+          {/* {loading ? (
               "Loading..."
             ) : (
             )} */}
-          </div>
+
           <div className="info flex flex-wrap gap-2">
             {/* <ul className="list-disc"> */}
             {

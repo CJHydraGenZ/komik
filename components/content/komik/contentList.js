@@ -19,7 +19,8 @@ const contentList = ({ data, loading }) => {
               </figure>
               <div className="w-5/6">
                 <h2 className="">{d.title}!</h2>
-                <p>{d.chapter}.</p>
+                {/* <p>{d.chapter}.</p> */}
+                <Link href={`/chapter/${d.last_upload_endpoint}`}>{d.chapter}</Link>
 
               </div>
             </Link>

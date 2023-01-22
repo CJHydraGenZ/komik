@@ -7,6 +7,7 @@ import SeriesList from "@/content/komik/seriesList";
 import { CardRecommend } from "./card/cardRecommed";
 import { CardPopular } from "./card/cardPopular";
 import { server } from "config";
+import Listkomik from "./list_komik/komik";
 export const Content = () => {
   // console.log("dsad", posts);
   const [komik, setkomik] = useState([]);
@@ -49,9 +50,9 @@ export const Content = () => {
     <>
 
 
-      <div className="lg:flex w-full gap-2 bg-slate-600">
-        <ContentList data={komikList} loading={loading} />
-
+      <div className="lg:flex w-full gap-2 ">
+        {/* <ContentList data={komikList} loading={loading} /> */}
+        <Listkomik data={komikList} loading={loading} />
         <SeriesList />
       </div>
     </>

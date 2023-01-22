@@ -16,8 +16,7 @@
 .image-container {
   width: 100%;
 }
-div,
-span {
+.image-container > span {
   position: unset !important;
 }
 
@@ -25,7 +24,7 @@ span {
   object-fit: contain;
   width: 100% !important;
   position: relative !important;
-  height: unset !important;
+  /* height: unset !important; */
 }
 
 /* 

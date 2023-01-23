@@ -1,12 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-// import { cors, runMiddleware } from "components/middleware";
+import { getCommitList, getCommitMessage } from "components/github/octokit";
+import { cors, runMiddleware } from "components/middleware";
 
 export default async function handler(req, res) {
   // await runMiddleware(req, res, cors);
   try {
     //komikidc.vercel
-    return res.status(200).json({ name: "John Doe" });
+    return res.status(200).json(await getCommitMessage());
   } catch (error) {
     res.status(404).json({ error });
   }

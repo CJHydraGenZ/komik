@@ -5,7 +5,7 @@ import React from 'react'
 export default function ListItem({ data }) {
   // console.log('ini ', data);
   return (
-    <article className="flex items-start space-x-6 p-6">
+    <article className="flex items-start space-x-6 p-2">
       <Link href={`/komik/${data.endpoint}`}>
         <Image src={data.thumb} alt={data.title} width='80' height='108' className="image flex-none rounded-md bg-slate-100" />
       </Link>

@@ -51,8 +51,8 @@ export const Content = () => {
 
 
       <div className="lg:flex w-full gap-2 ">
-        {/* <ContentList data={komikList} loading={loading} /> */}
-        <Listkomik data={komikList} loading={loading} />
+        <ContentList data={komikList} loading={loading} />
+        {/* <Listkomik data={komikList} loading={loading} /> */}
         <SeriesList />
       </div>
     </>

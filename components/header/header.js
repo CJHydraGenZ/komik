@@ -10,7 +10,7 @@ export const Header = () => {
         <Link href={`/`}>KomikIDC</Link>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-2">
           {/* <li><Link href={`/`}>KomikIDC</Link></li> */}
           <li tabIndex={0}>
             <Link href={`/komik`}>
@@ -18,7 +18,7 @@ export const Header = () => {
             </Link>
 
           </li>
-          {/* <li><Link>Item 3</Link></li> */}
+          <li><Link href={`/roadmap`}>Roadmap</Link></li>
         </ul>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function Komik({ fallback }) {
   const { data, error } = useSWR(`/api/komik`, fetcher);
 
   if (!data) return "Loading...";
-  console.log('sas', data);
+  // console.log('sas', data);
 
   return (
     // <SWRConfig value={{ fallback }}>

@@ -14,23 +14,12 @@ import useSWR from "swr";
 export default function Chapter() {
   const router = useRouter();
   const { id } = router.query;
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const { chapter_endpoint, chapter_image, chapter_name, chapter_page, title } =
-  //   data;
+
   const [page, setPage] = useState(0)
 
   const { data: chapter } = useSWR(`/api/chapter/${id}`, fetcher);
   const { data: komik } = useSWR(`/api/komik/${chapter?.komik_endpoint}`, fetcher);
-  // console.log(komik);
 
-  // useEffect(() => {
-  //   // getData();
-  //   if (!router.isReady) return;
-  //   // if (error) return "An error has occurred.";
-  //   // if (!data) return "Loading...";
-  //   // getData();
-  // }, [router.isReady]);
 
   if (!chapter) return 'loading...'
   if (!komik) return 'loading...'
@@ -42,7 +31,6 @@ export default function Chapter() {
 
 
   }
-  // console.log(page);
 
   return (
     <div>

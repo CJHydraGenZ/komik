@@ -15,19 +15,14 @@ import useSWR from "swr";
 export default function KomikID() {
   const router = useRouter();
   const { id } = router.query;
-  // console.log("ini endpoint", id);
-  // const [data, setData] = useState([]);
+
   const [loading, setLoading] = useState(false);
   // console.log("ini", data);
   const { data, error } = useSWR(`/api/komik/${id}`, fetcher);
 
   if (!data) return "Loading...";
 
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-  //   // if (error) return "An error has occurred.";
-  //   // getData();
-  // }, [router.isReady]);
+
 
 
 

@@ -13,7 +13,7 @@ export default function Home() {
   const { data, error } = useSWR(`/api/github`, fetcher);
 
   if (!data) return "Loading...";
-  console.log('sas', data);
+  // console.log('sas', data);
   return (
     <div className={styles.container}>
       <Head>

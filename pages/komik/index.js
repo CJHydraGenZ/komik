@@ -1,7 +1,7 @@
 // import { KomikList } from "@/content/komik/komikList";
 import axios from "axios";
 // import { Content } from "components/content/content";
-// import { fetcher } from "components/function/fetch";
+import { fetcher } from "components/function/fetch";
 // import { server } from "config";
 import { CardKomik } from "@/content/card/card";
 import Head from "next/head";
@@ -10,27 +10,31 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import useSWR, { SWRConfig } from "swr";
+import useSWR, { SWRConfig } from "swr";
 
 export default function Komik({ fallback }) {
-  const [data, setData] = useState([]);
-  // console.log("inidata", data);
-  const [loading, setLoading] = useState(false);
-  const getData = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(`/api/komik/`);
-      setData(data);
-      // console.log(data);
-    } catch (error) {
-      // console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  // const [data, setData] = useState([]);
+  // // console.log("inidata", data);
+  // const [loading, setLoading] = useState(false);
+  // const getData = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const { data } = await axios.get(`/api/komik/`);
+  //     setData(data);
+  //     // console.log(data);
+  //   } catch (error) {
+  //     // console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+  const { data, error } = useSWR(`/api/komik`, fetcher);
+
+  if (!data) return "Loading...";
+  console.log('sas', data);
 
   return (
     // <SWRConfig value={{ fallback }}>
@@ -49,10 +53,9 @@ export default function Komik({ fallback }) {
         <div className="list-komik  h-auto w-full px-4 py-2">
 
 
-          <div className="grid grid-cols-1 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
-            {loading
-              ? "Loading..."
-              : data?.komik_list?.map((d, i) => (
+          <div className="grid grid-cols-1 gap-y-2 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-4 ">
+            {
+              data?.komik_list?.map((d, i) => (
                 // <CardKomik
                 //   key={i}
                 //   thumb={d.thumb}
@@ -62,9 +65,9 @@ export default function Komik({ fallback }) {
                 //   chapter={d.chapter}
                 //   last_upload_endpoint={d.last_upload_endpoint}
                 // />
-                <div key={i} className=" rounded-sm bg-base-100 shadow-xl">
-                  <Link className="flex gap-1" href={`/komik/${d.endpoint}`}>
-                    <figure className="w-1/6" ><Image className="image" fill src={d.thumb} alt={d.title} /></figure>
+                <div key={i} className="h-auto rounded-sm bg-base-100 shadow-xl overflow-hidden">
+                  <Link className="flex gap-2" href={`/komik/${d.endpoint}`}>
+                    <figure className="w-full" ><Image className="image" fill src={d.thumb} alt={d.title} /></figure>
                     <div className="w-5/6">
                       <h2 className="">{d.title}</h2>
                       {/* <h2 >{d.chapter}</h2> */}

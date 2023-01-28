@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { getListPage } from "components/scaping/komikcash/komik";
-import { HandlerKomikId } from "components/scaping/komikcash/scraping";
+import { getListText } from "components/scaping/komikcash/komik";
+// import { HandlerKomikId } from "components/scaping/komikcash/scraping";
 // import { HandleDetailId, HandleListPage } from "components/function/scraping_komikid";
 import NextCors from "nextjs-cors";
 
@@ -17,5 +17,5 @@ export default async function handler(req, res) {
 
   // console.log("ini", id);
 
-  res.status(200).json(await getListPage(id));
+  res.status(200).json(await getListText());
 }

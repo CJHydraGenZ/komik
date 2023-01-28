@@ -5,32 +5,13 @@ import { fetcher } from "components/function/fetch";
 // import { server } from "config";
 import { CardKomik } from "@/content/card/card";
 import Head from "next/head";
-// import Image from "next/image";
-// import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import useSWR, { SWRConfig } from "swr";
 
 export default function Komik({ fallback }) {
-  // const [data, setData] = useState([]);
-  // // console.log("inidata", data);
-  // const [loading, setLoading] = useState(false);
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { data } = await axios.get(`/api/komik/`);
-  //     setData(data);
-  //     // console.log(data);
-  //   } catch (error) {
-  //     // console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+
   const { data, error } = useSWR(`/api/komik`, fetcher);
 
   if (!data) return "Loading...";

@@ -3,7 +3,7 @@
 // const axios = require("axios");
 import axios from "axios";
 
-
+import ky from 'ky';
 
 export const fetch_scrapfly = (url, options) =>
   fetch(url, options).then(res => res.json()).then(res => res.result.content)
@@ -14,7 +14,9 @@ let headers = new Headers({
   "Content-Type": "application/json",
   "User-Agent": "Statically-Images/2.0"
 });
-export const fetcher = (url) => axios.get(url).then(res => res.data)
+export const fetcher = async (url) => await ky.get(url).json()
+export const fetcherAxios = (url) => axios.get(url).then(res => res.data)
+
 
 
 export const fetch_scrap_ninja = (url) => axios.request({

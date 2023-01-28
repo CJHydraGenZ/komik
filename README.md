@@ -45,6 +45,20 @@ Daftar Komik
 ```
 example : https://localhost:3000/api/komik/
 
+## All Komik List
+Daftar Komik List
+```
+/komik/list
+```
+example : https://localhost:3000/api/komik/list
+
+## Komik Page
+Daftar Komik
+```
+/komik/page/slug
+```
+example : https://localhost:3000/api/komik/page/slug
+
 ## Komik Rekomendasi
 Get Komik Rekomendasi
 ```

@@ -32,11 +32,12 @@ export default function Chapter() {
 
   }
 
+
   const handleNext = (e) => {
-    router.push(`/chapter/${chapter.chapter_endpoint.replace(/\d+/gm, chapter?.chapter_page + 1)}`)
+    router.push(`/chapter/${chapter.chapter_endpoint.replace(/\d+/gm, (chapter?.chapter_page + 1).toString().padStart(2, '0'))}`)
   }
   const handlePrevious = (e) => {
-    router.push(`/chapter/${chapter.chapter_endpoint.replace(/\d+/gm, chapter?.chapter_page - 1)}`)
+    router.push(`/chapter/${chapter.chapter_endpoint.replace(/\d+/gm, (chapter?.chapter_page - 1).toString().padStart(2, '0'))}`)
 
   }
 

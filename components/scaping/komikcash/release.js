@@ -11,7 +11,7 @@ export const getLastRelease = async () => {
     const $ = cheerio.load(data);
     const element = $(".listupd");
     // console.log(element);
-    const relese_list = [];
+    const release_list = [];
     // const thumb, title, endpoint, chapter_endpoint, date;
 
 
@@ -40,7 +40,7 @@ export const getLastRelease = async () => {
 
 
 
-      relese_list.push({
+      release_list.push({
         thumb,
         title,
         endpoint,
@@ -51,7 +51,7 @@ export const getLastRelease = async () => {
     return {
       status: true,
       message: "success",
-      relese_list,
+      release_list,
     };
 
   } catch (error) {

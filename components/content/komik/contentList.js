@@ -10,7 +10,7 @@ const contentList = ({ data, loading }) => {
 
       {loading
         ? "Loading..."
-        : data?.komik_list?.map((d, i) => (
+        : data?.release_list?.map((d, i) => (
 
           <div key={i} className=" w-full bg-base-100 shadow-xl mt-1 ">
             <Link className="flex flex-row gap-2" href={`/komik/${d.endpoint}`}>
@@ -19,8 +19,14 @@ const contentList = ({ data, loading }) => {
               </figure>
               <div className="w-5/6">
                 <h2 className="">{d.title}!</h2>
-                {/* <p>{d.chapter}.</p> */}
-                <Link href={`/chapter/${d.last_upload_endpoint}`}>{d.chapter}</Link>
+
+                {
+                  d.chapter_list.map((link, i) => <div className="flex justify-between px-2" key={i}>
+                    <Link href={`/chapter/${link.chapter_endpoint}`}>Chapter. {link.chapter}</Link>
+                    <p>{link.release}</p>
+                  </div>)
+                }
+
 
               </div>
             </Link>

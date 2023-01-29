@@ -73,8 +73,7 @@ export default function Chapter() {
                 {
                   komik?.chapter?.map((d, i) => <option key={i} value={d.chapter_endpoint}>{d.chapter_endpoint.split(/\D+/gm).join(' ')}</option>)
                 }
-                {/* <option value="2">2</option>
-                <option value="3">3</option> */}
+
               </select>
               <button onClick={(e) => handleNext(e)}>Lanjut</button>
             </div>

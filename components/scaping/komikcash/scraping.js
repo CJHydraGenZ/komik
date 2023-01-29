@@ -129,6 +129,7 @@ export const HandleRecommend = async () => {
   // const API = dev ? '' : `https://api.scrapfly.io/scrape?key=${process.env.SCRAPFLY_API_KEY}&url=https%3A%2F%2Fkomikcast.me&country=au`
   try {
     const link_endpoint = "https://komikcast.site/komik/";
+    const link_chapter_endpoint = "https://komikcast.site/chapter/";
 
     // const data = await fetcherAPI("https://api.scrapfly.io/scrape?key=$process.env.SCRAPFLY_API_KEY&url=https%3A%2F%2Fkomikcast.me&country=au");
 
@@ -150,7 +151,7 @@ export const HandleRecommend = async () => {
     const element = $(".listupd");
 
     // console.log(element);
-    const komik_list = [];
+    const recommend_list = [];
     let title, type, endpoint, last_upload_endpoint, thumb, chapter, rating;
 
     element.find(".swiper-wrapper > .swiper-slide").each((i, el) => {
@@ -160,7 +161,8 @@ export const HandleRecommend = async () => {
         .text()
         .trim();
       type = $(el).find("a > .splide__slide-image").find(".type").text().trim();
-      thumb = $(el).find("a > .splide__slide-image").find("img").attr("src");
+      thumb = $(el).find("a > .splide__slide-image").find("img").attr("src").replace(/.*?:\/\//g,
+        "https://cdn.statically.io/img/");
       // thumb = $(el).find()
       endpoint = $(el).find("a").attr("href").replace(link_endpoint, "");
       chapter = $(el)
@@ -173,7 +175,7 @@ export const HandleRecommend = async () => {
         .find("a > .splide__slide-info")
         .find(".other")
         .find(".chapter")
-        .attr("href");
+        .attr("href").replace(link_chapter_endpoint, "");
 
       rating = $(el)
         .find("a > .splide__slide-info")
@@ -181,7 +183,7 @@ export const HandleRecommend = async () => {
         .find(".numscore")
         .text();
 
-      komik_list.push({
+      recommend_list.push({
         endpoint,
         title,
         type,
@@ -195,14 +197,14 @@ export const HandleRecommend = async () => {
     return {
       status: true,
       message: "success",
-      komik_list,
+      recommend_list,
     };
     // }
   } catch (error) {
     return {
       status: false,
       message: "error",
-      komik_list,
+      recommend_list,
     };
   }
 };

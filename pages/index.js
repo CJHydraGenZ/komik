@@ -1,5 +1,6 @@
 
 import { Content } from "@/content/content";
+import { Recommend } from "@/content/recommend/recommend";
 import { convertDate, getFormattedDate } from "components/function/date";
 import { fetcher } from "components/function/fetch";
 import Head from "next/head";
@@ -32,6 +33,8 @@ export default function Home() {
           {/* <Link href={data?.html_url}>commit cek</Link> */}
         </div>
       </div>
+      <Recommend />
+
       <Content />
 
     </div>

@@ -322,7 +322,17 @@ export const HandleKomikChapterId = async (cid) => {
     const getPages = $(".main-reading-area > img");
 
     // const getPages = $('#chimg > img')
-    obj.chapter_pages = getPages.length;
+
+    // obj.chapter_pages = getPages.length;
+    // const chapter_pages = []
+    // $('.chapter_nav-control #slch:nth-child(1)').each((i, ch) => {
+    //   const page = $(ch).find('option').val()
+    //   chapter_pages.push({
+    //     page
+    //   })
+    // })
+    obj.chapter_page = +cid.replace(/\D+/gm, '')
+    // obj.chapter_pages = chapter_pages;
     getPages.each((i, el) => {
       chapter_image.push({
         chapter_image_link: $(el).attr("src")

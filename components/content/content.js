@@ -12,10 +12,10 @@ import useSWR from "swr";
 import { fetcher } from "components/function/fetch";
 export const Content = () => {
 
-  // const { data, isLoading } = useSWR(`/api/recommend`, fetcher);
+
   const { data, isLoading } = useSWR(`/api/release`, fetcher);
 
-  console.log(data);
+
   return (
     <>
 

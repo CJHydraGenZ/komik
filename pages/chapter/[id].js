@@ -32,6 +32,14 @@ export default function Chapter() {
 
   }
 
+  const handleNext = (e) => {
+    router.push(`/chapter/${chapter.chapter_endpoint.replace(/\d+/gm, chapter?.chapter_page + 1)}`)
+  }
+  const handlePrevious = (e) => {
+    router.push(`/chapter/${chapter.chapter_endpoint.replace(/\d+/gm, chapter?.chapter_page - 1)}`)
+
+  }
+
   return (
     <div>
       <Head>
@@ -60,7 +68,7 @@ export default function Chapter() {
               {/* </div> */}
             </div>
             <div className="flex justify-between">
-              <button>Kembali</button>
+              <button onClick={(e) => handlePrevious(e)}>Kembali</button>
               <select onChange={(e) => handleChange(e)} value={page}>
                 {
                   komik?.chapter?.map((d, i) => <option key={i} value={d.chapter_endpoint}>{d.chapter_endpoint.split(/\D+/gm).join(' ')}</option>)
@@ -68,7 +76,7 @@ export default function Chapter() {
                 {/* <option value="2">2</option>
                 <option value="3">3</option> */}
               </select>
-              <button>Lanjut</button>
+              <button onClick={(e) => handleNext(e)}>Lanjut</button>
             </div>
           </div>
         </div>

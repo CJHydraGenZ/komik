@@ -20,7 +20,7 @@ const RecommendList = ({ data, loading }) => {
                 <h2 className="truncate ">{d.title}!</h2>
                 <p className="">{d.type}</p>
 
-                <Link href={`/chapter/${d.last_upload_endpoint}`}>Chapter. {d.chapter}</Link>
+                <Link href={`/chapter/${d.last_upload_endpoint}`}>{d.chapter}</Link>
                 <p className="">{d.rating}</p>
 
 

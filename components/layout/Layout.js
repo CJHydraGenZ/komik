@@ -13,6 +13,6 @@ export const Layout = ({ children }) => (
     <Script
       defer
       src='https://static.cloudflareinsights.com/beacon.min.js'
-      data-cf-beacon='{"token": "cd226e487bbb454bad158c46e7140e69"}' />
+      data-cf-beacon={`{"token": ${process.env.CF_KEY}}`} />
   </>
 );

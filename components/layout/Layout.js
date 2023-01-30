@@ -11,8 +11,6 @@ export const Layout = ({ children }) => (
     <div className="container mx-auto px-4">{children}</div>
     {/* <Footer /> */}
     <Script
-      defer
-      src='https://static.cloudflareinsights.com/beacon.min.js'
-      data-cf-beacon={`{"token": "${process.env.CF_KEY}"}`} />
+      defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f7f7486a92b9427ab52dde99f0bfe70a"}' />
   </>
 );

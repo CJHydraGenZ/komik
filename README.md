@@ -1,5 +1,5 @@
 
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8b81e0a2-c313-489d-beb9-4973fb7a2a83/deploy-status)](https://app.netlify.com/sites/komikidc/deploys)
 # KOMIK API
 Komik bahasa Indonesia built with Next.js and Bun
 

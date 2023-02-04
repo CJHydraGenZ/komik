@@ -30,17 +30,13 @@ export default async function handler(req, res) {
       ? `https://komikcast.me/daftar-komik/?genre%5B%5D=${genre}&status=${statusS}&type=${typeS}&orderby=${orderBy}`
       : `https://api.scrapfly.io/scrape?key=29f02355ef574070a9a180c6bb2aa420&url=https%3A%2F%2Fkomikcast.me%2Fdaftar-komik%2F&tags=player%2Cproject%3Adefault&proxy_pool=public_residential_pool`;
 
-
-
-  // res.status(200).json(await HandleKomikList())
+  const data = await HandleKomikList(url)
   switch (req.method) {
     case "GET":
-      // console.log(element);
-      return res.status(200).json(await HandleKomikList(url));
-    // return res.status(200).json(await HandleListPage(1))
-
+      return res.status(200).json(data);
     case "POST":
-      return res.status(200).json(await HandleKomikList(url));
+
+      return res.status(200).json(data);
 
     default:
       return res.status(200).json({

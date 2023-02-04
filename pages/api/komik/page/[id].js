@@ -16,6 +16,7 @@ export default async function handler(req, res) {
   // await runMiddleware(req, res, cors);
 
   // console.log("ini", id);
+  const data = await getListPage(id)
 
-  res.status(200).json(await getListPage(id));
+  res.status(200).json(data);
 }

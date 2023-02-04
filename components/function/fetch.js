@@ -17,7 +17,13 @@ let headers = new Headers({
 export const fetcher = async (url) => await ky.get(url).json()
 export const fetcherAxios = (url) => axios.get(url).then(res => res.data)
 
-
+// export function multiFetcher(...urlArr) {
+//   const f = (u) => fetch(u).then((r) => r.json());
+//   return Promise.all(urlArr.map(f));
+// }
+export function multiFetcher(...urls) {
+  return Promise.all(urls.map(url => fetcher(url)))
+}
 
 export const fetch_scrap_ninja = (url) => axios.request({
   method: 'POST',

@@ -15,6 +15,6 @@ export default async function handler(req, res) {
   // await runMiddleware(req, res, cors);
 
   // console.log("ini", kid);
-
-  res.status(200).json(await HandlerKomikId(kid));
+  const data = await HandlerKomikId(kid)
+  res.status(200).json(data);
 }

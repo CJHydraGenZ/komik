@@ -10,10 +10,11 @@ import { server } from "config";
 import Listkomik from "./list_komik/komik";
 import useSWR from "swr";
 import { fetcher } from "components/function/fetch";
-export const Content = () => {
+export const Content = ({ release }) => {
 
 
-  const { data, isLoading } = useSWR(`/api/release`, fetcher);
+  // const { data, isLoading } = useSWR(`/api/release`, fetcher);
+  // if (!release) return 'loading...'
 
 
   return (
@@ -21,7 +22,7 @@ export const Content = () => {
 
 
       <div className="lg:flex w-full gap-2 ">
-        <ContentList data={data} loading={isLoading} />
+        <ContentList data={release} loading={release} />
         {/* <Listkomik data={komikList} loading={loading} /> */}
         <SeriesList />
       </div>

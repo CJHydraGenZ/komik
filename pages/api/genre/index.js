@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
 
-  // const data = await getGenre
+  const data = await getGenre()
 
-  res.status(200).json(await getGenre());
+  res.status(200).json(data);
 }

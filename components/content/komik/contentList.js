@@ -8,30 +8,28 @@ const contentList = ({ data, loading }) => {
     <div className="flex flex-col gap-1">
       <h1 className="text-lg font-bold my-2">Rilisan Terbaru</h1>
 
-      {loading
-        ? "Loading..."
-        : data?.release_list?.map((d, i) => (
+      {data?.release_list?.map((d, i) => (
 
-          <div key={i} className=" w-full bg-base-100 shadow-xl mt-1 ">
-            <Link className="flex flex-row gap-2" href={`/komik/${d.endpoint}`}>
-              <figure className="w-1/6">
-                <Image className="image" fill src={d.thumb} alt={d.title} priority />
-              </figure>
-              <div className="w-5/6">
-                <h2 className="">{d.title}!</h2>
+        <div key={i} className=" w-full bg-base-100 shadow-xl mt-1 ">
+          <Link className="flex flex-row gap-2" href={`/komik/${d.endpoint}`}>
+            <figure className="w-1/6">
+              <Image className="image" fill src={d.thumb} alt={d.title} priority />
+            </figure>
+            <div className="w-5/6">
+              <h2 className="">{d.title}!</h2>
 
-                {
-                  d.chapter_list.map((link, i) => <div className="flex justify-between px-2" key={i}>
-                    <Link href={`/chapter/${link.chapter_endpoint}`}>Chapter. {link.chapter}</Link>
-                    <p>{link.release}</p>
-                  </div>)
-                }
+              {
+                d.chapter_list.map((link, i) => <div className="flex justify-between px-2" key={i}>
+                  <Link href={`/chapter/${link.chapter_endpoint}`}>Chapter. {link.chapter}</Link>
+                  <p>{link.release}</p>
+                </div>)
+              }
 
 
-              </div>
-            </Link>
-          </div>
-        ))}
+            </div>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };

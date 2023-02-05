@@ -33,18 +33,3 @@ export default function Chapter({ posts }) {
   );
 }
 
-// export async function getStaticProps() {
-//   // Call an external API endpoint to get posts
-//   const res = await fetch(
-//     "http://localhost:3000/api/chapter/chikashitsu-dungeon-binbou-kyoudai-wa-goraku-o-motomete-saikyou-e-chapter-29-bahasa-indonesia"
-//   );
-//   const posts = await res.json();
-
-//   // By returning { props: { posts } }, the Blog component
-//   // will receive `posts` as a prop at build time
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// }

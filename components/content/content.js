@@ -21,10 +21,13 @@ export const Content = ({ release }) => {
     <>
 
 
-      <div className="lg:flex w-full gap-2 ">
-        <ContentList data={release} loading={release} />
-        {/* <Listkomik data={komikList} loading={loading} /> */}
-        <SeriesList />
+      <div className="grid lg:grid-cols-3 gap-2">
+        <div className="lg:col-span-2">
+          <ContentList data={release} loading={release} />
+        </div>
+        <div>
+          <SeriesList />
+        </div>
       </div>
     </>
   );

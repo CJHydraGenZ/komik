@@ -2,6 +2,7 @@ import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { fetcher } from "components/function/fetch";
+import LoadingChapter from "components/loading/loadingChapter";
 import { HandlerKomikId } from "components/scaping/komikcash/scraping";
 // import { server } from "config";
 import Head from "next/head";
@@ -20,7 +21,7 @@ export default function KomikID() {
   // console.log("ini", data);
   const { data, error } = useSWR(`/api/komik/${id}`, fetcher);
 
-  if (!data) return "Loading...";
+  if (!data) return <LoadingChapter />;
 
 
 

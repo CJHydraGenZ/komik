@@ -7,7 +7,7 @@ export function Loading() {
     <>
       <div className='w-full bg-base-100 shadow-xl'>
         <h1 className="text-lg font-bold my-2">Recommend</h1>
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-hidden">
 
           <LoadingRecommend />
           <LoadingRecommend />

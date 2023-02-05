@@ -2,6 +2,8 @@ import { ImageCard } from "@/content/card/Image";
 import axios from "axios";
 import { Content } from "components/content/content";
 import { fetcher } from "components/function/fetch";
+import LoadingChapter from "components/loading/loadingChapter";
+import LoadingChapterId from "components/loading/loadingChapterId";
 import { server } from "config";
 // import { server } from "config";
 import Head from "next/head";
@@ -21,8 +23,8 @@ export default function Chapter() {
   const { data: komik } = useSWR(`/api/komik/${chapter?.komik_endpoint}`, fetcher);
 
 
-  if (!chapter) return 'loading...'
-  if (!komik) return 'loading...'
+  if (!chapter) return <LoadingChapterId />
+  if (!komik) return <LoadingChapterId />
 
   const handleChange = (e) => {
 

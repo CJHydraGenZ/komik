@@ -4,19 +4,25 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run partytown && next build",
+    "partytown": "partytown copylib public/~partytown",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf dist out node_modules"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.7.5",
+    "@next/font": "13.1.6",
+    "@types/node": "18.13.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "18.0.10",
     "@vercel/analytics": "^0.1.8",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "daisyui": "^2.46.1",
     "ky": "^0.33.2",
-    "next": "^13.1.2",
+    "next": "^13.1.6",
     "nextjs-cors": "^2.1.2",
     "octokit": "^2.0.13",
     "react": "^18.2.0",
@@ -33,6 +39,7 @@
     "eslint": "8.19.0",
     "eslint-config-next": "^13.1.2",
     "postcss": "^8.4.14",
-    "react-refresh": "latest"
+    "react-refresh": "latest",
+    "typescript": "^4.9.5"
   }
 }

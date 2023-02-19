@@ -16,8 +16,6 @@ import { Partytown } from "@builder.io/partytown/react";
 import { type } from "os";
 import useSWR, { Fetcher } from "swr";
 
-// import styles from "../styles/Home.module.css";
-
 export default function Home() {
   type Release = {
     thumb: string;
@@ -45,11 +43,9 @@ export default function Home() {
     multiFetcher,
   );
   if (!data) return <Loading />;
-  // console.log(git);
 
   const [data1, data2]: any = data;
-  // console.log(data[0]);
-  // console.log(data[1]);
+
   const recommend: Recommend = data1;
   const release: Release = data2;
 

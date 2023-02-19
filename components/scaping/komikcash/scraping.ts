@@ -81,7 +81,7 @@ export const HandlerKomikId = async (kid: any) => {
   obj.thumb = $(".komik_info-content > .komik_info-content-thumbnail")
     .find("img")
     .attr("src")!
-    .replace(/.*?:\/\//g, "https://cdn.statically.io/img/");
+    .replace(/.*?:\/\//g, "https://cdn.statically.io/img/f=auto,q=50/");
 
   $(".komik_info-content-body > .komik_info-content-genre").each((idx, el) => {
     let genre_name: any = $(el)
@@ -191,7 +191,7 @@ export const HandleRecommend = async () => {
   }
 };
 
-export const HandleKomikList = async (url: any) => {
+export const HandleKomikList = async () => {
   try {
     const link_endpoint = "https://komikcast.site/komik/";
     const chapter_link_endpoint = "https://komikcast.site/chapter/";

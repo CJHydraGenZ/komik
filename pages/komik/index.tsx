@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR, { Fetcher, SWRConfig } from "swr";
 import { useMemo, useState } from "react";
-
+import { CldImage } from "next-cloudinary";
 import LoadingListKomik from "components/loading/loadingListKomik";
 
 import { KomikData } from "components/type/DataType";

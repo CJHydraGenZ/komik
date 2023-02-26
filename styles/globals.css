@@ -1,4 +1,6 @@
 @tailwind base;
+/* Firefox */
+
 @tailwind components;
 @tailwind utilities;
 
@@ -11,6 +13,13 @@
 
 .card-recommend {
   @apply flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg !important;
+} */
+html {
+  scroll-behavior: smooth;
+}
+/* 
+html {
+  scroll-behavior: smooth;
 } */
 
 .image-container {

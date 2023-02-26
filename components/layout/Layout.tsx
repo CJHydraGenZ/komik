@@ -20,7 +20,7 @@ export const Layout = ({ children }: any) => (
     </Head>
     {/* <main>...</main> */}
     <Header />
-    <div className="container mx-auto px-4">{children}</div>
+    <div className="container mx-auto px-4 ">{children}</div>
     {/* <Footer /> */}
     {/* <Script type="text/partytown" /> */}
   </>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TypeRelease, TypeReleaseList } from "components/type/releaseType";
+
 const contentList = ({ data, loading }: any) => {
   return (
     <div className="flex flex-col gap-1">
@@ -20,8 +21,12 @@ const contentList = ({ data, loading }: any) => {
                 <Image
                   className="object-fill"
                   fill
+                  quality={1}
                   src={d.thumb}
                   alt={d.title}
+                  sizes="(max-width: 768px) 100vw,
+                  (max-width: 1200px) 50vw,
+                  33vw"
                   priority
                 />
               </figure>
@@ -34,6 +39,7 @@ const contentList = ({ data, loading }: any) => {
                     <Link
                       className="text-sm"
                       href={`/chapter/${link.chapter_endpoint}`}
+                      // passHref
                     >
                       Chapter.{link.chapter}
                     </Link>

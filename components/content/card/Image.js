@@ -19,7 +19,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
   const pickVarian = variants[variant];
   return (
     <div
-      className={`image-container w-full bg-gray-200 overflow-hidden ${pickVarian} `}
+      className={`image-container w-full relative bg-gray-200 overflow-hidden ${pickVarian} `}
     >
       {/* <img className="flex aspect-w-10" src={src} alt={title} /> */}
       <Image
@@ -34,6 +34,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
             : "image grayscale-0 blur-0 scale-100"
         )}
         fill
+        quality={1}
         //   onLoadingComplete={() => setLoading(false)}
         onLoadingComplete={(result) => {
           setLoading(false)
@@ -42,6 +43,9 @@ export const ImageCard = ({ variant, thumb, title }) => {
             setSrc(thumb);
           }
         }}
+        sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,
+        33vw"
         priority
       />
     </div>

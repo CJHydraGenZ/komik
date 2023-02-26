@@ -13,12 +13,16 @@ const RecommendList = ({ data }: any) => {
             className="flex flex-col  gap-2 "
             href={`/komik/${d.endpoint}`}
           >
-            <figure className="w-40">
+            <figure className="w-40 relative">
               <Image
                 className="image"
                 fill
+                quality={1}
                 src={d.thumb}
                 alt={d.title}
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
                 priority
               />
             </figure>

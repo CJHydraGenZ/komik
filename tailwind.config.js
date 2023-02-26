@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui'), require("@tailwindcss/aspect-ratio")],
+  plugins: [require('daisyui'), require("@tailwindcss/aspect-ratio"),],
   // prefix: "img-",
   // important: true,
 };

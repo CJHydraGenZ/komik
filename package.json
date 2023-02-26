@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "turbo": "next dev --turbo",
     "build": "npm run partytown && next build",
     "partytown": "partytown copylib public/~partytown",
     "start": "next start",

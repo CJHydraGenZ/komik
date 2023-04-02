@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
+// import { AmpAutoAds } from "react-amphtml";
 
 // import styles from "../styles/Home.module.css";
 export default function KomikID() {
@@ -49,7 +50,10 @@ export default function KomikID() {
             ) : (
             )} */
           }
-
+          {
+            /* <amp-auto-ads type="adsense" data-ad-client="ca-pub-5156335750859862">
+          </amp-auto-ads> */
+          }
           <div className="info flex flex-wrap gap-2">
             {/* <ul className="list-disc"> */}
             {data?.genre_list?.map((g: any, i: any) => (

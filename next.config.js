@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // amp: true,
   // env: {
   //   // customKey: "my-value",
   //   NEXT_PUBLIC_RAPIDAPI_KEY:

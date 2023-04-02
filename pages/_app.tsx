@@ -2,9 +2,10 @@ import { Analytics } from "@vercel/analytics/react";
 import { Layout } from "components/layout/Layout";
 // import Script from "next/script";
 import GoogleAnalytics from "@bradgarropy/next-google-analytics";
+import { GoogleAdSense } from "nextjs-google-adsense";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
-import { Partytown } from "@builder.io/partytown/react";
+// import { Partytown } from "@builder.io/partytown/react";
 import Script from "next/script";
 
 // import { Analytics } from '@vercel/analytics/react';
@@ -23,6 +24,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5156335750859862"
         crossOrigin="anonymous"
+      />
+
+      <Script
+        async
+        custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
       />
 
       <GoogleAnalytics measurementId="G-KE6PYKXC6P" />

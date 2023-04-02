@@ -12,6 +12,7 @@
     "clean": "rm -rf dist out node_modules"
   },
   "dependencies": {
+    "@bradgarropy/next-google-analytics": "^1.0.2",
     "@builder.io/partytown": "^0.7.5",
     "@next/font": "13.1.6",
     "@types/node": "18.13.0",

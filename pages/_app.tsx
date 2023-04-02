@@ -4,6 +4,8 @@ import { Layout } from "components/layout/Layout";
 import GoogleAnalytics from "@bradgarropy/next-google-analytics";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
+import { Partytown } from "@builder.io/partytown/react";
+import Script from "next/script";
 
 // import { Analytics } from '@vercel/analytics/react';
 // import { Layout } from "components/layout/Layout";
@@ -18,6 +20,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics measurementId="G-KE6PYKXC6P" />
+      {
+        /* <Partytown debug={true} forward={["dataLayer.push"]} />
+      <Script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "f7f7486a92b9427ab52dde99f0bfe70a"}'
+        type="text/partytown"
+      /> */
+      }
       <Layout>
         <Component {...pageProps} />
         <Analytics />

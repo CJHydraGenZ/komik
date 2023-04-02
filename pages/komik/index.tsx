@@ -30,7 +30,7 @@ export default function Komik() {
             <Image
               className="image"
               fill
-              quality={1}
+              // quality={1}
               src={d.thumb}
               alt={d.title}
               sizes="(max-width: 768px) 100vw,

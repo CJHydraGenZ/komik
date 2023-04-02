@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Script
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3424353783387329"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5156335750859862"
         crossOrigin="anonymous"
       />
 

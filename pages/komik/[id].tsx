@@ -27,7 +27,10 @@ export default function KomikID() {
     <div>
       <Head>
         <title>KomikIDC</title>
-
+        <meta
+          name="google-site-verification"
+          content="aX_-Lu_g7LPtYAvpUMQBSTeRhszIhVwmIojpAxsnhsI"
+        />
         <meta name="komik" content={data?.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>

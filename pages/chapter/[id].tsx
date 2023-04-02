@@ -85,6 +85,10 @@ export default function Chapter() {
     <div>
       <Head>
         <title>Chapter</title>
+        <meta
+          name="google-site-verification"
+          content="aX_-Lu_g7LPtYAvpUMQBSTeRhszIhVwmIojpAxsnhsI"
+        />
         <meta name="chapter" content={chapter?.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>

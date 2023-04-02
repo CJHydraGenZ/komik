@@ -7,6 +7,10 @@ export default function Roadmap() {
       <Head>
         <title>Roadmap</title>
         <meta name="roadmap" content="roadmap" />
+        <meta
+          name="google-site-verification"
+          content="aX_-Lu_g7LPtYAvpUMQBSTeRhszIhVwmIojpAxsnhsI"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex justify-center">

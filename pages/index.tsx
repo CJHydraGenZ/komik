@@ -53,6 +53,7 @@ export default function Home() {
     <div>
       <Head>
         <title>KomikIDC</title>
+        <meta name="google-site-verification" content="aX_-Lu_g7LPtYAvpUMQBSTeRhszIhVwmIojpAxsnhsI" />
         <meta
           name="komik_idc"
           content="KomikIDC mengediakan API manga, manhua, manhwa "

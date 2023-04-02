@@ -20,8 +20,6 @@ export default function Komik() {
     );
     if (!data) return <LoadingListKomik />;
 
-    // const { komik_list }: KomikData[] = data || [];
-    // ... handle loading and error states
     return data?.komik_list?.map((d: KomikData, i: any) => (
       <div
         key={i}
@@ -43,7 +41,7 @@ export default function Komik() {
           </figure>
           <div className="w-5/6">
             <h2 className="">{d.title}</h2>
-            {/* <h2 >{d.chapter}</h2> */}
+
             <Link href={`/chapter/${d.last_upload_endpoint}`}>
               {d.chapter}
             </Link>
@@ -62,18 +60,19 @@ export default function Komik() {
     return pages;
   }, [cnt]);
   return (
-    // <SWRConfig value={{ fallback }}>
-    // <KomikList />
     <div>
       <Head>
         <title>Daftar komik</title>
         <meta name="daftar komik" content="Daftar komik" />
+        <meta
+          name="google-site-verification"
+          content="aX_-Lu_g7LPtYAvpUMQBSTeRhszIhVwmIojpAxsnhsI"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col max-w-full">
         <h1 className="mx-auto">Daftar Komik</h1>
-        {/* <div className="filter bg-slate-300 h-60 w-full">filter</div> */}
 
         <div className="list-komik  h-auto w-full px-4 py-2">
           <div className="grid grid-cols-1 gap-y-2 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-4 ">

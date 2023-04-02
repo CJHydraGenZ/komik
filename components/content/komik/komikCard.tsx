@@ -21,6 +21,7 @@ const komikCard = ({
             {/* <img src={thumb} alt="addadjfjka" /> */}
             <Image
               src={thumb}
+              quality={80}
               layout="fill"
               objectFit="cover"
               alt={title}

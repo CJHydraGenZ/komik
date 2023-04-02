@@ -21,7 +21,7 @@ const contentList = ({ data, loading }: any) => {
                 <Image
                   className="object-fill"
                   fill
-                  quality={1}
+                  quality={80}
                   src={d.thumb}
                   alt={d.title}
                   sizes="(max-width: 768px) 100vw,

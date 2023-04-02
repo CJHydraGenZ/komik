@@ -17,7 +17,7 @@ const RecommendList = ({ data }: any) => {
               <Image
                 className="image"
                 fill
-                quality={1}
+                quality={80}
                 src={d.thumb}
                 alt={d.title}
                 sizes="(max-width: 768px) 100vw,

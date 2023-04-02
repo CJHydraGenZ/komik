@@ -34,7 +34,7 @@ export const ImageCard = ({ variant, thumb, title }) => {
             : "image grayscale-0 blur-0 scale-100"
         )}
         fill
-        quality={1}
+        // quality={50}
         //   onLoadingComplete={() => setLoading(false)}
         onLoadingComplete={(result) => {
           setLoading(false)

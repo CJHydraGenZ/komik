@@ -1,5 +1,22 @@
-const EXTERNAL_DATA_URL = 'https://komikidc.site/api/komik';
-const EXTERNAL_DATA_URL_CHAPTER = 'https://komikidc.site/api/chapter';
+const EXTERNAL_DATA_URL = "https://komikidc.site/api/komik";
+const EXTERNAL_DATA_URL_CHAPTER = "https://komikidc.site/api/chapter";
+
+// // pages/server-sitemap-index.xml/index.tsx
+// import { getServerSideSitemapIndexLegacy } from "next-sitemap";
+// import { GetServerSideProps } from "next";
+
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   // Method to source urls from cms
+//   const urls = await fetch(EXTERNAL_DATA_URL);
+
+//   return getServerSideSitemapIndexLegacy(ctx, [
+//     "https://example.com/path-1.xml",
+//     "https://example.com/path-2.xml",
+//   ]);
+// };
+
+// // Default export to prevent next.js errors
+// export default function SitemapIndex() {}
 
 function generateSiteMap(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>

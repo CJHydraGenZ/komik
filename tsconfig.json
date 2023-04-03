@@ -20,6 +20,11 @@
       "@/content/*": ["components/content/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/server-sitemap.xml/index.js"
+  ],
   "exclude": ["node_modules"]
 }
